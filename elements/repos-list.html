@@ -1,0 +1,61 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="buildbot-list.html">
+
+<polymer-element name="repos-list">
+  <template>
+    <link rel="stylesheet" href="../css/spec.css">
+    <link rel="stylesheet" href="../css/polymer.css">
+    <style>
+      #repobuildlist {
+        list-style: none;
+      }
+      #repobuildlist li {
+        margin-bottom: 25px;
+      }
+      :host ^^ h3 {
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: -0.01em;
+        line-height: 48px;
+        margin: 0;
+      }
+      :host ^^ a {
+        font-size: inherit;
+        font-weight: normal;
+        color: #3367d6;
+        text-decoration: none;
+      }
+      :host ^^ a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <ul id="repobuildlist">
+      <template repeat="{{repos}}">
+        <li>
+          <h2>{{}}</h2>
+          <buildbot-list project="{{}}"></buildbot-list>
+        </li>
+      </template>
+    </ul>
+  </template>
+  <script>
+    Polymer('repos-list', {
+      ready: function() {
+        this.repos = [
+          'polymer-dev',
+          'platform-dev',
+          'ShadowDOM',
+          'CustomElements',
+          'HTMLImports',
+          'PointerEvents',
+          'PointerGestures',
+          'web-animations-js',
+          'TemplateBinding',
+          'NodeBind',
+          'observe-js',
+          'polymer-expressions'
+        ];
+      }
+    });
+  </script>
+</polymer-element>

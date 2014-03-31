@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+
+<!-- Mirrored from www.polymer-project.org/platform/pointer-events.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:36:41 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Pointer Events">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../images/instacod.png">
+
+
+<title>
+  
+    Pointer Events - 
+   Polymer
+</title>
+<link rel="publisher" href="https://plus.google.com/107187849809354688692">
+<link rel="shortcut icon" href="../images/logos/p-logo-16.png">
+<link href="../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../components/polymer/polymer.html">
+  <link rel="import" href="../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="pointer-events" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../index.html" class="logo"><img src="../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="../docs/start/everything.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="../docs/polymer/polymer.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="docs"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="platform" navgroup="docs" shortname="Platform">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="../docs/start/everything.html" class="paper-button " borderless sink>Start</a>
+  <a href="../docs/polymer/polymer.html" class="paper-button active" borderless sink>Docs</a>
+  <a href="../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Pointer Events</h1>
+        
+          <summary>polyfill</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/platform/pointer-events.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Pointer Events</h1>
+        
+          <summary>polyfill</summary>
+        
+      </header>
+
+      <dl class="horizontal">
+  
+  <dt>Repository</dt>
+  <dd><a href="https://github.com/polymer/PointerEvents">github.com/polymer/PointerEvents</a></dd>
+  
+  
+    <dt>W3C Specification</dt>
+    <dd>
+      
+        <a href="https://dvcs.w3.org/hg/pointerevents/raw-file/tip/pointerEvents.html">dvcs.w3.org/hg/pointerevents/raw-file/tip/pointerEvents.html</a>
+      
+    </dd>
+  
+</dl>
+
+<blockquote>
+  <p>Defines new events and related interfaces for handling hardware agnostic pointer input from devices like a mouse, pen, or touchscreen.</p>
+</blockquote>
+
+<hr />
+
+<details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#learn-the-tech">Learn the tech</a>    <ul>
+      <li><a href="#why-pointer-events">Why Pointer Events?</a></li>
+      <li><a href="#basic-usage">Basic Usage</a></li>
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+  </li>
+  <li><a href="#polyfill-details">Polyfill Details</a>    <ul>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#where-can-i-use-pointerevents">Where can I use PointerEvents?</a></li>
+    </ul>
+  </li>
+  <li><a href="#polyfill-limitations">Polyfill Limitations</a>    <ul>
+      <li><a href="#touch-action">touch-action</a></li>
+      <li><a href="#browser-compatibility">Browser Compatibility</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="learn-the-tech">Learn the tech</h2>
+
+<h3 id="why-pointer-events">Why Pointer Events?</h3>
+
+<p>Mouse events and Touch events are fundamentally different beasts in browsers
+today, and that makes it hard to write cross-platform apps.</p>
+
+<p>For example, a simple finger paint app needs plenty of work to behave correctly
+with mouse and touch:</p>
+
+<p>Current platforms that implement touch events also provide mouse events for
+backward compatibility; however, only a subset of mouse events are fired and the
+semantics are changed.</p>
+
+<ul>
+  <li>Mouse events are only fired after the touch sequence ends.</li>
+  <li>Mouse events are not fired on elements without a click event handler. One must
+be attached by default, or directly on the element with “onclick”.</li>
+  <li>Click events are not fired if the content of the page changes in a mousemove
+or mouseover event.</li>
+  <li>Click events are fired 300ms after the touch sequence ends.</li>
+  <li>More information: <a href="http://developer.apple.com/library/safari/#documentation/appleapplications/reference/safariwebcontent/HandlingEvents/HandlingEvents.html">Apple Developer Documentation</a>.</li>
+</ul>
+
+<p>Additionally, Touch events are sent only to the element that received the
+touchstart. This is fundamentally different than mouse events, which fire on the
+element that is under the mouse. To make them behave similarly, touch events
+need to be retargeted with <code>document.elementFromPoint</code>.</p>
+
+<p>These incompatibilities lead to applications having to listen to 2 sets of events, mouse on
+desktop and touch for mobile.</p>
+
+<p><strong>This forked interaction experience is cumbersome and hard to maintain.</strong></p>
+
+<p>Instead, there should exist a set of events that are normalized such that they
+behave exactly the same, no matter the source: touch, mouse, stylus, skull
+implant, etc. To do this right, this normalized event system needs to be
+available for all the web platform to use.</p>
+
+<p><em>Thus, PointerEvents!</em></p>
+
+<h3 id="basic-usage">Basic Usage</h3>
+
+<p>By default, no PointerEvents are sent from an element. This maximizes possibility that a browser can deliver smooth scrolling and jank-free gestures. If you want to receive events, you must set the <code>touch-action</code> property of that element.</p>
+
+<ol>
+  <li>Set up some elements to create events with the <code>touch-action</code> attribute
+    <ul>
+      <li><code>&lt;div id="not-a-scroller" touch-action="none"&gt;&lt;/div&gt;</code></li>
+      <li>Generates events all the time, will not scroll</li>
+      <li><code>&lt;div id="horizontal-scroller" touch-action="pan-x"&gt;</code></li>
+      <li>Generates events in the y axis, scrolls in the x axis</li>
+      <li><code>&lt;div id="vertical-scroller" touch-action="pan-y"&gt;</code></li>
+      <li>Generates events in the x axis, scrolls in the y axis</li>
+      <li><code>&lt;div id="all-axis-scroller" touch-action="pan-x pan-y"&gt;</code></li>
+      <li>Generates events only when tapping, scrolls otherwise</li>
+      <li>Can also have the value <code>pan-y pan-x</code> or <code>scroll</code></li>
+    </ul>
+  </li>
+  <li>Listen for the desired events
+    <ul>
+      <li><code>pointermove</code>: a pointer moves, similar to touchmove or mousemove.</li>
+      <li><code>pointerdown</code>: a pointer is activated, or a device button held.</li>
+      <li><code>pointerup</code>: a pointer is deactivated, or a device button released.</li>
+      <li><code>pointerover</code>: a pointer has moved onto an element.</li>
+      <li><code>pointerout</code>: a pointer is no longer on an element it once was.</li>
+      <li><code>pointerenter</code>: a pointer enters the bounding box of an element.</li>
+      <li><code>pointerleave</code>: a pointer leaves the bounding box of an element.</li>
+      <li><code>pointercancel</code>: a pointer will no longer generate events.</li>
+    </ul>
+  </li>
+  <li>As elements come and go, or have their <code>touch-action</code> attribute changed, they will send the proper set of PointerEvents.</li>
+</ol>
+
+<h3 id="examples">Examples</h3>
+
+<ul>
+  <li><a href="http://polymer.github.io/PointerEvents/samples/simple/index.html">Simple Event Example</a></li>
+  <li><a href="http://polymer.github.io/PointerEvents/samples/paint/index.html">Pointer Painting</a></li>
+  <li><a href="http://polymer.github.io/PointerEvents/samples/tracker/index.html">Multi Pointer Trac</a></li>
+  <li><a href="http://polymer.github.io/PointerEvents/samples/spaceship/index.html">Empty Space Game!</a></li>
+</ul>
+
+<h2 id="polyfill-details">Polyfill Details</h2>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<ol>
+  <li>Clone this repo or install from bower (pointerevents-polyfill)</li>
+  <li>Place the loader script in the document head
+    <ul>
+      <li>This Repo</li>
+      <li><code>&lt;script src="PointerEvents/src/pointerevents.js"&gt;&lt;/script&gt;</code></li>
+      <li>Bower</li>
+      <li><code>&lt;script src="bower_components/pointerevents-polyfill/pointerevents.min.js&gt;&lt;/script&gt;</code></li>
+    </ul>
+  </li>
+  <li>Set up your event listeners</li>
+  <li>You’re Done!</li>
+</ol>
+
+<h3 id="where-can-i-use-pointerevents">Where can I use PointerEvents?</h3>
+
+<p>PointerEvents should work on all “Evergreen” (self-updating) browsers.</p>
+
+<p>It has been tested on Chrome, Safari, Firefox, Opera, and IE 10.</p>
+
+<h2 id="polyfill-limitations">Polyfill Limitations</h2>
+
+<h3 id="touch-action">touch-action</h3>
+
+<p>According to the spec, the
+<a href="https://dvcs.w3.org/hg/pointerevents/raw-file/tip/pointerEvents.html#the-touch-action-css-property">touch-action</a>
+css property controls whether an element will perform a “default action” such as scrolling, or receive a continuous stream of PointerEvents.</p>
+
+<p>Due to the difficult nature of polyfilling new CSS properties, this library will
+use a touch-action <em>attribute</em> instead. In addition, run time changes involving
+the <code>touch-action</code> attribute will be monitored for maximum flexibility.</p>
+
+<p>Touches will not generate events unless inside of an area that has a valid <code>touch-action</code> attribute defined.
+This is to maintain compositiong scrolling optimizations where possible.</p>
+
+<h3 id="browser-compatibility">Browser Compatibility</h3>
+
+<h4 id="full-support">Full Support</h4>
+
+<p>Chrome 18+, Safari 6+, IE 10, Firefox 14+</p>
+
+<h4 id="partial-support">Partial Support</h4>
+
+<p>Opera 12-14, does not support changes to <code>touch-action</code> attribute, nor added or removed elements</p>
+
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="../docs/start/getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+
+<!-- Mirrored from www.polymer-project.org/platform/pointer-events.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:36:41 GMT -->
+</html>

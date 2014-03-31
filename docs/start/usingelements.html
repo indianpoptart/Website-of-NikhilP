@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Using elements">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Using elements - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="using-elements" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="everything.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="../polymer/polymer.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="start"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="start" navgroup="start" shortname="Start">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="everything.html" class="paper-button active" borderless sink>Start</a>
+  <a href="../polymer/polymer.html" class="paper-button " borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Using elements</h1>
+        
+          <summary>Polymer from the outside</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/start/usingelements.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Using elements</h1>
+        
+          <summary>Polymer from the outside</summary>
+        
+      </header>
+
+      <details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#install">Installing elements</a>    <ul>
+      <li><a href="#installsingle">Installing a single element</a></li>
+      <li><a href="#installset">Installing an element set</a></li>
+    </ul>
+  </li>
+  <li><a href="#using">Using elements</a>    <ul>
+      <li><a href="#objectarray">Passing object and array values in attributes</a></li>
+    </ul>
+  </li>
+  <li><a href="#nextsteps">Next steps</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Polymer provides a large collection of elements for you to pick from. Of course, these elements have all of the features described in <a href="customelements.html">Custom Elements 101</a>. Using them is straightforward:</p>
+
+<ul>
+  <li><strong>You don’t have to care how they work</strong>. Their internals are safely encapsulated. You interact with them using a well-defined API of attributes, events, properties, methods, and how they handle child nodes. They could use some kind of space-age magic inside, but from the outside you don’t know or care.</li>
+  <li><strong>They’re easy to add to your project</strong>. Elements, no matter which framework they’re from, should define their dependencies using <a href="http://bower.io/">Bower</a>. That means that setting up an element for use in your project–no matter how complex its dependencies, or which frameworks it depends on–is just a matter of running <code>bower install the-element</code>, importing the element to your page, and using it.</li>
+</ul>
+
+<p>Polymer’s set of elements includes the usual suspects like buttons and other UI components, but also includes non-UI elements like <code>&lt;polymer-ajax&gt;</code>. It may sound surprising, but when you embrace the world-view that “<a href="everything.html">everything is an element</a>” you’ll find yourself reaching for pre-built elements more often than script to accomplish common tasks. Polymer’s collection of elements is already robust, and continues to grow. </p>
+
+<h2 id="install">Installing elements</h2>
+
+<p>The first step in using an element (or a set of elements) is to install it locally into your app using <a href="http://bower.io/">Bower</a>. If you haven’t already done so, check out <a href="getting-the-code.html">Getting the Code</a> to learn more about using Bower.</p>
+
+<h3 id="installsingle">Installing a single element</h3>
+
+<p>Elements can be installed individually as needed. For example, to download <code>&lt;polymer-ajax&gt;</code> and install it in your current project, run:</p>
+
+<pre><code>bower install --save Polymer/polymer-ajax
+</code></pre>
+
+<p class="alert alert-info"><strong>Note:</strong> <code>Polymer/polymer-ajax</code> is shorthand for the element’s github repo, <a href="https://github.com/Polymer/polymer-ajax">https://github.com/Polymer/polymer-ajax</a>. You can install other elements the same way.</p>
+
+<p>Running this command adds a <code>bower_components/</code> folder and fills it with <code>&lt;polymer-ajax&gt;</code>:</p>
+
+<pre><code>yourapp/
+  bower_components/
+    platform/
+    polymer/
+    polymer-ajax/
+</code></pre>
+
+<p>Using the <code>--save</code> flag  adds the element to your app’s <code>bower.json</code> file:</p>
+
+<pre><code>{
+  "name": "your-app",
+  "version": "0.0.0",
+  "dependencies": {
+    "polymer-ajax": "Polymer/polymer-ajax#~0.1.4"
+  }
+}
+</code></pre>
+
+<p class="alert alert-info"><strong>Note</strong> If your project does not yet have a <code>bower.json</code> file, create one by running <code>bower init</code>.</p>
+
+<p>Don’t worry about the other dependencies that were added. Bower installs them automatically, and HTML Imports will do the heavy lifting and load them at runtime.</p>
+
+<h3 id="installset">Installing an element set</h3>
+
+<p>Although you can grab elements independently, sometimes you want to grab a whole collection. Polymer contains a set of <a href="customelements.html#uielements">UI elements</a> and a set of <a href="customelements.html#nonuielements">non-UI</a> elements:</p>
+
+<ul>
+  <li><a href="../elements/polymer-elements.html">Polymer elements</a>. Non-UI utility elements that perform common tasks like layout, AJAX, signaling, and storage, but don’t render anything in the browser.</li>
+  <li><a href="../elements/polymer-elements.html">Polymer UI elements</a>. UI  elements that render in the browser. </li>
+</ul>
+
+<p>Each set can be downloaded separately using Bower:</p>
+
+<pre><code>bower install --save polymer-elements
+bower install --save polymer-ui-elements
+</code></pre>
+
+<h2 id="using">Using elements</h2>
+
+<p>To use elements, first load <code>platform.js</code>. Many browsers have yet to implement the various web components APIs. Until they do, <code>platform.js</code> provides polyfill support. <strong>Be sure to include this file before any code that touches the DOM.</strong></p>
+
+<p>Once you have some elements installed and you’ve loaded <code>platform.js</code>, using an element is simply a matter of loading the element file using an <a href="../../platform/html-imports.html">HTML Import</a>.</p>
+
+<p>An example <code>index.html</code> file:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- 1. Load platform.js for polyfill support. --&gt;
+    &lt;script src="bower_components/platform/platform.js"&gt;&lt;/script&gt;
+
+    &lt;!-- 2. Use an HTML Import to bring in the element. --&gt;
+    &lt;link rel="import"
+          href="bower_components/polymer-ajax/polymer-ajax.html"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- 3. Declare the element. Configure using its attributes. --&gt;
+    &lt;polymer-ajax url="http://example.com/json"
+                  handleAs="json"&gt;&lt;/polymer-ajax&gt;
+
+    &lt;script&gt;
+      // Wait for 'polymer-ready'. Insures the element is upgraded.
+      window.addEventListener('polymer-ready', function(e) {
+        var ajax = document.querySelector('#ajax');
+
+        // Respond to events it fires.
+        ajax.addEventListener('polymer-response', function(e) {
+          console.log(this.response);
+        });
+
+        ajax.go(); // Call it's API methods.
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p class="alert alert-info"><strong>Note:</strong> You must run your app from a web server for the <a href="../../platform/html-imports.html">HTML Imports</a>
+polyfill to work properly. This requirement goes away when the API is available natively.</p>
+
+<h3 id="objectarray">Passing object and array values in attributes</h3>
+
+<p>HTML attributes are string values, but sometimes you need to pass more complicated values into a custom element, such as objects or arrays. Ultimately, it’s up to the element author to decide how to decode values passed in as attributes, but many Polymer elements understand attribute values that are a JSON-serialized object or array. For example:</p>
+
+<pre><code>&lt;roster-list persons="[{'name': 'John'}, {'name': 'Bob'}]"&gt;&lt;/roster-list&gt;
+</code></pre>
+
+<p>For Polymer elements, you can find the expected type for each attribute listed in the <a href="../elements/index.html">Elements reference</a> . If you pass the wrong type, it may be decoded incorrectly.</p>
+
+<p>When creating your own Polymer elements, you can choose to expose properties as attributes, as described in <a href="../polymer/polymer.html#published-properties">Published properties</a>.</p>
+
+<h2 id="nextsteps">Next steps</h2>
+
+<p>Now that you’ve got the basic idea of using and installing elements, it’s time to start
+building something! In the next section we’ll cover the features of Polymer and how to create new <code>&lt;polymer-element&gt;</code>s. Continue on to:</p>
+
+<p><a href="creatingelements.html" class="paper-button"><polymer-ui-icon src="../../images/picons/ic_arrowForward_dark_.png"></polymer-ui-icon>Creating elements</a></p>
+
+<p>If you’d rather browse the existing elements, check out the <a href="../elements/polymer-elements.html">Polymer elements</a> and <a href="../elements/polymer-elements.html">Polymer UI elements</a> catalogs.</p>
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

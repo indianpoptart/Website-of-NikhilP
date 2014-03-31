@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Runtime configuration">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Runtime configuration - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="runtime-configuration" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="../start/everything.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="polymer.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="docs"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="core" navgroup="docs" shortname="Docs">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="../start/everything.html" class="paper-button " borderless sink>Start</a>
+  <a href="polymer.html" class="paper-button active" borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Runtime configuration</h1>
+        
+          <summary>Core</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/polymer/runtime-config.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Runtime configuration</h1>
+        
+          <summary>Core</summary>
+        
+      </header>
+
+      <details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#debug-flags">Debug flags</a>    <ul>
+      <li><a href="#debug">debug</a></li>
+      <li><a href="#log">log</a></li>
+    </ul>
+  </li>
+  <li><a href="#configuration-switches">Configuration flags</a>    <ul>
+      <li><a href="#register">register</a></li>
+      <li><a href="#shadow">shadow</a></li>
+    </ul>
+  </li>
+  <li><a href="#polyfillsettings">Polyfill settings</a>    <ul>
+      <li><a href="#eager">eager</a></li>
+      <li><a href="#strict-shadow-dom-styling">Strict Shadow DOM styling</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Polymer supports runtime options that are useful for debugging
+and toggling between native APIs and their polyfill counterparts.</p>
+
+<p>Flags can be used in combination with each other and settable three different ways:</p>
+
+<ol>
+  <li>as attributes on the <code>&lt;script&gt;</code> tag that loads <code>platform.js</code></li>
+  <li>as URL query parameter</li>
+  <li>directly on the <code>Platform.flags</code> object before loading <code>platform.js</code>. </li>
+</ol>
+
+<h2 id="debug-flags">Debug flags</h2>
+
+<p>To use the debugging options, you must install and use the debug version of libraries:</p>
+
+<ol>
+  <li>Install <code>polymer-dev</code> and <code>platform-dev</code> and then tweak the references
+    <ul>
+      <li><code>bower install Polymer/platform-dev Polymer/polymer-dev</code></li>
+      <li>Rewrite <code>platform/platform.js</code> to <code>platform-dev/platform.js</code> in <code>index.html</code></li>
+      <li>Comment out line 6 and uncomment line 7 in <a href="https://github.com/Polymer/polymer/blob/master/polymer.html">polymer.html</a></li>
+    </ul>
+  </li>
+  <li>Install <code>platform-dev</code> and <code>polymer-dev</code> on top of the minified versions
+    <ul>
+      <li><code>bower install polymer=Polymer/polymer-dev platform=Polymer/platform-dev</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="debug">debug</h3>
+
+<p><strong>Example usage</strong></p>
+
+<p>URL param:</p>
+
+<pre><code>http://localhost/yourapp?debug
+</code></pre>
+
+<p>Attribute:</p>
+
+<pre><code>&lt;script src="platform.js" debug&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Setting <code>Platform.flags</code>:</p>
+
+<pre><code>&lt;script&gt;
+  Platform = {flags: {debug: true}};
+&lt;/script&gt;
+&lt;script src="platform.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h3 id="log">log</h3>
+
+<p>Controls console output.</p>
+
+<p>Possible values:</p>
+
+<table class="table">
+  <tr>
+    <th>Value</th><th>Description</th>
+  </tr>
+  <tr>
+    <td>bind</td><td>Setup actions performed by the data-binding engine.</td>
+  </tr>
+  <tr>
+    <td>data</td><td>Runtime data transforms that result from bindings</td>
+  </tr>
+  <tr>
+    <td>watch</td><td>Data change notifications</td>
+  </tr>
+  <tr>
+    <td>events</td><td>Custom event bindings and event propagations</td>
+  </tr>
+  <tr>
+    <td>ready</td><td>Custom element reaching a ready state</td>
+  </tr>
+</table>
+
+<p><strong>Example usage</strong></p>
+
+<p>URL param:</p>
+
+<pre><code>http://localhost/yourapp?log=bind,ready
+</code></pre>
+
+<p>Attribute:</p>
+
+<pre><code>&lt;script src="platform.js" log="bind,ready"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Setting <code>Platform.flags</code>:</p>
+
+<pre><code>&lt;script&gt;
+  Platform = {flags: {log: 'bind,ready'}};
+&lt;/script&gt;
+&lt;script src="platform.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h2 id="configuration-switches">Configuration flags</h2>
+
+<h3 id="register">register</h3>
+
+<p>Including <code>register</code> forces the Custom Elements polyfill in browsers that support it natively.</p>
+
+<p><strong>Example usage</strong></p>
+
+<p>Attribute:</p>
+
+<pre><code>&lt;script src="platform.js" register&gt;&lt;/script&gt;
+</code></pre>
+
+<p>URL param:</p>
+
+<pre><code>http://localhost/yourapp?register
+</code></pre>
+
+<p>Setting <code>Platform.flags</code>:</p>
+
+<pre><code>&lt;script&gt;
+  Platform = {flags: {register: true}};
+&lt;/script&gt;
+&lt;script src="platform.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h3 id="shadow">shadow</h3>
+
+<p>Selects a Shadow DOM implementation to use: <code>native</code> for supported browsers or <code>polyfill</code>
+for unsupported browsers. <strong>Note:</strong> if the browser supports Shadow DOM natively, the presence
+of this parameter forces the native API.</p>
+
+<p>Possible values:</p>
+
+<table class="table">
+  <tr>
+    <th>Value</th><th>Description</th>
+  </tr>
+  <tr>
+    <td>native</td><td>Default. Use the native implementation of Shadow DOM if the browser supports.</td>
+  </tr>
+  <tr>
+    <td>polyfill</td><td>Forces the Shadow DOM polyfill to be loaded using <code>platform.poly.min.js</code>. Default for browsers that do not support Shadow DOM natively.</td>
+  </tr>
+</table>
+
+<p><strong>Example usage</strong></p>
+
+<p>Attribute:</p>
+
+<pre><code>&lt;script src="platform.js" debug shadow&gt;&lt;/script&gt;
+</code></pre>
+
+<p>URL param:</p>
+
+<pre><code>http://localhost/yourapp?debug&amp;shadow=polyfill
+</code></pre>
+
+<p>Setting <code>Platform.flags</code>:</p>
+
+<pre><code>&lt;script&gt;
+  Platform = {flags: {shadow: 'polyfill'}};
+&lt;/script&gt;
+&lt;script src="platform.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h2 id="polyfillsettings">Polyfill settings</h2>
+
+<p>Some of the polyfills support additional options to override their default behavior
+or toggle experimental features.</p>
+
+<h3 id="eager">eager</h3>
+
+<p>Including <code>eager</code> as a URL param or setting the <code>CustomElements.flags.eager</code> flag
+upgrades Custom Elements immediately instead of waiting for <code>DOMContentsLoaded</code> time.</p>
+
+<p>The Custom Elements polyfill defers upgrading elements until <code>DOMContentsLoaded</code> time. It does this as a performance optimization. Subsequent to the initial page load, Mutation Observers are used to discover new elements. If a page is particularly complex, it can paint before custom elements have
+had a chance to upgrade. Elements on the page will be displayed in their un-upgraded state, typically
+resulting in FOUC. The <code>eager</code> flag can help mitigate these potential FOUC issues.</p>
+
+<p><strong>Example usage</strong></p>
+
+<pre><code>&lt;script&gt;
+  CustomElements = {flags: {eager: true}};
+&lt;/script&gt;
+&lt;script src="platform.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Or, equivalently:</p>
+
+<pre><code>http://localhost/yourapp?eager
+</code></pre>
+
+<h3 id="strict-shadow-dom-styling">Strict Shadow DOM styling</h3>
+
+<p>To instruct the Shadow DOM polyfill to enforce lower bound style encapsulation,
+set <code>Platform.ShadowCSS.strictStyling</code>.</p>
+
+<p><strong>Example usage</strong></p>
+
+<pre><code>&lt;script src="platform.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  Platform.ShadowCSS.strictStyling = true;
+&lt;/script&gt;
+</code></pre>
+
+<p class="alert alert-info"><strong>Note:</strong> We’re setting <code>strictStyling</code> after loading <code>platform.js</code>.</p>
+
+<p>More information on this feature can be found in the <a href="docs/polymer/styling.html#strictstyling">Styling referencee</a>.</p>
+
+<!--
+## eval
+
+When `true`, component scripts are executed with `eval` instead of script tag injection. Default is `false`.
+
+Example:
+
+    <script src="platform.js" eval="true"></script>
+
+  or
+
+    http://localhost/polymer/toolkit-ui/getting_started/?eval
+
+-->
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="../start/getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

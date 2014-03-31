@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+
+<!-- Mirrored from www.polymer-project.org/platform/web-animations.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:36:41 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Web Animations">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../images/instacod.png">
+
+
+<title>
+  
+    Web Animations - 
+   Polymer
+</title>
+<link rel="publisher" href="https://plus.google.com/107187849809354688692">
+<link rel="shortcut icon" href="../images/logos/p-logo-16.png">
+<link href="../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../components/polymer/polymer.html">
+  <link rel="import" href="../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="web-animations" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../index.html" class="logo"><img src="../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="../docs/start/everything.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="../docs/polymer/polymer.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="docs"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="platform" navgroup="docs" shortname="Platform">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="../docs/start/everything.html" class="paper-button " borderless sink>Start</a>
+  <a href="../docs/polymer/polymer.html" class="paper-button active" borderless sink>Docs</a>
+  <a href="../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Web Animations</h1>
+        
+          <summary>polyfill</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/platform/web-animations.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Web Animations</h1>
+        
+          <summary>polyfill</summary>
+        
+      </header>
+
+      <!-- TODO(ericbidelman): remove when Toolkit builds in Web Animations. -->
+<!-- <script src="/toolkit/platform/web-animations-js/web-animations.js"></script> -->
+
+<dl class="horizontal">
+  
+  <dt>Repository</dt>
+  <dd><a href="https://github.com/web-animations/web-animations-js">github.com/web-animations/web-animations-js</a></dd>
+  
+  
+    <dt>W3C Specification</dt>
+    <dd>
+      
+        <a href="http://dev.w3.org/fxtf/web-animations/">dev.w3.org/fxtf/web-animations/</a>
+      
+    </dd>
+  
+</dl>
+
+<blockquote>
+  <p>Web Animations defines APIs for synchronizing several of the web’s animation models with complex, scriptable animations.</p>
+</blockquote>
+
+<hr />
+
+<details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#learn-the-tech">Learn the tech</a>    <ul>
+      <li><a href="#why-web-animations">Why Web Animations?</a></li>
+      <li><a href="#basic-usage">Basic usage</a></li>
+      <li><a href="#the-animation-model">The animation model</a></li>
+      <li><a href="#specifying-animation-effects">Specifying animation effects</a></li>
+      <li><a href="#sequencing-and-synchronizing-animations">Sequencing and synchronizing animations</a></li>
+      <li><a href="#controlling-the-animation-timing">Controlling the animation timing</a></li>
+      <li><a href="#playing-animations">Playing Animations</a></li>
+    </ul>
+  </li>
+  <li><a href="#polyfill-details">Polyfill details</a>    <ul>
+      <li><a href="#getting-started">Getting started</a></li>
+      <li><a href="#polyfill-notes">Polyfill notes</a></li>
+    </ul>
+  </li>
+  <li><a href="#tools--testing">Tools &amp; testing</a></li>
+</ul>
+
+<h2 id="learn-the-tech">Learn the tech</h2>
+
+<h3 id="why-web-animations">Why Web Animations?</h3>
+
+<p>Four animation-related specifications already exist on the web platform: <a href="http://dev.w3.org/csswg/css-transitions/">CSS Transitions</a>,
+<a href="http://dev.w3.org/csswg/css-animations/">CSS Animations</a>, <a href="http://www.w3.org/TR/SVG/animate.html">SVG Animations</a> / <a href="http://www.w3.org/TR/2001/REC-smil-animation-20010904/">SMIL</a>, and <code>requestAnimationFrame()</code>. However:</p>
+
+<ul>
+  <li><em>CSS Transitions / CSS Animations are not very expressive</em> - animations can’t
+be composed, or sequenced, or even reliably run in parallel; and animations can’t be tweaked from script.</li>
+  <li><em>SVG Animations are very expressive, but also very complicated</em>. SVG Animations
+can’t be applied to HTML content.</li>
+  <li><em><code>requestAnimationFrame()</code> is not a declarative approach</em> - it requires the use
+of the main thread, and will therefore jank if the main thread is busy.</li>
+</ul>
+
+<p>Web Animations is a new specification for animated content on the web. It’s being
+developed as a W3C specification as part of the CSS and SVG working groups. It aims
+to address the deficiencies inherent in these four specifications. Web Animations also aims to replace the underlying implementations of CSS Transitions, CSS Animations and SVG Animations, so that:</p>
+
+<ul>
+  <li>The code cost of supporting animations on the web is reduced.</li>
+  <li>The various animations specifications are interoperable.</li>
+  <li>Spec authors and browser vendors have a single place to experiment with new animation innovations to improve the Web for the future.</li>
+</ul>
+
+<h3 id="basic-usage">Basic usage</h3>
+
+<p>Here’s a simple example of an animation that scales and changes the opacity of
+a <code>&lt;div&gt;</code> over 0.5 seconds. The animation alternates producing a pulsing effect.</p>
+
+<pre><code>&lt;div class="pulse" style="width:150px;"&gt;Hello world!&lt;/div&gt;
+&lt;script&gt;
+  var elem = document.querySelector('.pulse');
+  var player = document.timeline.play(new Animation(elem, [
+      {opacity: "0.5", transform: "scale(0.5)"}, 
+      {opacity: "1.0", transform: "scale(1)"}
+    ],
+    {
+      direction: "alternate", duration: 0.5, iterations: Infinity
+    }));
+&lt;/script&gt;
+</code></pre>
+
+<h3 id="the-animation-model">The animation model</h3>
+
+<p>The Web Animations model is a description of an engine for animation content on the web. The engine is sufficiently powerful to support CSS Transitions, CSS Animations and SVG Animations.</p>
+
+<p>Web Animations also exposes a JS API to the model. This API defines a number of
+new interfaces that are exposed to JavaScript. We’ll go through some of the more
+important ones here: Animations, AnimationEffects, TimingDictionaries, TimingGroups, and Players.</p>
+
+<p>An <code>Animation</code> object defines a single animation effect that applies to a single element target. For example:</p>
+
+<pre><code>var animation = new Animation(targetElement,
+    [{left: '0px'}, {left: '100px'}], 2);
+</code></pre>
+
+<p>Here, the target element’s “left” CSS property is modified smoothly from <code>0px</code> to <code>100px</code> over 2 seconds.</p>
+
+<h3 id="specifying-animation-effects">Specifying animation effects</h3>
+
+<p>An <code>AnimationEffect</code> object controls which CSS properties and SVG attributes are
+modified by an animation, and the values that those properties and attributes
+vary between. AnimationEffect objects also control whether the effect replaces
+or adds to the underlying value.</p>
+
+<p>There are three major kinds of effects: <code>KeyframeEffect</code>, <code>MotionPathEffect</code>, and <code>CustomAnimationEffect</code>.</p>
+
+<h4 id="animating-between-keyframes">Animating between keyframes</h4>
+
+<p>A <code>KeyframeEffect</code> controls one or more properties/attributes by linearly
+interpolating values between specified keyframes. KeyframeEffects are usually
+defined by specifying the keyframe offset and the property-value pair in a
+dictionary:</p>
+
+<pre><code>[
+  {offset: 0.2, left: "35px"},
+  {offset: 0.6, left: "50px"},
+  {offset: 0.9, left: "70px"},
+]
+</code></pre>
+
+<p>If the offset is not specified, keyframes are evenly distributed at offsets
+between 0 and 1.</p>
+
+<pre><code>[{left: "35px"}, {left: "50px"}, {left: "70px"}]
+</code></pre>
+
+<p>See the <a href="http://www.w3.org/TR/web-animations/#keyframe-animation-effects">specification</a> for the details
+of the keyframe distribution procedure, and how KeyframeEffects are
+evaluated at offsets outside those specified by the keyframes.</p>
+
+<h4 id="animating-along-paths">Animating along paths</h4>
+
+<p>A <code>MotionPathEffect</code> allows elements to be animated along SVG-style paths. For example:</p>
+
+<pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;
+  &lt;defs&gt;
+    &lt;path id=path d="M 100,100 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"/&gt;
+  &lt;/defs&gt;
+&lt;/svg&gt;
+&lt;script&gt;
+  var animFunc = new MotionPathEffect(document.querySelector('#path').pathSegList);
+  var animation = new Animation(targetElement, animFunc, 2);
+&lt;/script&gt;
+</code></pre>
+
+<h4 id="custom-animation-effects">Custom animation effects</h4>
+
+<p>A <code>CustomAnimationEffect</code> allows animations to generate call-outs to JavaScript
+rather than manipulating properties directly. Please see the
+<a href="http://www.w3.org/TR/web-animations/#custom-effects">specification</a> for more details on this
+feature.</p>
+
+<h3 id="sequencing-and-synchronizing-animations">Sequencing and synchronizing animations</h3>
+
+<p>Two different types of TimingGroups (<code>ParGroup</code> and <code>SeqGroup</code>) allow animations to be synchronized and sequenced.</p>
+
+<p>To play a list of animations in parallel:</p>
+
+<pre><code>var parGroup = new ParGroup([new Animation(...), new Animation(...)]);
+</code></pre>
+
+<p>To play a list in sequence:</p>
+
+<pre><code>var seqGroup = new SeqGroup([new Animation(...), new Animation(...)]);
+</code></pre>
+
+<p>Because <code>Animation</code>, <code>ParGroup</code>, <code>SeqGroup</code> are all TimedItems, groups can be nested:</p>
+
+<pre><code>var parGroup = new ParGroup([
+  new SeqGroup([
+    new Animation(...),
+    new Animation(...),
+  ]),
+  new Animation(...)
+]);
+</code></pre>
+
+<p>Groups also take an optional TimingDictionary parameter (see below), which among other things allows iteration and timing functions to apply at the group level:</p>
+
+<pre><code>var parGroup = new ParGroup([new Animation(...), new Animation(...)], {iterations: 4});
+</code></pre>
+
+<h3 id="controlling-the-animation-timing">Controlling the animation timing</h3>
+
+<p>TimingDictionaries are used to control the internal timing of an animation (players control how an animation progresses relative to document time). TimingDictionaries have several properties that can be tweaked:</p>
+
+<ul>
+  <li><strong>duration</strong>: the duration of a single iteration of the animation</li>
+  <li><strong>iterations</strong>: the number of iterations of the animation that will be played (fractional iterationss are allowed)</li>
+  <li><strong>iterationStart</strong>: the start offset of the first iteration</li>
+  <li><strong>fill</strong>: whether the animation has effect before starting the first iteration and/or after finishing the final iteration</li>
+  <li><strong>delay</strong>: the time between the animation’s start time and the first animation effect of the animation</li>
+  <li><strong>playbackRate</strong>: the rate at which the animation progresses relative to external time</li>
+  <li><strong>direction</strong>: the direction in which successive iterations of the animation play back</li>
+  <li><strong>easing</strong>: fine-grained control over how external time impacts an animation across the total active duration of the animation.</li>
+</ul>
+
+<p>The values provided within TimingDictionaries combine with the animation hierarchy
+to generate concrete start and end values for animation iterations, animation
+backwards fills, and animation forwards fills. There are a few simple rules which govern this:</p>
+
+<ul>
+  <li>Animations never extend beyond the start or end values of their parent iteration.</li>
+  <li>Animations only fill beyond their parent iteration if:
+    <ul>
+      <li>the relevant fill value is selected for the animation;</li>
+      <li>the matching fill value is selected for the parent; and</li>
+      <li>this is the first parent iteration (for <code>fill: 'backward'</code>) or last parent iteration (for <code>fill: 'forward'</code>)</li>
+    </ul>
+  </li>
+  <li>Missing <code>duration</code> values for TimingGroups are generated based on the calculated durations of the child animations.</li>
+</ul>
+
+<p>The following example illustrates these rules:</p>
+
+<pre><code>var parGroup = new ParGroup([
+  new SeqGroup([
+    new Animation(..., {duration: 3}),
+    new Animation(..., {duration: 5, fill: 'both'})
+  ], {duration: 6, delay: 3, fill: 'none'}),
+  new Animation(..., {duration: 8, fill: 'forward'})
+], {iterations: 2, fill: 'forward'});
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+  <li>The <code>SeqGroup</code> has an explicit <code>duration</code> of 6 seconds, and so the
+second child animation will only play for the first 3 of its 5 second duration</li>
+  <li>The <code>ParGroup</code> has no explicit duration, and will be provided with a
+calculated duration of the max (<code>duration + delay</code>) of its children - in this case 9 seconds.</li>
+  <li>Although <code>fill: "both"</code> is specified for the second <code>Animation</code> within the <code>SeqGroup</code>, the <code>SeqGroup</code> itself has a <code>fill</code> of “none”. Hence, as the animation ends right at the end of the <code>SeqGroup</code>, the animation will only fill backwards, and only up until the boundary of the <code>SeqGroup</code> (i.e. 3 seconds after the start of the <code>ParGroup</code>).</li>
+  <li>The <code>Animation</code> inside the <code>ParGroup</code> and the <code>ParGroup</code> are both <code>fill: "forward"</code>. Therefore the animation will fill forward in two places: 
+    <ul>
+      <li>from 8 seconds after the <code>ParGroup</code> starts until the second iteration of the <code>ParGroup</code> starts (i.e. for 1 second)</li>
+      <li>from 17 seconds after the <code>ParGroup</code> starts, extending forward indefinitely.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="playing-animations">Playing Animations</h3>
+
+<p>In order to play an <code>Animation</code> or <code>TimingGroup</code>, a <code>Player</code> must be constructed:</p>
+
+<pre><code>var player = document.timeline.play(myAnimation);
+</code></pre>
+
+<p>Players provide complete control the start time and current playback head of their attached animation. However, players can’t modify any internal details of an animation.</p>
+
+<p>Players can be used to pause, seek, reverse, or modify the playback rate of an animation.</p>
+
+<p><code>document.timeline.currentTime</code> is a timeline’s global time. It gives the number
+of seconds since the document fired its load event.</p>
+
+<h2 id="polyfill-details">Polyfill details</h2>
+
+<h3 id="getting-started">Getting started</h3>
+
+<p>Include <code>web-animations.js</code> in your project:</p>
+
+<pre><code>&lt;script src="web-animations-js/web-animations.js"&gt;&lt;/script&gt; 
+</code></pre>
+
+<h3 id="polyfill-notes">Polyfill notes</h3>
+
+<h4 id="prefix-handling">Prefix handling</h4>
+
+<p>In order to work in as many browsers as feasible, we have decided to take the
+following approach to prefix handling:</p>
+
+<ul>
+  <li>the polyfill will automatically detect the correctly prefixed name to use when
+writing animated properties back to the platform.</li>
+  <li>
+    <p>where possible, the polyfill will <em>only</em> accept unprefixed versions of experimental features. For example:</p>
+
+    <pre><code>  var animation = new Animation(elem, {"transform": "translate(100px, 100px)"}, 2);
+</code></pre>
+
+    <p>will work in all browsers that implement a conforming version of <code>transform</code>, but</p>
+
+    <pre><code>  var animation =  new Animation(elem, {"-webkit-transform": "translate(100px, 100px)"}, 2);
+</code></pre>
+
+    <p>will not work anywhere.</p>
+  </li>
+</ul>
+
+<h4 id="experimental-features">Experimental features</h4>
+
+<p>When the polyfill requires features to implement functionality that is not inherently specified using those
+features (for example, CSS <code>calc()</code> is required in order to implement merging between lengths with different units) 
+then the polyfill will provide a console warning in browsers where these features are absent.</p>
+
+<h2 id="tools--testing">Tools &amp; testing</h2>
+
+<p>For running tests or building minified files, consult the
+<a href="../tooling-strategy.html">tooling information</a>.</p>
+
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="../docs/start/getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+
+<!-- Mirrored from www.polymer-project.org/platform/web-animations.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:36:42 GMT -->
+</html>

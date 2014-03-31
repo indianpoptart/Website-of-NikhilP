@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Understanding Polymer">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Understanding Polymer - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="understanding-polymer" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="everything.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="../polymer/polymer.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="start"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="concepts" navgroup="start" shortname="Concepts">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="everything.html" class="paper-button active" borderless sink>Start</a>
+  <a href="../polymer/polymer.html" class="paper-button " borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Understanding Polymer</h1>
+        
+          <summary>The concepts and layering</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/start/everything.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Understanding Polymer</h1>
+        
+          <summary>The concepts and layering</summary>
+        
+      </header>
+
+      <details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#everythingis">Everything is an Element: The Polymer world-view</a></li>
+  <li><a href="#layers-of-polymer">Layers of Polymer</a></li>
+  <li><a href="#nextsteps">Next steps</a></li>
+</ul>
+
+<p>Polymer isn’t like other frameworks or libraries you might have used before. To fully understand what it is, you’ll need to understand Polymer’s world-view and take a quick tour through its three conceptual layers.</p>
+
+<h2 id="everythingis">Everything is an Element: The Polymer world-view</h2>
+
+<p>The philosophy that “<em>Everything is an element</em>” is core to understanding Polymer.</p>
+
+<p>Ever since the beginning of the web, browsers have shipped with a default set of elements. Most of them, like <code>&lt;div&gt;</code>, didn’t do very much. But some elements are quite powerful. Consider the humble <code>&lt;select&gt;</code>. We take it for granted, but it’s actually pretty impressive:</p>
+
+<ul>
+  <li><strong>Functional</strong>. The browser already knows what to do with a <code>&lt;select&gt;</code> element. When it encounters <code>&lt;select&gt;</code> in markup it creates an interactive control for the user. </li>
+  <li><strong>Reusable</strong>. The <code>&lt;select&gt;</code> element is a reusable package of functionality that you don’t have to implement yourself.</li>
+  <li><strong>Interoperable</strong>. Every JavaScript library knows how to interact with DOM elements.</li>
+  <li><strong>Encapsulated</strong>. It keeps its internals all tucked away, so including one won’t break the rest of your page.</li>
+  <li><strong>Configurable</strong>. You can configure its behavior with HTML attributes, without using any script.</li>
+  <li><strong>Programmable</strong>. If you grab the element from the DOM it also has methods and properties for things that don’t make sense in markup.</li>
+  <li><strong>Event Generator</strong>. It dispatches events to let you know when something interesting happens.</li>
+  <li><strong>Composable</strong>. Not only can you include a <code>&lt;select&gt;</code> inside of most other kinds of element, its behavior can also change depending on which things you put inside of it.</li>
+</ul>
+
+<p>Elements are pretty great. They’re the building blocks of the web. Unfortunately, as web apps got more complex, we collectively outgrew the basic set of elements that ships in browsers. Our solution was to replace markup with gobs of script. In that shift, we’ve lost the elegance of the element.</p>
+
+<p>Polymer returns to our roots. We think the answer is not gobs of script, but rather to build more powerful elements. A set of powerful new technologies called Web Components makes this possible.</p>
+
+<p>That brings us back to the world-view of Polymer: <em>Everything is an element</em></p>
+
+<p>When we say “element”, we mean a real element, with all of the great properties of a built-in element. And why limit elements to UI? Some of the properties of elements are UI-specific, but most of them aren’t. Elements can serve as a generic package for reusable functionality.</p>
+
+<p>The world looks different when you take this view. You take a few low-level elements, put them together, and make a larger, more powerful element with its internals safely encapsulated. You can take those elements and build even bigger and better elements. Before you know it, you’ll arrive at an entirely encapsulated, reusable <em>app</em>.</p>
+
+<p>In the old world, script was your concrete, and the solution to most of your problems was to use gobs of it. In the new world, elements are your bricks; script is like mortar. Select the bricks that fit your needs most closely and use only a judicious amount of mortar to hold them together. This is what we mean when we say <em>everything is an element</em>.</p>
+
+<h2 id="layers-of-polymer">Layers of Polymer</h2>
+
+<p>There are three conceptual layers to Polymer:</p>
+
+<ol>
+  <li>
+    <p><strong><a href="usingelements.html">Using elements</a></strong>: Polymer provides a comprehensive set of elements–both UI and non-UI–that you can use right out of the box. You can mix and match Polymer elements with other elements, including built-in elements and other custom elements.</p>
+  </li>
+  <li>
+    <p><strong><a href="creatingelements.html">Creating elements</a></strong>: Polymer’s declarative syntax makes it simpler to define custom elements. Features like two-way data binding, property observation, and gesture support help you build powerful, reusable elements.</p>
+  </li>
+  <li>
+    <p><strong><a href="platform.html">The Platform</a></strong>: Polymer is built on the latest web technologies, like Web Components and Object.observe. Not all browsers support these features yet, so Polymer’s platform layer fills the gaps, implementing the APIs in JavaScript. At runtime, Polymer automatically picks the fastest path – native implementation or JavaScript.</p>
+  </li>
+</ol>
+
+<h2 id="nextsteps">Next steps</h2>
+
+<p>Now that you’ve got the basic concepts of Polymer, it’s time to
+start digging in a bit more. Continue on to:</p>
+
+<p><a href="customelements.html" class="paper-button"><polymer-ui-icon src="../../images/picons/ic_arrowForward_dark_.png"></polymer-ui-icon>Custom Elements 101</a></p>
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

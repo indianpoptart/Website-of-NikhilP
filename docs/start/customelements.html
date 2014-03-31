@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Custom elements 101">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Custom elements 101 - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="custom-elements-101" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="everything.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="../polymer/polymer.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="start"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="start" navgroup="start" shortname="Start">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="everything.html" class="paper-button active" borderless sink>Start</a>
+  <a href="../polymer/polymer.html" class="paper-button " borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Custom elements 101</h1>
+        
+          <summary>Learn about the foundation of Polymer-based apps</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/start/customelements.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Custom elements 101</h1>
+        
+          <summary>Learn about the foundation of Polymer-based apps</summary>
+        
+      </header>
+
+      <details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#publicapis">Custom element APIs</a></li>
+  <li><a href="#elementtypes">Types of elements</a>    <ul>
+      <li><a href="#uielements">UI elements</a></li>
+      <li><a href="#nonuielements">Non-UI elements</a></li>
+    </ul>
+  </li>
+  <li><a href="#interop">Interoperability: on by default</a></li>
+  <li><a href="#nextsteps">Next steps</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>If HTML was reinvented tomorrow, it would provide more features and greater capability than today’s built-in elements. For example, imagine you’re building a photo booth app to capture snapshots, display thumbnails, and cycle through recent photos. If HTML provided the <code>&lt;camera&gt;</code>, <code>&lt;carousel&gt;</code>, or <code>&lt;tabs&gt;</code> element, you wouldn’t think twice about using them. You’d accept the functionality and start writing markup!</p>
+
+<p>Fortunately, <a href="../../platform/custom-elements.html">Custom Elements</a> pave a path to Polymer’s “<a href="everything.html#everythingis">Everything is an element</a>” philosophy. Embracing the philosophy means a web app becomes a collection of well-defined, reusable components. You create an applications by assembling custom elements: either ones provided by Polymer, <a href="creatingelements.html">ones you create</a> yourself, or third-party elements.</p>
+
+<h2 id="publicapis">Custom element APIs</h2>
+
+<p>A critical realization is that <strong>custom elements are no different than
+standard HTML elements</strong>. Each HTML  element has its own API, consisting of:</p>
+
+<ul>
+  <li>properties</li>
+  <li>methods</li>
+  <li>attributes</li>
+  <li>events</li>
+  <li>how the element handles its children</li>
+</ul>
+
+<p>Take an HTML <code>&lt;select&gt;</code>. It can be declared in markup:</p>
+
+<pre><code>&lt;select selected="0"&gt;
+  &lt;option&gt;Hello World&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+
+<p>… or instantiated in JavaScript:</p>
+
+<pre><code>var s = document.createElement('select');
+s.innerHTML = '&lt;option&gt;Hello World&lt;/option&gt;';
+</code></pre>
+
+<p>Once you have a reference to an element, you can attach event listeners, access properties, or call its methods:</p>
+
+<pre><code>s.addEventListener('change', function(e) {
+  alert(this.selectedIndex == 0);
+});
+</code></pre>
+
+<p>Guess what? <strong>The same tricks apply to custom elements</strong>. You can use standard DOM methods on custom elements, access their properties, attach event listeners, or style them using CSS. The major difference with custom elements is that they give authors a tool for defining new tags with built-in functionality. These tags can add their own methods, properties, attributes, and events, and define their own logic for handling children.</p>
+
+<p>The <code>&lt;polymer-selector&gt;</code> element is a good example of a basic custom element. It’s a close relative to <code>&lt;select&gt;</code>, but provides additional functionality and more flexibility. For example, you can  use <code>&lt;polymer-selector&gt;</code> as a general container for selecting <em>any</em> type of content, not just <code>&lt;option&gt;</code>. It also provides convenient styling hooks, events, and additional properties for interacting with its items.</p>
+
+<pre><code>&lt;polymer-selector selected="0"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+&lt;/polymer-selector&gt;
+
+&lt;script&gt;
+  var ps = document.querySelector('polymer-selector');
+  ps.addEventListener('polymer-select', function(e) {
+    alert(e.selectedIndex == 0);
+  });
+&lt;/script&gt;
+</code></pre>
+
+<h2 id="elementtypes">Types of elements</h2>
+
+<p>Polymer divides its custom  elements into two categories based on their use and behavior:</p>
+
+<ul>
+  <li>UI elements, which render UI to the screen.</li>
+  <li>Non-UI elements, which provide other utilities. </li>
+</ul>
+
+<h3 id="uielements">UI elements</h3>
+
+<p>Elements like <code>&lt;select&gt;</code> and <code>&lt;polymer-select&gt;</code> are <em>UI elements</em>. They render UI and are visible on the page. A few other examples are <a href="../elements/polymer-ui-elements.html#polymer-ui-collapsible"><code>&lt;polymer-ui-collapsible&gt;</code></a>, <a href="../elements/polymer-ui-elements.html#polymer-ui-toolbar"><code>&lt;polymer-ui-toolbar&gt;</code></a>, and <a href="../elements/polymer-ui-elements.html#polymer-ui-tabs"><code>&lt;polymer-ui-tabs&gt;</code></a>:</p>
+
+<pre><code>&lt;polymer-ui-tabs selected="0"&gt;
+  &lt;span&gt;One&lt;/span&gt;&lt;span&gt;Two&lt;/span&gt;&lt;span&gt;Three&lt;/span&gt;
+  &lt;span&gt;Four&lt;/span&gt;&lt;span&gt;Five&lt;/span&gt;
+&lt;/polymer-ui-tabs&gt;
+</code></pre>
+
+<iframe src="../../components/polymer-ui-tabs/smoke.html" style="border:none;height:80px;width:100%;"></iframe>
+
+<h3 id="nonuielements">Non-UI elements</h3>
+
+<p>Non-UI elements <em><strong>don’t</strong></em> render anything to the screen. That may seem strange, but there are plenty of examples already in HTML: <code>&lt;script&gt;</code>, <code>&lt;style&gt;</code>, and <code>&lt;meta&gt;</code> to name a few. These elements serve a purpose and do their useful work without rendering UI.</p>
+
+<p>Non-UI elements provide utility behind the scenes. For example, the <code>&lt;polymer-ajax&gt;</code> tag lets you <strong>make XHR requests from markup</strong>. Feed it some configuration attributes and listen for a response:</p>
+
+<pre><code>&lt;polymer-ajax url="http://gdata.youtube.com/feeds/api/videos/" auto
+              params='{"alt":"json", "q":"chrome"}' handleAs="json"&gt;&lt;/polymer-ajax&gt;
+&lt;script&gt;
+  var ajax = document.querySelector('polymer-ajax');
+  ajax.addEventListener('polymer-response', function(e) {
+    console.log(this.response);
+  });
+&lt;/script&gt;
+</code></pre>
+
+<p>Non-UI elements like this one reduce the amount of boilerplate code you have to write. They perform their task, get out of your way, and can hide the details of a complex API like <code>XMLHttpRequest</code>.</p>
+
+<h2 id="interop">Interoperability: on by default</h2>
+
+<p>Because custom elements are fundamentally HTML elements, they work well with each other or any technology that understands DOM (every framework on the planet). That means custom elements already work with frameworks like Angular, Ember, jQuery, and others.</p>
+
+<p>The custom elements we’ve used so far come from Polymer’s set and are built using <a href="../polymer/polymer.html">Polymer core</a>. But here’s where things get interesting…</p>
+
+<p><strong>That doesn’t matter</strong>.</p>
+
+<p>Because custom elements are just like regular elements, it doesn’t matter what kind of technology is used to implement their internals. Different kinds of elements from different vendors can all coexist in the same page. As an example, Mozilla offers a series of custom elements called <a href="http://x-tags.org/">x-tags</a> (see also: <a href="http://mozilla.github.io/brick/">Brick</a>). You can use x-tags with your other elements and mix and match them. As a general rule, it doesn’t matter how an element was constructed.</p>
+
+<h2 id="nextsteps">Next steps</h2>
+
+<p>Now that you’ve got an idea of what you can do with custom elements, it’s time to start building something! Continue on to:</p>
+
+<p><a href="usingelements.html" class="paper-button"><polymer-ui-icon src="../../images/picons/ic_arrowForward_dark_.png"></polymer-ui-icon>Using Elements</a></p>
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

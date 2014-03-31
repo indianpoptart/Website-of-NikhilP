@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.polymer-project.org/components/polymer-selection/smoke.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:37:28 GMT -->
+<head>
+  <title>Selection</title>
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="polymer-selection.html">
+</head>
+<body>
+<polymer-element name="selection-example">
+  <template>
+    <style>
+      /* @polyfill ul > * */
+      ::-webkit-distributed(> *) {
+        cursor: pointer;
+      }
+
+      /* @polyfill ul > .selected */
+      ::-webkit-distributed(> .selected) {
+        font-weight: bold;
+        font-style: italic;
+      }
+    </style>
+    <ul on-tap="{{itemTapAction}}">
+      <content></content>
+    </ul>
+    <polymer-selection id="selection" multi on-polymer-select="{{selectAction}}"></polymer-selection>
+    </template>
+    <script>
+    Polymer('selection-example', {
+      itemTapAction: function(e) {
+        this.$.selection.select(e.target);
+      },
+      selectAction: function(e, detail) {
+        detail.item.classList.toggle('selected', detail.isSelected);
+      }
+    });
+    </script>
+  </polymer-element>
+
+  <selection-example>
+    <li>Red</li>
+    <li>Green</li>
+    <li>Blue</li>
+  </selection-example>
+  
+</body>
+
+<!-- Mirrored from www.polymer-project.org/components/polymer-selection/smoke.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:37:28 GMT -->
+</html>

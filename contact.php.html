@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Nikhil Paranjape - Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NikhilP.">
+    <meta name="author" content="Nikhil Paranjape">
+    <!-- Linked Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/jquery.socialist.css" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+<body>
+    <!-- Start Navbar -->
+    <section class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" title="Home" href="index.html" alt="Nikhil Paranjape">
+                    <img src="http://images.nikhilp.org/NikhilP.png" />
+                </a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav nav-pills">
+                        <li class="">
+                            <a href="index.html">Home</a>
+                        </li>  
+                        
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="contact.php.html#">Work <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="projects-software.html">Apps</a>
+                                </li>
+                                <li class="divider"></li>
+                                <a href="http://forums.nikhilp.org">Forums</a>
+                            </ul>
+
+                        </li>
+
+                        <li class="active">
+                            <a href="contact.php.html">Contact</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+    </section>
+    <!-- End Navbar -->
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Contact</h1>
+
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a>
+                    <span class="divider">/</span></li>
+                <li class="active">Contact</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="page-section container">
+        <div class="row">
+            <div class="contact-page span12">
+                <div class="span11">
+                    <div class="row">
+                        <div class="span6 contact-form">
+
+                            <p class="section-title-s">Contact Me</p>
+
+                            <form id="contactform" style="width: 100%;" name="contact_form" method="post" action="contact-php-form.php">
+	                            <div class="input-prepend">
+	                                <input type="text" name="name" placeholder="Name" required id="name" />
+	                            </div>
+	
+	                            <div class="input-prepend">
+	                                <input type="text" name="email" placeholder="Email" required id="email" />
+	                            </div>
+	                            
+	                            <textarea placeholder="Message" name="message" required id="message"></textarea>
+	                            
+	                            <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LerAu4SAAAAAB3jyyFu1vpBgY3bT4eNW1RWTCM1"></script>
+
+	<noscript>
+  		<iframe src="http://www.google.com/recaptcha/api/noscript?k=6LerAu4SAAAAAB3jyyFu1vpBgY3bT4eNW1RWTCM1" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript>
+	                            <input type="submit" name="submit" class="btn btn-success" value="Submit" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Page Section Container -->
+    <!-- End Map Canvas -->
+
+    <!-- Start Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <p class="span6 copy-text">© 2014 <strong>Nikhil Paranjape</strong>. All Rights Reserved.</p> <!-- left align -->
+                <p class="span6 author-text"></p> <!-- right align -->
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/scrolltopcontrol.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.socialist.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYNYwd2ruQeAihfzehAXODc3A3NQjcMDs&sensor=true" type="text/javascript"></script>
+    <!--<script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>-->
+    <!--<script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>-->
+    <script type="text/javascript">
+        $(function () {
+            initializeMaps();
+        });
+    </script>
+</body>
+</html>

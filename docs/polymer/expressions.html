@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Expressions">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Expressions - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="expressions" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="../start/everything.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="polymer.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="docs"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="core" navgroup="docs" shortname="Docs">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="../start/everything.html" class="paper-button " borderless sink>Start</a>
+  <a href="polymer.html" class="paper-button active" borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Expressions</h1>
+        
+          <summary>Core</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/polymer/expressions.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Expressions</h1>
+        
+          <summary>Core</summary>
+        
+      </header>
+
+      <!-- <p><buildbot-list project="polymer-expressions"></buildbot-list></p> -->
+
+<details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#inline-expressions">Inline expressions</a>    <ul>
+      <li><a href="#statements">Statements</a></li>
+      <li><a href="#filters">Filters</a></li>
+    </ul>
+  </li>
+  <li><a href="#single-use-bindings">Single-use bindings</a></li>
+  <li><a href="#named-scopes">Named scopes</a>    <ul>
+      <li><a href="#nested-scoping-rules">Nested scoping rules</a></li>
+    </ul>
+  </li>
+  <li><a href="#binding-to-attributes">Binding to attributes</a></li>
+</ul>
+
+<p>Within a <code>&lt;polymer-element&gt;</code> you can use Polymer’s <a href="https://github.com/polymer/polymer-expressions">expression library</a> to write inline expressions, statements, named scopes, and iterative markup, anywhere <code>{{}}</code> bindings are used.</p>
+
+<h2 id="inline-expressions">Inline expressions</h2>
+
+<p>Polymer supports expressions in <code>{{}}</code> with a strict
+subset of the JavaScript language. In order to use this feature, it’s
+important to understand its behavior and limitations:</p>
+
+<ul>
+  <li>The goal for inline expressions is to allow the expression of simple value
+concepts and relationships. It is generally bad practice to put complex logic
+into your HTML (view).</li>
+  <li>Expressions are never run (e.g. <code>eval</code>) as page script. They cannot access any
+global state (e.g. <code>window</code>). They are parsed and converted to a simple
+interpreted form which is provided the present values of paths contained in
+the expression.</li>
+</ul>
+
+<p>The specific subset of JavaScript which is supported is:</p>
+
+<table class="first-col-nowrap responsive-table expressions-table">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Example</th>
+      <th>Explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Identifiers &amp; paths</td>
+      <td><code>foo</code>, <code>foo.bar.baz</code></td>
+      <td>These values are treated as relative to the local model, extracted, observed for changes and cause the expression to be re-evaluated if one or more has changed.</td>
+    </tr>
+    <tr>
+      <td>Logical not operator</td>
+      <td><code>!</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Unary operators</td>
+      <td><code>+foo</code>, <code>-bar</code></td>
+      <td>Converted to <code>Number</code>. Or converted to <code>Number</code>, then negated.</td>
+    </tr>
+    <tr>
+      <td>Binary operators</td>
+      <td><code>foo + bar</code>, <code>foo - bar</code>, <code>foo * bar</code></td>
+      <td>Supported: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></td>
+    </tr>
+    <tr>
+      <td>Comparators</td>
+      <td><code>foo &lt; bar</code>, <code>foo != bar</code>, <code>foo == bar</code></td>
+      <td>Supported: <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>, <code>===</code>, <code>!==</code></td>
+    </tr>
+    <tr>
+      <td>Logical comparators</td>
+      <td><code>foo &amp;&amp; bar || baz</code></td>
+      <td>Supported: <code>||</code>, <code>&amp;&amp;</code></td>
+    </tr>
+    <tr>
+      <td>Ternary operator</td>
+      <td><code>a ? b : c</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Grouping (parenthesis)</td>
+      <td><code>(a + b) * (c + d)</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Literal values</td>
+      <td>numbers, strings, <code>null</code>, <code>undefined</code></td>
+      <td>Escaped strings and non-decimal numbers are not supported.</td>
+    </tr>
+    <tr>
+      <td>Array &amp; Object initializers</td>
+      <td><code>[foo, 1]</code>, <code>{id: 1, foo: bar}</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="statements">Statements</h3>
+
+<p>Expressions are parsed when they’re within a mustache (<code>{{}}</code>).
+The expression can be a single statement, or an object.</p>
+
+<p>Whenever the value of one or more paths in the expression change, the value of the expression re-evaluated and the result inserted as the value of the mustache:</p>
+
+<pre><code>&lt;div&gt;Jill has {{ daughter.children.length + son.children.length }} grandchildren&lt;/div&gt;
+</code></pre>
+
+<p>may result in:</p>
+
+<pre><code>&lt;div&gt;Jill has 100 grandchildren&lt;/div&gt;
+</code></pre>
+
+<h3 id="filters">Filters</h3>
+
+<p>Polymer supports <a href="filters.html">filters</a> for for use
+with expressions.</p>
+
+<h2 id="single-use-bindings">Single-use bindings</h2>
+
+<p><span class="label label-important">Experimental</span></p>
+
+<p>Anywhere you use <code>{{}}</code> in expressions, you can now use double brackets (<code>[[]]</code>)
+to setup a one-time binding. The binding becomes inactive after Polymer
+sets its value for the first time.</p>
+
+<p>Example:</p>
+
+<pre><code>&lt;input type="text" value="this value is inserted once: [[ obj.value ]]"&gt;
+</code></pre>
+
+<p>One time bindings can potentially be a performance win if you don’t need the overhead of setting up property observation.</p>
+
+<h2 id="named-scopes">Named scopes</h2>
+
+<p>Named scopes are useful for referencing a model value from an “outer” model “scope”.
+For example:</p>
+
+<pre><code>&lt;template repeat="{{ user in users }}"&gt;
+  {{ user.name }}
+  &lt;template repeat="{{ file in user.files }}"&gt;
+    {{ user.name }} owners {{ file.name }}
+  &lt;/template&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p>You can also use the key/value notation to get at the index of the current iteration:</p>
+
+<pre><code>&lt;template repeat="{{ user, i in users }}"&gt;
+  {{ user.name }}
+  &lt;template repeat="{{ file, j in user.files }}"&gt;
+    {{ i }}:{{ j }} {{ user.name }} owners {{ file.name }}
+  &lt;/template&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p>The scope naming is available (but optional) inside the <code>template</code>, <code>bind</code>, and <code>repeat</code> directives.</p>
+
+<ul>
+  <li><code>bind</code> syntax: <code>&lt;template bind="{{ expression as identifier }}"&gt;</code></li>
+  <li><code>repeat</code> syntax: <code>&lt;template repeat="{{ identifier in expression }}"&gt;</code>, <code>&lt;template repeat="{{ val, i in expression }}"&gt;</code></li>
+</ul>
+
+<p class="alert alert-info"><strong>Note:</strong> that <code>expression</code> can be a simple identifier, a path or a full
+expression (including Object and Array literals).</p>
+
+<h3 id="nested-scoping-rules">Nested scoping rules</h3>
+
+<p>If a <code>&lt;template&gt;</code> using a named scoped contains children <code>&lt;template&gt;</code>s,
+all ancestor scopes are visible, up-to and including the first ancestor <strong>not</strong> using a named scope.</p>
+
+<pre><code>&lt;template bind="{{ foo as foo }}"&gt;
+  &lt;!-- foo.* available --&gt;
+  &lt;template bind="{{ foo.bar as bar }}"&gt;
+    &lt;!-- foo.* &amp; bar.* available --&gt;
+    &lt;template bind="{{ bar.bat }}"&gt;
+      &lt;!-- only properties of bat are available --&gt;
+      &lt;template bind="{{ boo as bot }}"&gt;
+        &lt;!-- bot.* and properties of bat are available. NOT foo.* or bar.* --&gt;
+      &lt;/template&gt;
+    &lt;/template&gt;
+  &lt;/template&gt;
+&lt;/template&gt;
+</code></pre>
+
+<h2 id="binding-to-attributes">Binding to attributes</h2>
+
+<p>Binding expressions to certain attributes can produce side effects in browsers that don’t implement <code>&lt;template&gt;</code> natively. For example, running <code>&lt;img src="/users/{{ id }}.jpg"&gt;</code> under the polyfill produces a network request that 404s.</p>
+
+<p>In addition, browsers such as IE sanitize certain attributes, disallowing <code>{{}}</code> replacements in their text.</p>
+
+<p>To counterattack these side effects, bindings in certain attributes can be prefixed with “_”:</p>
+
+<pre><code>&lt;img _src="/users/{{ id }}.jpg"&gt;
+&lt;div _style="color: {{ color }}"&gt;
+&lt;a _href="{{ url }}"&gt;Link&lt;/a&gt;
+&lt;input type="number" _value="{{ number }}"&gt;
+</code></pre>
+
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="../start/getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

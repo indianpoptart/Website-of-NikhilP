@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - API reference">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    API reference - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="api-reference" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="../start/everything.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="polymer.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="docs"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="core" navgroup="docs" shortname="Docs">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="../start/everything.html" class="paper-button " borderless sink>Start</a>
+  <a href="polymer.html" class="paper-button active" borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>API reference</h1>
+        
+          <summary>Core</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/polymer/polymer.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>API reference</h1>
+        
+          <summary>Core</summary>
+        
+      </header>
+
+      <!-- <p><buildbot-list project="polymer-dev"></buildbot-list></p> -->
+
+<details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#element-declaration">Element declaration</a>    <ul>
+      <li><a href="#attributes">Attributes</a></li>
+      <li><a href="#altregistration">Alternate ways to register an element</a></li>
+      <li><a href="#propertiesmethods">Adding public properties and methods</a></li>
+      <li><a href="#static">Adding private or static variables</a></li>
+      <li><a href="#lifecyclemethods">Element lifecycle methods</a></li>
+      <li><a href="#polymer-ready">The polymer-ready event</a></li>
+    </ul>
+  </li>
+  <li><a href="#features">Features</a>    <ul>
+      <li><a href="#published-properties">Published properties</a></li>
+      <li><a href="#data-binding-and-custom-attributes">Data binding and custom attributes</a></li>
+      <li><a href="#declarative-event-mapping">Declarative event mapping</a></li>
+      <li><a href="#observeprops">Observing properties</a></li>
+      <li><a href="#automatic-node-finding">Automatic node finding</a></li>
+      <li><a href="#fire">Firing custom events</a></li>
+      <li><a href="#extending-other-elements">Extending other elements</a></li>
+    </ul>
+  </li>
+  <li><a href="#additional-utilities">Advanced topics</a>    <ul>
+      <li><a href="#asyncmethod">Dealing with asynchronous tasks</a></li>
+      <li><a href="#bindings">Life of an element’s bindings</a></li>
+      <li><a href="#flush">How data changes are propagated</a></li>
+      <li><a href="#prepare">How Polymer elements prepare themselves</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>The Polymer <em>core</em> provides a thin layer of API on top of web components.
+It expresses Polymer’s opinion, provides the extra sugaring that all Polymer elements use, and is meant to help make developing web components much easier.</p>
+
+<h2 id="element-declaration">Element declaration</h2>
+
+<p>At the heart of Polymer are Custom Elements. Thus, it should be no surprise that defining a Polymer element is similar to the way you define a standard Custom Element. The major difference is that Polymer elements are created declaratively using <code>&lt;polymer-element&gt;</code>.</p>
+
+<pre><code>&lt;polymer-element name="tag-name" constructor="TagName"&gt;
+  &lt;template&gt;
+    &lt;!-- shadow DOM here --&gt;
+  &lt;/template&gt;
+  &lt;script&gt;Polymer('tag-name');&lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<h3 id="attributes">Attributes</h3>
+
+<p>Polymer <a href="../../../github.com/Polymer/polymer/blob/master/src/declaration/attributes.js#L53">reserves</a> special attributes to be used on <code>&lt;polymer-element&gt;</code>:</p>
+
+<table class="table responsive-table attributes-table">
+  <tr>
+    <th>Attribute</th><th>Required?</th><th>Description</th>
+  </tr>
+  <tr>
+    <td><code>name</code></td><td><b>required</b></td><td>Name for the custom element. Requires a "-".</td>
+  </tr>
+  <tr>
+    <td><code>attributes</code></td><td>optional</td><td>Used to <a href="#published-properties">publish properties</a>.</td>
+  </tr>
+  <tr>
+    <td><code>extends</code></td><td>optional</td><td>Used to <a href="#extending-other-elements">extend other elements</a>.</td>
+  </tr>
+  <tr>
+    <td><code>noscript</code></td><td>optional</td><td>For simple elements that don't need to call <code>Polymer()</code>. See <a href="#altregistration">Alternate ways to register an element</a>.</td>
+  </tr>
+  <tr>
+    <td><code>constructor</code></td><td>optional</td><td>The name of the constructor to put on the global object. Allows users to create instances of your element using the <code>new</code> operator (e.g. <code>var tagName = new TagName()</code>).</td>
+  </tr>
+</table>
+
+<h4 id="defaultattrs">Default attributes</h4>
+
+<p>Other attributes you declare on <code>&lt;polymer-element&gt;</code> will automatically be included
+on each instance of the element. For example:</p>
+
+<pre><code>&lt;polymer-element name="tag-name" class="active" mycustomattr&gt;
+  &lt;template&gt;...&lt;/template&gt;
+  &lt;script&gt;Polymer('tag-name');&lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>When an instance of <code>&lt;tag-name&gt;</code> is created, it contains <code>class="active" mycustomattr</code>
+as default attributes:</p>
+
+<pre><code>&lt;tag-name class="active" mycustomattr&gt;&lt;/tag-name&gt;
+</code></pre>
+
+<h3 id="altregistration">Alternate ways to register an element</h3>
+
+<p>For convenient decoupling of script and markup, you don’t have to inline your script.
+Polymer elements can be created by referencing an external script
+which calls <code>Polymer('tag-name')</code>:</p>
+
+<pre><code>&lt;!-- 2. Script refereced inside the element definition. --&gt;
+&lt;polymer-element name="tag-name"&gt;
+  &lt;template&gt;...&lt;/template&gt;
+  &lt;script src="path/to/tagname.js"&gt;&lt;/script&gt;
+&lt;/polymer-element&gt;
+
+&lt;!-- 3. Script comes before the element definition. --&gt;
+&lt;script src="path/to/tagname.js"&gt;&lt;/script&gt;
+&lt;polymer-element name="tag-name"&gt;
+  &lt;template&gt;...&lt;/template&gt;
+&lt;/polymer-element&gt;
+
+&lt;!-- 4. No script --&gt;
+&lt;polymer-element name="tag-name" constructor="TagName" noscript&gt;
+  &lt;template&gt;
+    &lt;!-- shadow DOM here --&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<h4 id="imperativeregister">Imperative registration</h4>
+
+<p>Elements can be registered in pure JavaScript like so:</p>
+
+<pre><code>&lt;script&gt;
+  Polymer('name-tag', {nameColor: 'red'});
+  var el = document.createElement('div');
+  el.innerHTML = '\
+    &lt;polymer-element name="name-tag" attributes="name"&gt;\
+      &lt;template&gt;\
+        Hello &lt;span style="color:{{nameColor}}"&gt;{{name}}&lt;/span&gt;\
+      &lt;/template&gt;\
+    &lt;/polymer-element&gt;';
+  // The custom elements polyfill can't see the &lt;polymer-element&gt;
+  // unless you put it in the DOM.
+  document.body.appendChild(el);    
+&lt;/script&gt;
+
+&lt;name-tag name="John"&gt;&lt;/name-tag&gt;
+</code></pre>
+
+<p>Note that you need to add the <code>&lt;polymer-element&gt;</code> to the document so that the 
+Custom Elements polyfill picks it up.</p>
+
+<h3 id="propertiesmethods">Adding public properties and methods</h3>
+
+<p>If you wish to define methods/properties on your element (optional), pass an object
+as the second argument to <code>Polymer()</code>. This object is used to define
+the element’s <code>prototype</code>.</p>
+
+<p>The following example defines a property <code>message</code>, a computed property <code>greeting</code>
+using an ES5 getter, and a method <code>foo</code>: </p>
+
+<pre><code>&lt;polymer-element name="tag-name"&gt;
+  &lt;template&gt;...&lt;/template&gt;
+  &lt;script&gt;
+    Polymer('tag-name', {
+      message: "Hello!",
+      get greeting() {
+        return this.message + ' there!';
+      }, 
+      foo: function() {...}
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p class="alert alert-info"><strong>Note:</strong> <code>this</code> references the custom element itself inside a Polymer element. For example, <code>this.localName == 'tag-name'</code>.</p>
+
+<p><strong>Important:</strong> Be careful when initializing properties that are objects or arrays. Due to the nature of <code>prototype</code>, you may run into unexpected “shared state” across instances of the same element. If you’re initializing an array or object, do it in <code>created()</code> rather than directly on the <code>prototype</code>. </p>
+
+<p>Do this:</p>
+
+<pre><code>Polymer('x-foo', {
+  created: function() {
+    this.list = []; // Initialize and hint type to be array.
+    this.person = {}; // Initialize and hint type to an object.
+  }
+});
+</code></pre>
+
+<p>instead of this:</p>
+
+<pre><code>Polymer('x-foo', {
+  list: [],
+  person: {}
+});
+</code></pre>
+
+<h3 id="static">Adding private or static variables</h3>
+
+<p>If you need private state within an element, wrap your script using standard
+techniques like anonymous self-calling functions:</p>
+
+<pre><code>&lt;polymer-element name="tag-name"&gt;
+  &lt;template&gt;...&lt;/template&gt;
+  &lt;script&gt;
+    (function() {
+      // Ran once. Private and static to the element.
+      var foo_ = new Foo();
+
+      // Ran for every instance of the element that's created.
+      Polymer('tag-name', {
+        get foo() { return foo_; }
+      });
+    })();
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<h3 id="lifecyclemethods">Element lifecycle methods</h3>
+
+<p>Polymer has first class support for the Custom Element lifecycle
+callbacks, though for convenience, implements them with shorter names.</p>
+
+<p>All of the lifecycle callbacks are optional: </p>
+
+<pre><code>Polymer('tag-name', {
+  created: function() { ... },
+  ready: function() { ... },
+  attached: function () { ... },
+  detached: function() { ... },
+  attributeChanged: function(attrName, oldVal, newVal) {
+    //var newVal = this.getAttribute(attrName);
+    console.log(attrName, 'old: ' + oldVal, 'new:', newVal);
+  },
+});
+</code></pre>
+
+<p>Below is a table of the lifecycle methods according to the Custom Elements
+<a href="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html#custom-element-lifecycle">specification</a> vs. the names Polymer uses.</p>
+
+<table class="table responsive-table lifecycle-table">
+  <thead>
+    <tr>
+      <th>Spec</th>
+      <th>Polymer</th>
+      <th>Called when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>createdCallback</td>
+      <td>created</td>
+      <td>an instance of the element is created</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>ready</td>
+      <td>The <code>&lt;polymer-element&gt;</code> has been fully prepared (e.g. Shadow DOM created, property observers setup, event listeners attached, etc.)</td>
+    </tr>
+    <tr>
+      <td>attachedCallback</td>
+      <td>attached</td>
+      <td>an instance was inserted into the document</td>
+    </tr>
+    <tr>
+      <td>detachedCallback</td>
+      <td>detached</td>
+      <td>an instance was removed from the document</td>
+    </tr>
+    <tr>
+      <td>attributeChangedCallback</td>
+      <td>attributeChanged</td>
+      <td>an attribute was added, removed, or updated</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="polymer-ready">The polymer-ready event</h3>
+
+<p>Polymer parses element definitions and handles their upgrade <em>asynchronously</em>.
+If you prematurely fetch the element from the DOM before it has a chance to upgrade,
+you’ll be working with an <code>HTMLUnknownElement</code>. Polymer elements also support inline resources, such as stylesheets, that need to be loaded. These can cause FOUC issues if they’re not fully loaded prior to rendering an element. To avoid FOUC, Polymer delays registering elements until stylesheets are fully loaded.</p>
+
+<p>To know when elements have been registered/upgraded, and thus ready to be interacted with, use the <code>polymer-ready</code> event.</p>
+
+<pre><code>&lt;head&gt;
+  &lt;link rel="import" href="path/to/x-foo.html"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;x-foo&gt;&lt;/x-foo&gt;
+  &lt;script&gt;
+    window.addEventListener('polymer-ready', function(e) {
+      var xFoo = document.querySelector('x-foo');
+      xFoo.barProperty = 'baz';
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<h2 id="features">Features</h2>
+
+<h3 id="published-properties">Published properties</h3>
+
+<p>When you <em>publish</em> a property name, you’re making that property two-way data-bound and part
+of the element’s “public API”. Published properties can be initialized by an HTML attribute
+of the same name. </p>
+
+<p>There are two ways to publish properties:</p>
+
+<ol>
+  <li><strong>Preferred</strong> - Include its name in the <code>&lt;polymer-element&gt;</code>’s <code>attributes</code> attribute.</li>
+  <li>Include the name in a <code>publish</code> object on your prototype.</li>
+</ol>
+
+<p>As an example, here’s an element that publishes three public properties, <code>foo</code>, <code>bar</code>, and <code>baz</code>, using the <code>attributes</code> attribute:</p>
+
+<pre><code>&lt;polymer-element name="x-foo" attributes="foo bar baz"&gt;
+  &lt;script&gt; 
+    Polymer('x-foo');
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>And here’s one using the <code>publish</code> object:</p>
+
+<pre><code>&lt;polymer-element name="x-foo"&gt;
+  &lt;script&gt; 
+    Polymer('x-foo', {
+      publish: {
+        foo: 'I am foo!',
+        bar: 'Hello, from bar',
+        baz: 'Baz up in here'
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>Let’s look at the difference between the two and when you might prefer one option over the other.</p>
+
+<h4 id="default-property-values">Default property values</h4>
+
+<p>By default, properties defined in <code>attributes</code> are <code>null</code>:</p>
+
+<pre><code>&lt;polymer-element name="x-foo" attributes="foo"&gt;
+  &lt;script&gt; 
+    Polymer('x-foo'); // x-foo has a foo property with null value.
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>As such, you can provide default values using a combination of the <code>attributes</code> attribute and the <code>prototype</code>:</p>
+
+<pre><code>&lt;polymer-element name="x-foo" attributes="bar"&gt;
+  &lt;script&gt; 
+    Polymer('x-foo', { // x-foo has a bar property with default value false.
+      bar: false
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>Or you can define the whole thing using the <code>publish</code> property:</p>
+
+<pre><code>&lt;polymer-element name="x-foo"&gt;
+  &lt;script&gt; 
+    Polymer('x-foo', {
+      publish: {
+        bar: false 
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>Generally it’s preferable to use the <code>attributes</code> attribute because it’s the declarative approach and you can easily see all of the exposed properties at the top of the element.</p>
+
+<p>You should opt for the <code>publish</code> property when either of the following is true:</p>
+
+<ol>
+  <li>Your element has many properties and placing them all on one line feels unwieldy.</li>
+  <li>You want to define default values for properties and prefer the DRYness of doing it all in one place.</li>
+</ol>
+
+<h4 id="configuring-an-element-via-attributes">Configuring an element via attributes</h4>
+
+<p>Attributes are a great way for users of your element to configure it, declaratively.
+They can customize a published property by passing an initial value on the attribute
+with the same name:</p>
+
+<pre><code>&lt;x-foo name="Bob"&gt;&lt;/x-foo&gt;
+</code></pre>
+
+<h5 id="attrhinting">Hinting an attribute’s type</h5>
+
+<p>When attribute values are converted to property values, Polymer attempts to convert the value to the correct type, depending on the default value of the property.</p>
+
+<pre><code>&lt;polymer-element name="x-foo" attributes="foo"&gt;
+  &lt;script&gt; 
+    Polymer('x-foo', {
+      foo: false // hint that foo is Boolean
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<h5 id="attrreflection">Property reflection to attributes</h5>
+
+<p>Property values are reflected back into their attribute counterpart. For example, setting <code>this.name = "Joe"</code> or calling <code>this.setAttribute('name', 'Joe')</code> from within the element updates the markup accordingly:</p>
+
+<pre><code>&lt;x-foo name="Joe"&gt;&lt;/x-foo&gt;
+</code></pre>
+
+<h3 id="data-binding-and-custom-attributes">Data binding and custom attributes</h3>
+
+<p>Published properties are data-bound inside of Polymer elements and accessible
+via <code>{{}}</code>. These bindings are by reference and are two-way.</p>
+
+<p>For example, we can define a <code>name-tag</code> element that publishes two properties,
+<code>name</code> and <code>nameColor</code>.</p>
+
+<pre><code>&lt;polymer-element name="name-tag" attributes="name nameColor"&gt;
+  &lt;template&gt;
+    Hello! My name is &lt;span style="color:{{nameColor}}"&gt;{{name}}&lt;/span&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('name-tag', {
+      nameColor: "orange"
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>In this example, <code>name</code> has initial value of <code>null</code> and <code>nameColor</code> has a value of “orange”.
+Thus, the <code>&lt;span&gt;</code>’s color will be orange.</p>
+
+<h4 id="binding-objects-and-arrays-to-attribute-values">Binding objects and arrays to attribute values</h4>
+
+<p class="alert alert-error"><strong>Important:</strong> Be careful when your properties are objects or arrays. Element registration
+is evaluated once. This means only one instance of an object used in property initialization is ever created. Because of the nature of <code>prototype</code>, you may run into unexpected “shared state” across different instances of the same element if you’re setting an initial value for a property which is an object or array. Do this type of initialization in <code>created()</code> rather than directly on the <code>prototype</code>. </p>
+
+<p>Generally, attributes are string values, but Polymer makes it possible to bind references between elements using attributes. The binding engine interprets reference bindings
+by interrogating the <a href="#attrhinting">attribute’s type</a>. This means you 
+can bind an an object to an HTML attribute!</p>
+
+<p>Let’s modify the <code>name-tag</code> example to take an object instead of individual properties.</p>
+
+<pre><code>&lt;polymer-element name="name-tag" attributes="person"&gt;
+  &lt;template&gt;
+    Hello! My name is &lt;span style="color:{{person.nameColor}}"&gt;{{person.name}}&lt;/span&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('name-tag', {
+      created: function() {
+        this.person = {
+          name: "Scott",
+          nameColor: "orange"
+        }
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>Now, imagine we make a new component called <code>&lt;visitor-creds&gt;</code> that uses <code>name-tag</code>:</p>
+
+<pre><code>&lt;polymer-element name="visitor-creds"&gt;
+  &lt;template&gt;
+    &lt;name-tag person="{{person}}"&gt;&lt;/name-tag&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('visitor-creds', {
+      created: function() {
+        this.person = {
+          name: "Scott2",
+          nameColor: "red"
+        }
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>When an instance of <code>&lt;visitor-creds&gt;</code> is created, its <code>person</code> property (an object)
+is also bound to <code>&lt;name-tag&gt;</code>’s <code>person</code> property. Now both components are using
+the same <code>person</code> object.</p>
+
+<h3 id="declarative-event-mapping">Declarative event mapping</h3>
+
+<p>Polymer supports declarative binding of events to methods in the component.
+It uses special <code>on-<em>event</em></code> syntax to trigger this binding behavior.</p>
+
+<pre><code>&lt;polymer-element name="g-cool" on-keypress="{{keypressHandler}}"&gt;
+  &lt;template&gt;
+    &lt;button on-click="{{buttonClick}}"&gt;&lt;/button&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('g-cool', {
+      keypressHandler: function(event, detail, sender) { ...},
+      buttonClick: function(event, detail, sender) { ... }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>In this example, the <code>on-keypress</code> declaration maps the standard DOM <code>"keypress"</code> event to the <code>keypressHandler</code> method defined on the element. Similarly, a button within the element
+declares a <code>on-click</code> handler for click events that calls the <code>buttonClick</code> method.
+All of this is achieved without the need for any glue code. </p>
+
+<p>Some things to notice:</p>
+
+<ul>
+  <li>The value of an event handler attribute is the string name of a method on the component. Unlike traditional syntax, you cannot put executable code in the attribute.</li>
+  <li>The event handler is passed the following arguments:
+    <ul>
+      <li><code>inEvent</code> is the <a href="http://www.w3.org/TR/DOM-Level-3-Events/#interface-Event">standard event object</a>.</li>
+      <li><code>inDetail</code>: A convenience form of <code>inEvent.detail</code>.</li>
+      <li><code>inSender</code>: A reference to the node that declared the handler. This is often different from <code>inEvent.target</code> (the lowest node that received the event) and <code>inEvent.currentTarget</code> (the component processing the event), so  Polymer provides it directly.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="observeprops">Observing properties</h3>
+
+<h4 id="change-watchers">Changed watchers</h4>
+
+<p>The simplest way to observe property changes on your element is to use a changed watcher.
+All properties on Polymer elements can be watched for changes by implementing a <code><em>propertyName</em>Changed</code> handler. When the value of a watched property changes, the appropriate change handler is automatically invoked. </p>
+
+<pre><code>&lt;polymer-element name="g-cool" attributes="better best"&gt;
+  &lt;script&gt;
+    Polymer('g-cool', {
+      plain: '',
+      best: '',
+      betterChanged: function(oldValue, newValue) {
+        ...
+      },
+      bestChanged: function(oldValue, newValue) {
+        ...
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>In this example, there are two watched properties, <code>better</code> and <code>best</code>. The <code>betterChanged</code> and <code>bestChanged</code> function will be called whenever <code>better</code> or <code>best</code> are modified, respectively. </p>
+
+<h4 id="observeblock">Custom property observers - <code>observe</code> blocks</h4>
+
+<p>Sometimes a <a href="#change-watchers">changed watcher</a> is not enough. For more control over
+property observation, Polymer provides <code>observe</code> blocks.</p>
+
+<p>An <code>observe</code> block defines a custom property/observer mapping for one or more properties.
+It can be used to watch for changes to nested objects or share the same callback
+for several properties.</p>
+
+<p><strong>Example:</strong> - share a single observer</p>
+
+<pre><code>Polymer('x-element', {
+  foo: '',
+  bar: '',
+  observe: {
+    foo: 'validate',
+    bar: 'validate'
+  },
+  ready: function() {
+    this.foo = 'bar';
+    this.bar = 'foo';
+  },
+  validate: function(oldValue, newValue) {
+    ...
+  },
+});
+</code></pre>
+
+<p>In the example, <code>validate()</code> is called whenever <code>foo</code> or <code>bar</code> changes.</p>
+
+<p><strong>Example:</strong> - watching for changes to a nested object path</p>
+
+<pre><code>Polymer('x-element', {
+  observe: {
+    'a.b.c': 'validateSubPath'
+  },
+  ready: function() {
+    this.a = {
+      b: {
+        c: 'exists'
+      }
+    };
+  },
+  validateSubPath: function(oldValue, newValue) {
+    var value = Path.get('a.b.c').getValueFrom(this);
+    // oldValue == undefined
+    // newValue == value == this.a.b.c === 'exists'
+  }
+});
+</code></pre>
+
+<p>It’s important to note that <strong>Polymer does not call the <code><em>propertyName</em>Changed</code> callback for properties included in an <code>observe</code> block</strong>. Instead, the defined observer gets called.</p>
+
+<pre><code>Polymer('x-element', {
+  bar: '',
+  observe: {
+    bar: 'validate'
+  },
+  barChanged: function(oldValue, newValue) {
+    console.log("I'm not called");
+  },
+  validate: function(oldValue, newValue) {
+    console.log("I'm called instead");
+  }
+});
+</code></pre>
+
+<h3 id="automatic-node-finding">Automatic node finding</h3>
+
+<p>Another useful feature of Polymer is node reference marshalling. Every node in a component’s shadow DOM that is tagged with an <code>id</code> attribute is automatically referenced in the component’s <code>this.$</code> hash. </p>
+
+<p>For example, the following defines a component whose template contains an <code>&lt;input&gt;</code> element whose <code>id</code> attribute is <code>nameInput</code>. The component can refer to that element with the expression <code>this.$.nameInput</code>.</p>
+
+<pre><code>&lt;polymer-element name="x-form"&gt;
+  &lt;template&gt;
+    &lt;input type="text" id="nameInput"&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('x-form', {
+      logNameValue: function() {
+        console.log(this.$.nameInput.value);
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<h3 id="fire">Firing custom events</h3>
+
+<p>Polymer core provides a convenient <code>fire()</code> method for
+sending custom events. Essentially, it’s a wrapper around your standard <code>node.dispatchEvent(new CustomEvent(...))</code>. In cases where you need to fire an event after microtasks have completed,
+use the asynchronous version: <code>asyncFire()</code>.</p>
+
+<p>Example:</p>
+
+<pre><code>&lt;polymer-element name="ouch-button"&gt;
+  &lt;template&gt;
+    &lt;button on-click="{{onClick}}"&gt;Send hurt&lt;/button&gt; 
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('ouch-button', {
+      onClick: function() {
+        this.fire('ouch', {msg: 'That hurt!'}); // fire(inType, inDetail, inToNode)
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+
+&lt;ouch-button&gt;&lt;/ouch-button&gt;
+
+&lt;script&gt;
+  document.querySelector('ouch-button').addEventListener('ouch', function(e) {
+    console.log(e.type, e.detail.msg); // "ouch" "That hurt!"
+  });
+&lt;/script&gt;
+</code></pre>
+
+<p class="alert alert-success"><strong>Tip:</strong> If your element is within another Polymer element, you can
+use the special <a href="#declarative-event-mapping"><code>on-*</code></a> handlers to deal with the event: <code>&lt;ouch-button on-ouch="{{myMethod}}"&gt;&lt;/ouch-button&gt;</code></p>
+
+<h3 id="extending-other-elements">Extending other elements</h3>
+
+<p>A Polymer element can extend another element by using the <code>extends</code>
+attribute. The parent’s properties and methods are inherited by the child element
+and data-bound.</p>
+
+<pre><code>&lt;polymer-element name="polymer-cool"&gt;
+  &lt;!-- UI-less element --&gt;
+  &lt;script&gt;
+    Polymer('polymer-cool', {
+      praise: 'cool'
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+
+&lt;polymer-element name="polymer-cooler" extends="polymer-cool"&gt;
+  &lt;template&gt;
+    {{praise}} &lt;!-- "cool" --&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('polymer-cooler');
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<h4 id="overriding-a-parents-methods">Overriding a parent’s methods</h4>
+
+<p>When you override an inherited method, you can call the parent’s method with <code>this.super()</code>, and optionally pass it a list of arguments (e.g. <code>this.super([arg1, arg2])</code>). The reason the paramater is an array is so you can write <code>this.super(arguments)</code>.</p>
+
+<pre><code>&lt;polymer-element name="polymer-cool"&gt;
+  &lt;script&gt;
+    {{site.project_title}}('polymer-cool', {
+      praise: 'cool',
+      makeCoolest: function() {
+        this.praise = 'coolest';
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+
+&lt;polymer-element name="polymer-cooler" extends="polymer-cool" on-click="{{makeCoolest}}"&gt;
+  &lt;template&gt;polymer-cooler is {{praise}}&lt;/template&gt;
+  &lt;script&gt;
+    {{site.project_title}}('polymer-cooler', {
+      praise: 'cooler',
+      makeCoolest: function() {
+        this.super(); // calls polymer-cool's makeCoolest()
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+
+&lt;polymer-cooler&gt;&lt;/polymer-cooler&gt;
+</code></pre>
+
+<p>In this example, when the user clicks on a <code>&lt;polymer-cooler&gt;</code> element, its
+<code>makeCoolest()</code> method is called, which in turn calls the parent’s version
+using <code>this.super()</code>. The <code>praise</code> property (inherited from <code>&lt;polymer-cool&gt;</code>) is set
+to “coolest”.</p>
+
+<h2 id="additional-utilities">Advanced topics</h2>
+
+<ul>
+  <li><a href="#asyncmethod"><code>async()</code></a></li>
+  <li><a href="#bindings"><code>unbindAll()</code> / <code>cancelUnbindAll()</code> / <code>asyncUnbindAll()</code></a>
+    <ul>
+      <li><a href="#preventdispose"><code>.preventDispose</code></a></li>
+    </ul>
+  </li>
+  <li><a href="#flush"><code>Platform.flush()</code></a></li>
+</ul>
+
+<h3 id="asyncmethod">Dealing with asynchronous tasks</h3>
+
+<p>Many things in Polymer happen asynchronously. Changes are gathered up
+and executed all at once, instead of executing right away. Batching
+changes creates an optimization that (a) prevents duplicated work and (b) reduces unwanted <a href="http://en.wikipedia.org/wiki/Flash_of_unstyled_content">FOUC</a>.</p>
+
+<p><a href="#change-watchers">Change watchers</a> and situations that rely on data-bindings
+are examples that fit under this async behavior. For example, conditional templates may not immediately render after setting properties because changes to those renderings are saved up and performed all at once after you return from JavaScript.</p>
+
+<p>To do work after changes have been processed, Polymer provides <code>async()</code>.
+It’s similar to <code>window.setTimeout()</code>, but automatically binds <code>this</code> to the correct value:</p>
+
+<pre><code>// async(inMethod, inArgs, inTimeout)
+this.async(function() {
+  this.foo = 3;
+}, null, 1000);
+
+// Roughly equivalent to:
+//setTimeout(function() {
+//  this.foo = 3;
+//}.bind(this), 1000);
+</code></pre>
+
+<p>The first argument is a function or string name for the method to call asynchronously.
+The second argument, <code>inArgs</code>, is an optional object or array of arguments to
+pass to the callback.</p>
+
+<p>In the case of property changes that result in DOM modifications, follow this pattern:</p>
+
+<pre><code>Polymer('my-element', {
+  propChanged: function() {
+    // If "prop" changing results in our DOM changing, schedule an update after
+    // the new microtask.
+    this.async(this.updateValues);
+  },
+  updateValues: function() {...}
+});
+</code></pre>
+
+<h3 id="bindings">Life of an element’s bindings</h3>
+
+<p class="alert alert-info"><strong>Note:</strong> The section only applies to elements that are instantiated in JavaScript, not to those
+declared in markup.</p>
+
+<p>If you instantiate an element (e.g. <code>document.createElement('x-foo')</code>) and do <strong>not</strong> add it to the DOM,
+Polymer asynchronously removes its <code>{{}}</code> bindings and <code>*Changed</code> methods.
+This helps prevent memory leaks, ensuring the element will be garbage collected. </p>
+
+<p>If you want the element to “remain active” when it’s not in the <code>document</code>,
+call <code>cancelUnbindAll()</code> right after you create or remove it. The <a href="#lifecyclemethods">lifecycle methods</a>
+are a good place for this:</p>
+
+<pre><code>Polymer('my-element', {
+  ready: function() {
+    // Ensure bindings remain active, even if we're never added to the DOM.
+    this.cancelUnbindAll();
+  },
+  detached: function() {
+    // Also keep bindings active if we're added, but later removed.
+    this.cancelUnbindAll();
+  }
+});
+</code></pre>
+
+<p>Polymer typically handles this management for you, but when you
+explicitly call <code>cancelUnbindAll()</code> (and the element is never added to/put back in the DOM),
+it becomes your responsibility to <em>eventually</em> unbind the element using <code>unbindAll()/asyncUnbindAll()</code>,
+otherwise your application may leak memory.</p>
+
+<pre><code>var el = document.createElement('my-element');
+// Need to unbind if el is:
+//   1. never added to the DOM
+//   2. put in the DOM, but later removed
+el.unbindAll();
+</code></pre>
+
+<h4 id="preventdispose">Using preventDispose</h4>
+
+<p>To force bindings from being removed in call cases, set <code>.preventDispose</code>:</p>
+
+<pre><code>Polymer('my-element', {
+  preventDispose: true
+});
+</code></pre>
+
+<h3 id="flush">How data changes are propagated</h3>
+
+<p>Data changes in Polymer happen almost immediately (at end of a microtask)
+when <code>Object.observe()</code> is available. When it’s not supported, Polymer uses a polyfill (<a href="https://github.com/Polymer/observe-js">observe-js</a>) to poll and periodically propagate data-changes throughout the system. This is done through a method called <code>Platform.flush()</code>.</p>
+
+<h4 id="what-is-platformflush">What is <code>Platform.flush()</code>?</h4>
+
+<p><code>Platform.flush()</code> is part of Polymer’s data observation polyfill, <a href="https://github.com/Polymer/observe-js">observe-js</a>. It dirty check’s all objects that have been observed and ensures notification callbacks are dispatched. Polymer automatically calls <code>Platform.flush()</code> periodically, and this should be sufficient for most application workflows. However, there are times when you’ll want to call <code>Platform.flush()</code> in application code.</p>
+
+<p class="alert alert-info"><strong>Note</strong>: on platforms that support <code>Object.observe()</code> natively, <code>Platform.flush()</code> does nothing.</p>
+
+<h4 id="when-should-i-call-platformflush">When should I call <code>Platform.flush()</code>?</h4>
+
+<p>Instead of waiting for the next poll interval, one can manually schedule an update by calling <code>Platform.flush()</code>. <strong>There are very few cases where you need to call <code>Platform.flush()</code> directly.</strong></p>
+
+<p>If it’s important that a data change propagates before the next screen paint, you may
+need to manually call <code>Platform.flush()</code>. Here are specific examples:</p>
+
+<ol>
+  <li>A property change results in a CSS class being added to a node. Often, this works out fine, but sometimes, it’s important to make sure the node does not display without the styling from the added class applied to it. To ensure this, call <code>Platform.flush()</code> in the property change handler after adding the CSS class.</li>
+  <li>The author of a slider element wants to ensure that data can propagate from it as the user slides the slider. A user of the element, might, for example, bind the slider’s value to an input and expect to see the input change while the slider is moving. To achieve this, the element author calls <code>Platform.flush()</code> after setting the element’s value in the <code>ontrack</code> event handler.</li>
+</ol>
+
+<p><strong>Note:</strong> Polymer is designed such that change notifications are asynchronous. Both <code>Platform.flush()</code> and <code>Object.observe()</code> (after which it’s modeled) are asynchronous. Therefore, <strong><code>Platform.flush()</code> should not be used to try to enforce synchronous data notifications</strong>. Instead, always use <a href="#change-watchers">change watchers</a> to be informed about state.</p>
+
+<h3 id="prepare">How Polymer elements prepare themselves</h3>
+
+<p>For performance reasons, <code>&lt;polymer-element&gt;</code>s avoid the expense of preparing ShadowDOM, event listeners, and property observers if they’re created outside the main document.
+This behavior is similar to how native elements such as <code>&lt;img&gt;</code> and <code>&lt;video&gt;</code> behave.
+They remain in a semi-inert state when created outside the main document (e.g. an <code>&lt;img&gt;</code> avoids the expense of loading its <code>src</code>).</p>
+
+<p>Polymer elements prepare themselves automatically in the following cases:</p>
+
+<ol>
+  <li>when they’re created in a <code>document</code> that has a <code>defaultView</code> (the main document)</li>
+  <li>when they receive the <code>attached</code> callback</li>
+  <li>when they’re created in the <code>shadowRoot</code> of another element that is preparing itself</li>
+</ol>
+
+<p>In addition, if the <code>.alwaysPrepare</code> property is set to <code>true</code>, Polymer elements
+prepare themselves even when they do not satisfies the above rules.</p>
+
+<pre><code>Polymer('my-element', {
+  alwaysPrepare: true
+});
+</code></pre>
+
+<p class="alert alert-success"><strong>Note:</strong> an element’s <a href="#lifecyclemethods"><code>ready()</code> lifecycle callback</a> is called after an element has been prepared. Use <code>ready()</code> to know when an element is done initializing itself.</p>
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="../start/getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

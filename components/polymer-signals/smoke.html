@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html>
+
+<!-- Mirrored from www.polymer-project.org/components/polymer-signals/smoke.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:37:29 GMT -->
+<head>
+  <title></title>
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="polymer-signals.html">
+</head>
+<body>
+
+<polymer-element name="my-element">
+  <template>
+    Hello
+  </template>
+  <script>
+    Polymer('my-element', {
+      ready: function() {
+        this.asyncFire('polymer-signal', {name: "foo", data: "Foo!"});
+      }
+    });
+  </script>
+</polymer-element>
+
+<polymer-element name="my-app">
+  <template>
+    <polymer-signals on-polymer-signal-foo="{{fooSignal}}"></polymer-signals>
+    <content></cotnent>
+  </template>
+  <script>
+    Polymer('my-app', {
+      fooSignal: function(e, detail, sender) {
+        this.innerHTML += '<br>[my-app] got a [' + detail + '] signal<br>';
+      }
+    });
+  </script>
+</polymer-element>
+
+<my-element></my-element>
+<my-app></my-app>
+
+</body>
+
+<!-- Mirrored from www.polymer-project.org/components/polymer-signals/smoke.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:37:30 GMT -->
+</html>

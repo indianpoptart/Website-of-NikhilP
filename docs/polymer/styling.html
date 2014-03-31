@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Styling reference">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Styling reference - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="styling-reference" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="../start/everything.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="polymer.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="docs"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="core" navgroup="docs" shortname="Docs">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="../start/everything.html" class="paper-button " borderless sink>Start</a>
+  <a href="polymer.html" class="paper-button active" borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Styling reference</h1>
+        
+          <summary>Core</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/polymer/styling.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Styling reference</h1>
+        
+          <summary>Core</summary>
+        
+      </header>
+
+      <details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#fouc-prevention">FOUC prevention</a>    <ul>
+      <li><a href="#unveilafterboot">Unveiling elements after boot time</a></li>
+    </ul>
+  </li>
+  <li><a href="#polyfill-styling-directives">Polyfill styling directives</a>    <ul>
+      <li><a href="#at-polyfill">@polyfill</a></li>
+      <li><a href="#at-polyfill-rule">@polyfill-rule</a></li>
+      <li><a href="#at-polyfill-unscoped-rule">@polyfill-unscoped-rule</a></li>
+    </ul>
+  </li>
+  <li><a href="#polyfill-details">Polyfill details</a>    <ul>
+      <li><a href="#handling-scoped-styles">Handling scoped styles</a></li>
+      <li><a href="#strictstyling">Forcing strict styling</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p class="alert"><strong>Note:</strong> styling Polymer elements is no different than styling custom elements.
+For a complete guide on the basics, see “<a href="../../articles/styling-elements.html">A Guide to Styling Elements</a>”.</p>
+
+<p>In addition to the <a href="../../articles/styling-elements.html">standard features for styling Custom Elements</a>, Polymer contains extra goodies for fully controlling element styling. This document outlines those features, including FOUC prevention, the specifics on how the the Shadow DOM polyfill applies styles, and workarounds for current limitations.</p>
+
+<h2 id="fouc-prevention">FOUC prevention</h2>
+
+<p>Before custom elements <a href="http://www.html5rocks.com/tutorials/webcomponents/customelements/#upgrades">upgrade</a> they may display incorrectly. To help mitigate <a href="http://en.wikipedia.org/wiki/Flash_of_unstyled_content">FOUC</a> issues, Polymer provides
+a polyfill solution for the <a href="../../articles/styling-elements.html#preventing-fouc"><code>:unresolved</code> pseudo class</a>. The <code>[unresolved]</code> attribute initially hides the element it’s applied to:</p>
+
+<pre><code>&lt;x-foo unresolved&gt;If you see me, elements are upgraded!&lt;/x-foo&gt;
+&lt;div unresolved&gt;&lt;/div&gt;
+&lt;body unresolved&gt;&lt;!-- prevent the entire page from displaying until all elements are ready--&gt;&lt;/body&gt;
+</code></pre>
+
+<table class="table responsive-table fouc-table">
+  <thead>
+    <tr>
+      <th>Class name</th>
+      <th>Behavior when applied to an element</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>[unresolved]</code></td>
+      <td>Makes the element <code>opacity: 0; display: block; overflow: hidden</code>.</td>
+    </tr>
+    <tr>
+      <td><code>[resolved]</code></td>
+      <td>Fades-in the element over 200ms.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Upon <a href="polymer.html#polymer-ready"><code>polymer-ready</code></a> firing, Polymer runs the following steps:</p>
+
+<ol>
+  <li>removes the <code>[unresolved]</code> attribute from elements that have it</li>
+  <li>adds the <code>[resolved]</code> attribute</li>
+  <li>removes <code>[resolved]</code> on the first <code>transitionend</code> event the element receives</li>
+</ol>
+
+<h3 id="unveilafterboot">Unveiling elements after boot time</h3>
+
+<p>The veiling process can be used to prevent FOUC at times other than page load. To do so, apply the <code>[unresolved]</code> attribute to the desired elements and swap it out for the <code>[resolved]</code> attribute when the elements should be displayed. For example,</p>
+
+<pre><code>element.setAttribute('unresolved', '');
+
+// ... some time late ...
+element.setAttribute('resolved', '');
+element.removeAttribute('unresolved');
+</code></pre>
+
+<h2 id="polyfill-styling-directives">Polyfill styling directives</h2>
+
+<p>When running under the polyfill, Polymer has <code>@polyfill-*</code>
+directives to give you more control for how Shadow DOM styling is shimmed.</p>
+
+<h3 id="at-polyfill">@polyfill</h3>
+
+<p>The <code>@polyfill</code> directive is used to replace a native CSS selector with one that
+will work under the polyfill. For example, targeting distributed nodes using <code>::content</code> only works under native Shadow DOM. Instead, you can tell Polymer to replace said
+rules with ones compatible with the polyfill.</p>
+
+<p>To replace native rules, place <code>@polyfill</code> inside a CSS comment above the 
+style rule you want to replace. The string next to <code>"@polyfill"</code> indicates a
+CSS selector to replace the next style rule with. For example:</p>
+
+<pre><code>/* @polyfill .bar */
+::content .bar {
+  color: red;
+}
+
+/* @polyfill :host &gt; .bar */
+::content .bar {
+  color: blue;
+}
+
+/* @polyfill .container &gt; * */
+::content &gt; * {
+  border: 1px solid black;
+}
+</code></pre>
+
+<p>Under native Shadow DOM nothing changes. Under the polyfill the native selector 
+s replaced with the one in the <code>@polyfill</code> comment above it:</p>
+
+<pre><code>x-foo .bar {
+  color: red;
+}
+
+x-foo &gt; .bar {
+  color: blue;
+}
+
+x-foo .container &gt; * {
+  border: 1px solid black;
+}
+</code></pre>
+
+<p class="alert alert-error"><strong>Tip:</strong> If you use a CSS preprocessor, be careful that it doesn’t strip out the <code>@polyfill</code> comments.</p>
+
+<h3 id="at-polyfill-rule">@polyfill-rule</h3>
+
+<p>The <code>@polyfill-rule</code> directive is used to create a style rule that should apply <em>only</em> when the Shadow DOM polyfill is in use. It’s a useful catch-all when it’s not possible to write a rule that can automatically morph between native Shadow DOM and polyfill Shadow DOM. Because of the simulated styling Polymer provides, you should rarely need to use this directive.</p>
+
+<p>To create a rule that only applies under the polyfill, place the <code>@polyfill-rule</code> directive entirely inside a CSS comment:</p>
+
+<pre><code>/* @polyfill-rule .foo {
+  background: red;
+} */
+ 
+/* @polyfill-rule :host.foo .bar {
+  background: blue;
+} */
+</code></pre>
+
+<p>This has no effect under native Shadow DOM but under the polyfill, the comment is removed and the selector prefixed with the element name:</p>
+
+<pre><code>x-foo .foo {
+  background: red;
+}
+
+x-foo.foo .bar {
+  background: blue;
+}
+</code></pre>
+
+<h3 id="at-polyfill-unscoped-rule">@polyfill-unscoped-rule</h3>
+
+<p><code>@polyfill-unscoped-rule</code> is exactly the same as <code>@polyfill-rule</code> except that the rules inside it are not scoped by the polyfill. The rule you write is exactly what will be applied.</p>
+
+<p><code>@polyfill-unscoped-rule</code> should only be needed in rare cases. Polymer uses CSSOM to modify styles and there are a several known rules that don’t round-trip correctly via CSSOM (on some browsers). One example using CSS <code>calc()</code> in Safari. It’s only in these rare cases that <code>@polyfill-unscoped-rule</code> should be used.</p>
+
+<h2 id="polyfill-details">Polyfill details</h2>
+
+<h3 id="handling-scoped-styles">Handling scoped styles</h3>
+
+<p>Native Shadow DOM gives us style encapsulation for free via scoped styles. For browsers
+that lack native support, Polymer’s polyfills attempt to shim <em>some</em>
+of the scoping behavior.</p>
+
+<p>Because polyfilling the styling behaviors of Shadow DOM is difficult, Polymer
+has opted to favor practicality and performance over correctness. For example,
+the polyfill’s do not protect Shadow DOM elements against document level CSS.</p>
+
+<p>When Polymer processes element definitions, it looks for <code>&lt;style&gt;</code> elements
+and stylesheets. It removes these from the custom element’s Shadow DOM <code>&lt;template&gt;</code>, rejiggers them according to the rules below, and appends a <code>&lt;style&gt;</code> element to the main document with the reformulated rules.</p>
+
+<h4 id="reformatting-rules">Reformatting rules</h4>
+
+<ol>
+  <li>
+    <p><strong>Replace <code>:host</code>, including <code>:host(&lt;compound selector&gt;)</code> by prefixing with the element’s tag name</strong></p>
+
+    <p>For example, these rules inside an <code>x-foo</code>:</p>
+
+    <pre><code> &lt;polymer-element name="x-foo"&gt;
+   &lt;template&gt;
+     &lt;style&gt;
+       :host { ... }
+       :host:hover { ... }
+       :host(.foo) &gt; .bar { ... }
+     &lt;/style&gt;
+   ...
+</code></pre>
+
+    <p>becomes:</p>
+
+    <pre><code> &lt;polymer-element name="x-foo"&gt;
+   &lt;template&gt;
+     &lt;style&gt;
+       x-foo { ... }
+       x-foo:hover { ... }
+       x-foo.foo &gt; .bar, .foo x-foo &gt; bar {...}
+     &lt;/style&gt;
+   ...
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Prepend selectors with the element name, creating a descendant selector</strong>.
+This ensures styling does not leak outside the element’s shadowRoot (e.g. upper bound encapsulation).</p>
+
+    <p>For example, this rule inside an <code>x-foo</code>:</p>
+
+    <pre><code> &lt;polymer-element name="x-foo"&gt;
+   &lt;template&gt;
+     &lt;style&gt;
+       div { ... }
+     &lt;/style&gt;
+   ...
+</code></pre>
+
+    <p>becomes:</p>
+
+    <pre><code> &lt;polymer-element name="x-foo"&gt;
+   &lt;template&gt;
+     &lt;style&gt;
+       x-foo div { ... }
+     &lt;/style&gt;
+   ...
+</code></pre>
+
+    <p>Note, this technique does not enforce lower bound encapsulation. For that,
+   you need to <a href="#strictstyling">forcing strict styling</a>.</p>
+  </li>
+  <li>
+    <p><strong>Replace <code>^</code> and <code>^^</code></strong> with a <code>&lt;space&gt;</code> character.</p>
+  </li>
+</ol>
+
+<h3 id="strictstyling">Forcing strict styling</h3>
+
+<p>By default, Polymer does not enforce lower bound styling encapsulation.
+The lower bound is the boundary between insertion points and the shadow host’s children.</p>
+
+<p>You can turn lower bound encapsulation by setting <code>Platform.ShadowCSS.strictStyling</code>:</p>
+
+<pre><code>Platform.ShadowCSS.strictStyling = true
+</code></pre>
+
+<p>This isn’t the yet the default because it requires that you add the custom element’s name as an attribute on all DOM nodes in the shadowRoot (e.g. <code>&lt;span x-foo&gt;</code>).</p>
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="../start/getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

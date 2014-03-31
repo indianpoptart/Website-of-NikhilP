@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - The Platform">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    The Platform - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="the-platform" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="everything.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="../polymer/polymer.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="start"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="concepts" navgroup="start" shortname="Concepts">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="everything.html" class="paper-button active" borderless sink>Start</a>
+  <a href="../polymer/polymer.html" class="paper-button " borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>The Platform</h1>
+        
+          <summary>Supporting new web technologies today</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/start/platform.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>The Platform</h1>
+        
+          <summary>Supporting new web technologies today</summary>
+        
+      </header>
+
+      <details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#bundle">What’s in Platform?</a></li>
+  <li><a href="#setup">Installation &amp; usage</a></li>
+  <li><a href="#build">Building each polyfill</a></li>
+  <li><a href="#nextsteps">Next steps</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Polymer builds on top of the upcoming web components technologies, but they don’t yet ship in all browsers.</p>
+
+<p>The lowest layer of Polymer is <code>platform.js</code>: a collection of libraries (or “polyfills”) for new web technologies that haven’t shipped yet across all browsers. Platform makes it possible for developers to use these standards today across all modern browsers. As these technologies are implemented in browsers, the polyfills will shrink and you’ll gain the benefits of native implementations. <code>Platform.js</code> automatically detects native support and switches to the fast path when available. Your elements seamlessly start relying on the native stuff–and get faster in the process. </p>
+
+<p>Although most developers will want to use everything in <code>platform.js</code>, the polyfills are designed to be used separately, as well. They’re available independently and can be built standalone. For example, Mozilla’s <a href="http://www.x-tags.org/">x-tags</a> and Brick projects use a subset of the <code>platform.js</code> polyfills.</p>
+
+<h2 id="bundle">What’s in Platform?</h2>
+
+<p>The platform layer is a bundle that includes the following libraries:</p>
+
+<ul>
+  <li>Web Components
+    <ul>
+      <li><a href="../../platform/shadow-dom.html">Shadow DOM</a>. Encapsulate DOM subtrees and the associated CSS.</li>
+      <li><a href="../../platform/html-imports.html">HTML Imports</a>. Load element definitions and other resources declaratively.</li>
+      <li><a href="../../platform/custom-elements.html">Custom Elements</a> . Define new elements in HTML.</li>
+    </ul>
+  </li>
+  <li>DOM
+    <ul>
+      <li><a href="https://github.com/Polymer/URL">URL</a>. Parse URLs in JavaScript.</li>
+      <li><a href="https://github.com/Polymer/WeakMap">WeakMap</a>. Shim for ES6 WeakMap type. </li>
+      <li><a href="https://github.com/Polymer/MutationObservers">Mutation Observers</a>. Efficiently watch for changes in the DOM.
+<!-- - [Promises](https://github.com/Polymer/Promises). Handle asynchronous operations. --></li>
+      <li><a href="https://github.com/Polymer/observe-js">observe-js</a>. Observe changes on JS objects/arrays using <code>Object.observe</code> (if available).</li>
+    </ul>
+  </li>
+  <li>Other
+    <ul>
+      <li><a href="https://github.com/Polymer/PointerEvents">Pointer Events</a>. Handle both touch and mouse seamlessly</li>
+      <li><a href="https://github.com/Polymer/PointerGestures">Pointer Gestures</a>. More complex touch gestures.</li>
+      <li><a href="../../platform/web-animations.html">Web Animations</a>. Define complex timeline animations.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="setup">Installation &amp; usage</h2>
+
+<p>To start using these features today, first download <code>platform.js</code> using Bower as described
+in the <a href="getting-the-code.html">Getting the code</a> guide:</p>
+
+<pre><code>bower install --save Polymer/platform
+</code></pre>
+
+<p>Then, include <code>platform.js</code> as you would any other script:</p>
+
+<pre><code>&lt;script src="bower_components/platform/platform.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p class="alert"><strong>Note</strong>: Due to the nature of some of the polyfills, to maximize compatibility with other libraries, make sure that <code>platform.js</code> is the first script tag in your document’s <code>&lt;head&gt;</code>.</p>
+
+<p>Once included, you can use <a href="../../platform/html-imports.html">HTML Imports</a>, <a href="../../platform/custom-elements.html">Custom Elements</a>, <a href="../../platform/shadow-dom.html">Shadow DOM</a>, and other emerging standards within your app. For example, to use a Polymer element, just import it using an HTML Import:</p>
+
+<pre><code>&lt;link rel="import"
+      href="bower_components/polymer-ui-tabs/polymer-ui-tabs.html"&gt;
+</code></pre>
+
+<p>Then use <code>&lt;polymer-ui-tabs&gt;</code> just like any built-in tag.</p>
+
+<p>While each polyfill is standalone, the recommended approach is to include the entire <code>platform.js</code> file. This ensures all dependencies are present and the largest portion of the future web platform is available. Since this is the most-used configuration, it is also the most tested. </p>
+
+<h2 id="build">Building each polyfill</h2>
+
+<p>For information on how to build each polyfill library independently, see <a href="../../resources/tooling-strategy.html">Tools &amp; Testing</a>.</p>
+
+<h2 id="nextsteps">Next steps</h2>
+
+<p><code>platform.js</code> is a wonderful foundation for working with Web Components in a cross-browser fashion. If you’re ready to start building your own elements, and would like to learn about the additional features <code>polymer.js</code> adds, check out our guides on <a href="creatingelements.html">Creating elements</a> and <a href="usingelements.html">Using elements</a>. Continue on to:</p>
+
+<p><a href="../polymer/polymer.html" class="paper-button"><polymer-ui-icon src="../../images/picons/ic_arrowForward_dark_.png"></polymer-ui-icon>API Reference</a></p>
+
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

@@ -1,0 +1,5865 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Polymer elements">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Polymer elements - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="polymer-elements" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="../start/everything.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="../polymer/polymer.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="docs"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="elements" navgroup="docs" shortname="Elements">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="../start/everything.html" class="paper-button " borderless sink>Start</a>
+  <a href="../polymer/polymer.html" class="paper-button active" borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Polymer elements</h1>
+        
+          <summary>Utility elements that do not render UI</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/elements/polymer-elements.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Polymer elements</h1>
+        
+          <summary>Utility elements that do not render UI</summary>
+        
+      </header>
+
+      <p class="alert alert-info"><strong>Note:</strong> These elements and their documentation are very early.
+The “source” links below point to commented code where you can learn more about
+how to use the element.</p>
+
+<p>Install everything:</p>
+
+<pre><code>bower install Polymer/polymer-elements
+</code></pre>
+
+<section class="element-list">
+
+
+<div data-element-file="/components/polymer-ajax/polymer-ajax.html">
+        <header>
+          <h2 id="polymer-ajax">&lt;polymer-ajax&gt;
+            <!--<a href="https://github.com/Polymer/polymer-ajax/blob/master/polymer-ajax.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-ajax/blob/master/polymer-ajax.html" target="_blank">source</a>
+            <a href="../../components/polymer-ajax/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-ajax</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-ajax/polymer-ajax.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-ajax can be used to perform XMLHttpRequests.</p>
+<p>Note: The params attribute must be double quoted JSON</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-ajax auto url=&quot;http://gdata.youtube.com/feeds/api/videos/&quot; 
+    params=&#39;{&quot;alt&quot;:&quot;json&quot;, &quot;q&quot;:&quot;chrome&quot;}&#39;
+    handleAs=&quot;json&quot;
+    on-polymer-response=&quot;{{handleResponse}}&quot;&gt;
+&lt;/polymer-ajax&gt;</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-ajax-attrs">
+        
+          <div id="attr_auto" class="no-permalink attr item">
+
+    <h4 class="name"><code>auto</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, automatically performs an Ajax request when either url or params has changed.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_body" class="no-permalink attr item">
+
+    <h4 class="name"><code>body</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Optional raw body content to send when method === &quot;POST&quot;</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-ajax method=&quot;POST&quot; auto url=&quot;http://somesite.com&quot;
+    body=&#39;{&quot;foo&quot;:1, &quot;bar&quot;:2}&#39;&gt;
+&lt;/polymer-ajax&gt;</code></pre>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_contentType" class="no-permalink attr item">
+
+    <h4 class="name"><code>contentType</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Content type to use when sending data.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;application/x-www-form-urlencoded&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_handleAs" class="no-permalink attr item">
+
+    <h4 class="name"><code>handleAs</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies what data to store in the &#39;response&#39; property, and
+to deliver as &#39;event.response&#39; in &#39;response&#39; events.</p>
+<p>One of:</p>
+<p>   <code>text</code>: uses XHR.responseText</p>
+<p>   <code>xml</code>: uses XHR.responseXML</p>
+<p>   <code>json</code>: uses XHR.responseText parsed as JSON</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;text&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_headers" class="no-permalink attr item">
+
+    <h4 class="name"><code>headers</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>HTTP request headers to send.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-ajax auto url=&quot;http://somesite.com&quot;
+    headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
+    handleAs=&quot;json&quot;
+    on-polymer-response=&quot;{{handleResponse}}&quot;&gt;
+&lt;/polymer-ajax&gt;</code></pre>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_method" class="no-permalink attr item">
+
+    <h4 class="name"><code>method</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The HTTP method to use such as &#39;GET&#39;, &#39;POST&#39;, &#39;PUT&#39;, &#39;DELETE&#39;.
+Default is &#39;GET&#39;.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_params" class="no-permalink attr item">
+
+    <h4 class="name"><code>params</code></h4>
+    <span class="type">String (JSON)</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Parameters to send to the specified URL, as JSON.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_response" class="no-permalink attr item">
+
+    <h4 class="name"><code>response</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the response object.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_url" class="no-permalink attr item">
+
+    <h4 class="name"><code>url</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The URL target of the request.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+    <demo-tab heading="Methods">
+      <div id="polymer-ajax-methods">
+        
+          <div id="method_go" class="no-permalink method item">
+    <h4 class="name"><code>go
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Performs an Ajax request to the url specified.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+    <demo-tab heading="Events">
+      <div id="polymer-ajax-events">
+        
+          <div id="event_polymer-complete" class="no-permalink events item">
+    <h4 class="name"><code>polymer-complete</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired whenever a response or an error is received.</p>
+
+    </div>
+
+    
+
+
+    
+</div>
+
+        
+          <div id="event_polymer-error" class="no-permalink events item">
+    <h4 class="name"><code>polymer-error</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when an error is received.</p>
+
+    </div>
+
+    
+
+
+    
+</div>
+
+        
+          <div id="event_polymer-response" class="no-permalink events item">
+    <h4 class="name"><code>polymer-response</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when a response is received.</p>
+
+    </div>
+
+    
+
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-anchor-point/polymer-anchor-point.html">
+        <header>
+          <h2 id="polymer-anchor-point">&lt;polymer-anchor-point&gt;
+            <!--<a href="https://github.com/Polymer/polymer-anchor-point/blob/master/polymer-anchor-point.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-anchor-point/blob/master/polymer-anchor-point.html" target="_blank">source</a>
+            <a href="../../components/polymer-anchor-point/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-anchor-point</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-anchor-point/polymer-anchor-point.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-anchor-point can be used to align two nodes. The node to
+use as the reference position is the anchor node, and the node to
+be positioned is the target node.</p>
+<p>Both the anchor and target nodes should have an anchor-point
+attribute. The target node is positioned such that its anchor-point
+aligns with the anchor node&#39;s anchor-point.</p>
+<p>Note: The target node is positioned with position: fixed, and will not
+scroll with the page.</p>
+<p>Note: This is meant to polyfill the <code>&lt;dialog&gt;</code> positioning behavior when
+an anchor is provided. Spec: <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/commands.html#the-dialog-element">http://www.whatwg.org/specs/web-apps/current-work/multipage/commands.html#the-dialog-element</a></p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;div id=&quot;anchor&quot; anchor-point=&quot;bottom left&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;target&quot; anchor-point=&quot;top left&quot;&gt;&lt;/div&gt;
+&lt;polymer-anchor-point id=&quot;anchor-helper&quot;&gt;&lt;/polymer-anchor-point&gt;
+&lt;script&gt;
+  var helper = document.querySelector(&#39;#anchor-helper&#39;);
+  helper.anchor = document.querySelector(&#39;#anchor&#39;);
+  helper.target = document.querySelector(&#39;#target&#39;);
+  helper.apply();
+&lt;/script&gt;</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-anchor-point-attrs">
+        
+          <div id="attr_anchor" class="no-permalink attr item">
+
+    <h4 class="name"><code>anchor</code></h4>
+    <span class="type">Node</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The node to align the target to.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_target" class="no-permalink attr item">
+
+    <h4 class="name"><code>target</code></h4>
+    <span class="type">Node</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The node to be positioned.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-animation/polymer-animation.html">
+        <header>
+          <h2 id="polymer-animation">&lt;polymer-animation&gt;
+            <!--<a href="https://github.com/Polymer/polymer-animation/blob/master/polymer-animation.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-animation/blob/master/polymer-animation.html" target="_blank">source</a>
+            <a href="../../components/polymer-animation/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-animation</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-animation/polymer-animation.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>Component for a single animation.</p>
+<p>A animation component to fade out an element:</p>
+<pre class="code prettyprint"><code>&lt;polymer-animation id=&quot;fadeout&quot;&gt;
+  &lt;polymer-animation-keyframe offset=&quot;0&quot;&gt;
+    &lt;polymer-animation-prop name=&quot;opacity&quot; value=&quot;0&quot;&gt;
+    &lt;/polymer-animation-prop&gt;
+  &lt;/polymer-animation-keyframe&gt;
+  &lt;polymer-animation-keyframe offset=&quot;1&quot;&gt;
+    &lt;polymer-animation-prop name=&quot;opacity&quot; value=&quot;1&quot;&gt;
+    &lt;/polymer-animation-prop&gt;
+  &lt;/polymer-animation-keyframe&gt;
+&lt;/polymer-animation&gt;</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+  
+    <demo-tab heading="Properties">
+      <div id="polymer-animation-properties">
+        
+          <div id="property_autoplay" class="property item">
+    <h4 class="name"><code>autoplay</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_composite" class="property item">
+    <h4 class="name"><code>composite</code></h4>
+    <span class="type">"replace" | "add" | "merge"</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The composition behavior. &quot;replace&quot;, &quot;add&quot; or &quot;merge&quot;.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &quot;replace&quot;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_delay" class="property item">
+    <h4 class="name"><code>delay</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Delay in milliseconds.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 0</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_direction" class="property item">
+    <h4 class="name"><code>direction</code></h4>
+    <span class="type">"normal" | "reverse" | "alternate" | "alternate-reverse"</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <p><strong>Default:</strong> &quot;normal&quot;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_duration" class="property item">
+    <h4 class="name"><code>duration</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | "Infinity" | "auto"</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Animation duration in milliseconds, &#39;infinity&#39; or &#39;auto&#39;. &#39;auto&#39;
+means use the animation&#39;s intrinsic duration.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &quot;auto&quot;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_easing" class="property item">
+    <h4 class="name"><code>easing</code></h4>
+    <span class="type">"linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out" | "step-start" | "step-middle" | "step-end"</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A transition timing function.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &quot;linear&quot;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_fill" class="property item">
+    <h4 class="name"><code>fill</code></h4>
+    <span class="type">"none" | "forwards" | "backwards" | "both" | "auto"</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>&quot;none&quot;, &quot;forwards&quot;, &quot;backwards&quot;, &quot;both&quot; or &quot;auto&quot;. When set to
+&quot;auto&quot;, the fill is &quot;none&quot; for a polymer-animation and &quot;both&quot;
+for a polymer-animation-group.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &quot;auto&quot;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_iterationCount" class="property item">
+    <h4 class="name"><code>iterationCount</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | 'Infinity'</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <p><strong>Default:</strong> 1</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_iterationStart" class="property item">
+    <h4 class="name"><code>iterationStart</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Number of iterations into the timed item in which to begin
+the animation. e.g. 0.5 will cause the animation to begin
+halfway through the first iteration.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 0</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_keyframes" class="property item">
+    <h4 class="name"><code>keyframes</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Animation keyframes specified as an array of dictionaries of
+&lt;css properties&gt;:&lt;array of values&gt; pairs. For example,</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_sample" class="property item">
+    <h4 class="name"><code>sample</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A custom animation function. Either provide this or keyframes.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_target" class="property item">
+    <h4 class="name"><code>target</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | Node | Array&lt;HTMLElement | Node&gt;</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>One or more nodes to animate.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="property_targetSelector" class="property item">
+    <h4 class="name"><code>targetSelector</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Selector for the node being animated.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+    <demo-tab heading="Methods">
+      <div id="polymer-animation-methods">
+        
+          <div id="method_cancel" class="no-permalink method item">
+    <h4 class="name"><code>cancel
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Stops the animation.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="method_play" class="no-permalink method item">
+    <h4 class="name"><code>play
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Plays the animation.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+    <demo-tab heading="Events">
+      <div id="polymer-animation-events">
+        
+          <div id="event_polymer-animation-change" class="no-permalink events item">
+    <h4 class="name"><code>polymer-animation-change</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when the animation starts</p>
+
+    </div>
+
+    
+
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-collapse/polymer-collapse.html">
+        <header>
+          <h2 id="polymer-collapse">&lt;polymer-collapse&gt;
+            <!--<a href="https://github.com/Polymer/polymer-collapse/blob/master/polymer-collapse.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-collapse/blob/master/polymer-collapse.html" target="_blank">source</a>
+            <a href="../../components/polymer-collapse/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-collapse</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-collapse/polymer-collapse.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-collapse is used to add collapsible behavior to the
+target element.  It adjusts the height or width of the target element
+to make the element collapse and expand.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;button on-click=&quot;{{toggle}}&quot;&gt;toggle collapse&lt;/button&gt;
+&lt;div id=&quot;demo&quot;&gt;
+  ...
+&lt;/div&gt;
+&lt;polymer-collapse id=&quot;collapse&quot; targetId=&quot;demo&quot;&gt;&lt;/polymer-collapse&gt;
+
+...
+
+toggle: function() {
+  this.$.collapse.toggle();
+}</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-collapse-attrs">
+        
+          <div id="attr_closed" class="no-permalink attr item">
+
+    <h4 class="name"><code>closed</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, the target element is hidden/collapsed.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_duration" class="no-permalink attr item">
+
+    <h4 class="name"><code>duration</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Collapsing/expanding animation duration in second.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 0.33</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_fixedSize" class="no-permalink attr item">
+
+    <h4 class="name"><code>fixedSize</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, the size of the target element is fixed and is set
+on the element.  Otherwise it will try to 
+use auto to determine the natural size to use
+for collapsing/expanding.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_horizontal" class="no-permalink attr item">
+
+    <h4 class="name"><code>horizontal</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, the orientation is horizontal; otherwise is vertical.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_target" class="no-permalink attr item">
+
+    <h4 class="name"><code>target</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The target element.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_targetId" class="no-permalink attr item">
+
+    <h4 class="name"><code>targetId</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The id of the target element.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+    <demo-tab heading="Methods">
+      <div id="polymer-collapse-methods">
+        
+          <div id="method_toggle" class="no-permalink method item">
+    <h4 class="name"><code>toggle
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Toggle the closed state of the collapsible.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-cookie/polymer-cookie.html">
+        <header>
+          <h2 id="polymer-cookie">&lt;polymer-cookie&gt;
+            <!--<a href="https://github.com/Polymer/polymer-cookie/blob/master/polymer-cookie.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-cookie/blob/master/polymer-cookie.html" target="_blank">source</a>
+            <a href="../../components/polymer-cookie/index.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-cookie</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-cookie/polymer-cookie.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-doc-viewer/polymer-doc-viewer.html">
+        <header>
+          <h2 id="polymer-doc-viewer">&lt;polymer-doc-viewer&gt;
+            <!--<a href="https://github.com/Polymer/polymer-doc-viewer/blob/master/polymer-doc-viewer.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-doc-viewer/blob/master/polymer-doc-viewer.html" target="_blank">source</a>
+            <a href="../../components/polymer-doc-viewer/index.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-doc-viewer</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-doc-viewer/polymer-doc-viewer.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-file/polymer-file.html">
+        <header>
+          <h2 id="polymer-file">&lt;polymer-file&gt;
+            <!--<a href="https://github.com/Polymer/polymer-file/blob/master/polymer-file.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-file/blob/master/polymer-file.html" target="_blank">source</a>
+            <a href="../../components/polymer-file/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-file</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-file/polymer-file.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-file provides File API operations.</p>
+<p>Examples:</p>
+<pre class="code prettyprint"><code>&lt;polymer-file id=&quot;file&quot; readas=&quot;dataurl&quot; 
+              on-polymer-result=&quot;{{handleResult}}&quot;&gt;&lt;/polymer-file&gt;
+...
+this.$.file.blob = new Blob([&#39;abc&#39;], {type: &#39;text/plain&#39;});
+this.$.file.read();
+
+---
+
+&lt;polymer-file id=&quot;file&quot; readas=&quot;arraybuffer&quot; auto
+              result=&quot;{{result}}&quot;&gt;&lt;/polymer-file&gt;
+...
+this.$.file.blob = new Blob([&#39;abc&#39;], {type: &#39;text/plain&#39;});</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-file-attrs">
+        
+          <div id="attr_auto" class="no-permalink attr item">
+
+    <h4 class="name"><code>auto</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, automatically performs the file read (if a blob has been set).</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_blob" class="no-permalink attr item">
+
+    <h4 class="name"><code>blob</code></h4>
+    <span class="type">Blob | File</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The Blob-like object to read.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_readas" class="no-permalink attr item">
+
+    <h4 class="name"><code>readas</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The format the result should be returned as. One of &#39;arraybuffer&#39;, &#39;text&#39;,
+&#39;dataurl&#39;, &#39;binarystring&#39;.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;text&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_result" class="no-permalink attr item">
+
+    <h4 class="name"><code>result</code></h4>
+    <span class="type">Blob | File</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Contains the result of a read operation.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+  
+    <demo-tab heading="Events">
+      <div id="polymer-file-events">
+        
+          <div id="event_polymer-error" class="no-permalink events item">
+    <h4 class="name"><code>polymer-error</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired if there is an error in the file read.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">detail</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">error</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>Information on the error.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+        
+          <div id="event_polymer-result" class="no-permalink events item">
+    <h4 class="name"><code>polymer-result</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when a file read has complete.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">detail</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">result</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>The result of the read.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-flex-layout/polymer-flex-layout.html">
+        <header>
+          <h2 id="polymer-flex-layout">&lt;polymer-flex-layout&gt;
+            <!--<a href="https://github.com/Polymer/polymer-flex-layout/blob/master/polymer-flex-layout.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-flex-layout/blob/master/polymer-flex-layout.html" target="_blank">source</a>
+            <a href="../../components/polymer-flex-layout/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-flex-layout</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-flex-layout/polymer-flex-layout.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-flex-layout provides a helper to use CSS3 Flexible Boxes.  By putting
+polymer-flex-layout inside an element it makes the element a flex
+container. Use &#39;flex&#39; attribute to make the flex item flexible.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;div&gt;
+  &lt;polymer-flex-layout&gt;&lt;/polymer-flex-layout&gt;
+  &lt;div&gt;Left&lt;/div&gt;
+  &lt;div flex&gt;Main&lt;/div&gt;
+  &lt;div&gt;Right&lt;/div&gt;
+&lt;/div&gt;
+
+---------------------------------
+|-------------------------------|
+||Left|       Main       |Right||
+|-------------------------------|
+---------------------------------
+
+&lt;div&gt;
+  &lt;polymer-flex-layout vertical&gt;&lt;/polymer-flex-layout&gt;
+  &lt;div&gt;Header&lt;/div&gt;
+  &lt;div flex&gt;Body&lt;/div&gt;
+  &lt;div&gt;Footer&lt;/div&gt;
+&lt;/div&gt;
+
+----------
+||------||
+||Header||
+||------||
+||Body  ||
+||      ||
+||      ||
+||      ||
+||      ||
+||      ||
+||      ||
+||------||
+||Footer||
+||------||
+----------</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-flex-layout-attrs">
+        
+          <div id="attr_align" class="no-permalink attr item">
+
+    <h4 class="name"><code>align</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Defines the default for how flex items are laid out along the cross axis on 
+the current line.  Possible values are &#39;start&#39;, &#39;center&#39; and &#39;end&#39;.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_isContainer" class="no-permalink attr item">
+
+    <h4 class="name"><code>isContainer</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, polymer-flex-layout is the flex container.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-flex-layout isContainer&gt;
+  &lt;div&gt;Left&lt;/div&gt;
+  &lt;div flex&gt;Main&lt;/div&gt;
+  &lt;div&gt;Right&lt;/div&gt;
+&lt;/polymer-flex-layout&gt;
+
+---------------------------------
+|-------------------------------|
+||Left|       Main       |Right||
+|-------------------------------|
+---------------------------------</code></pre>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_justify" class="no-permalink attr item">
+
+    <h4 class="name"><code>justify</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Defines how flex items are laid out along the main axis on the current line.
+Possible values are &#39;start&#39;, &#39;center&#39; and &#39;end&#39;.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_vertical" class="no-permalink attr item">
+
+    <h4 class="name"><code>vertical</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, flex items are aligned vertically.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-google-jsapi/polymer-google-jsapi.html">
+        <header>
+          <h2 id="polymer-google-jsapi">&lt;polymer-google-jsapi&gt;
+            <!--<a href="https://github.com/Polymer/polymer-google-jsapi/blob/master/polymer-google-jsapi.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-google-jsapi/blob/master/polymer-google-jsapi.html" target="_blank">source</a>
+            <a href="../../components/polymer-google-jsapi/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-google-jsapi</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-google-jsapi/polymer-google-jsapi.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-grid-layout/polymer-grid-layout.html">
+        <header>
+          <h2 id="polymer-grid-layout">&lt;polymer-grid-layout&gt;
+            <!--<a href="https://github.com/Polymer/polymer-grid-layout/blob/master/polymer-grid-layout.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-grid-layout/blob/master/polymer-grid-layout.html" target="_blank">source</a>
+            <a href="../../components/polymer-grid-layout/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-grid-layout</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-grid-layout/polymer-grid-layout.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-home-page/polymer-home-page.html">
+        <header>
+          <h2 id="polymer-home-page">&lt;polymer-home-page&gt;
+            <!--<a href="https://github.com/Polymer/polymer-home-page/blob/master/polymer-home-page.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-home-page/blob/master/polymer-home-page.html" target="_blank">source</a>
+            <a href="../../components/polymer-home-page/index.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-home-page</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-home-page/polymer-home-page.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-home-page-dev/polymer-home-page-dev.html">
+        <header>
+          <h2 id="polymer-home-page-dev">&lt;polymer-home-page-dev&gt;
+            <!--<a href="https://github.com/Polymer/polymer-home-page-dev/blob/master/polymer-home-page-dev.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-home-page-dev/blob/master/polymer-home-page-dev.html" target="_blank">source</a>
+            <a href="../../components/polymer-home-page-dev/index.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-home-page-dev</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-home-page-dev/polymer-home-page-dev.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-jsonp/polymer-jsonp.html">
+        <header>
+          <h2 id="polymer-jsonp">&lt;polymer-jsonp&gt;
+            <!--<a href="https://github.com/Polymer/polymer-jsonp/blob/master/polymer-jsonp.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-jsonp/blob/master/polymer-jsonp.html" target="_blank">source</a>
+            <a href="../../components/polymer-jsonp/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-jsonp</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-jsonp/polymer-jsonp.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-jsonp can be used to perform JSONP requests.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-jsonp url=&quot;https://clients1.google.com/finance/info?q=GOOG&amp;client=ig&amp;callback=&quot;
+    response=&quot;{{data}}&quot;&gt;&lt;/polymer-jsonp&gt;</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-jsonp-attrs">
+        
+          <div id="attr_response" class="no-permalink attr item">
+
+    <h4 class="name"><code>response</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the response object.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_url" class="no-permalink attr item">
+
+    <h4 class="name"><code>url</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The URL target of the request.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+    <demo-tab heading="Methods">
+      <div id="polymer-jsonp-methods">
+        
+          <div id="method_go" class="no-permalink method item">
+    <h4 class="name"><code>go
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Performs a JSONP request to the url specified.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+    <demo-tab heading="Events">
+      <div id="polymer-jsonp-events">
+        
+          <div id="event_polymer-response" class="no-permalink events item">
+    <h4 class="name"><code>polymer-response</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when a response is received.</p>
+
+    </div>
+
+    
+
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-key-helper/polymer-key-helper.html">
+        <header>
+          <h2 id="polymer-key-helper">&lt;polymer-key-helper&gt;
+            <!--<a href="https://github.com/Polymer/polymer-key-helper/blob/master/polymer-key-helper.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-key-helper/blob/master/polymer-key-helper.html" target="_blank">source</a>
+            <a href="../../components/polymer-key-helper/index.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-key-helper</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-key-helper/polymer-key-helper.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-layout/polymer-layout.html">
+        <header>
+          <h2 id="polymer-layout">&lt;polymer-layout&gt;
+            <!--<a href="https://github.com/Polymer/polymer-layout/blob/master/polymer-layout.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-layout/blob/master/polymer-layout.html" target="_blank">source</a>
+            <a href="../../components/polymer-layout/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-layout</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-layout/polymer-layout.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p><code>&lt;polymer-layout&gt;</code> arranges nodes horizontally via absolution positioning.
+Set the <code>vertical</code> attribute (boolean) to arrange vertically instead.</p>
+<p><code>&lt;polymer-layout&gt;</code> arranges it&#39;s <b>sibling elements</b>, not
+it&#39;s children.</p>
+<p>One arranged node may be marked as elastic by giving it a <code>flex</code>
+attribute (boolean).</p>
+<p>You may remove a node from layout by giving it a <code>nolayout</code>
+attribute (boolean).</p>
+<p>CSS Notes:</p>
+<ul>
+<li><code>padding</code> is ignored on the parent node.</li>
+<li><code>margin</code> is ignored on arranged nodes.</li>
+<li><code>min-width</code> is ignored on arranged nodes, use <code>min-width</code> on the parent node
+instead.</li>
+</ul>
+<p>Example: </p>
+<p>Arrange three <code>div</code> into columns. <code>flex</code> attribute on Column Two makes that
+column elastic.</p>
+<pre class="code prettyprint"><code> &lt;polymer-layout&gt;&lt;/polymer-layout&gt;
+ &lt;div&gt;Column One&lt;/div&gt;
+ &lt;div flex&gt;Column Two&lt;/div&gt;
+ &lt;div&gt;Column Three&lt;/div&gt;</code></pre>
+<p> Remember that <code>&lt;polymer-layout&gt;</code> arranges it&#39;s sibling elements, not it&#39;s children.</p>
+<p>If body has width 52 device pixels (in this case, ascii characters), call that 52px.
+Column One has it&#39;s natural width of 12px (including border), Column Three has it&#39;s
+natural width of 14px, body border uses 2px, and Column Two automatically uses the
+remaining space: 24px.</p>
+<pre class="code prettyprint"><code> |-                    52px                        -| 
+ ----------------------------------------------------
+ ||Column One||      Column Two      ||Column Three||
+ ----------------------------------------------------
+  |-  12px  -||-     (24px)         -||    14px   -|</code></pre>
+<p>As the parent node resizes, the elastic column reacts via CSS to adjust it&#39;s size.
+No javascript is used during parent resizing, for best performance. </p>
+<p>Changes in content or sibling size is not handled automatically. </p>
+<pre class="code prettyprint"><code> ----------------------------------------------------------------
+ ||Column One|             Column Two             |Column Three||
+ ----------------------------------------------------------------
+
+ --------------------------------------
+ ||Column One|Column Two|Column Three||
+ --------------------------------------</code></pre>
+<p>Arrange in rows by adding the <code>vertical</code> attribute.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code> &lt;polymer-layout vertical&gt;&lt;/polymer-layout&gt;
+ &lt;div&gt;Row One&lt;/div&gt;
+ &lt;div flex&gt;Row Two&lt;/div&gt;
+ &lt;div&gt;Row Three&lt;/div&gt;</code></pre>
+<p>This setup will cause Row Two to stretch to fill the container.</p>
+<pre class="code prettyprint"><code> -----------             -----------
+ |---------|             |---------|
+ |         |             |         |
+ |Row One  |             |Row One  |
+ |         |             |         |
+ |---------|             |---------|
+ |         |             |         |
+ |Row Two  |             |Row Two  |
+ |         |             |         |
+ |---------|             |         |
+ |         |             |         |
+ |Row Three|             |         |
+ |         |             |---------|
+ |---------|             |         |
+ -----------             |Row Three|
+                         |         |
+                         |---------|
+                         |---------|</code></pre>
+<p>Layouts can be nested arbitrarily.</p>
+<pre class="code prettyprint"><code> &lt;polymer-layout&gt;&lt;/polymer-layout&gt;
+ &lt;div&gt;Menu&lt;/div&gt;
+ &lt;div flex&gt;
+    &lt;polymer-layout vertical&gt;&lt;/polymer-layout&gt;
+    &lt;div&gt;Title&lt;/div&gt;
+    &lt;div&gt;Toolbar&lt;/div&gt;
+    &lt;div flex&gt;Main&lt;/div&gt;
+    &lt;div&gt;Footer&lt;/div&gt;
+ &lt;/div&gt;</code></pre>
+<p>Renders something like this</p>
+<pre class="code prettyprint"><code> --------------------------------
+ ||Menu     ||Title            ||
+ ||         ||-----------------||
+ ||         ||Toolbar          ||
+ ||         ||-----------------||
+ ||         ||Main             ||
+ ||         ||                 ||
+ ||         ||-----------------||
+ ||         ||Footer           ||
+ --------------------------------</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+  
+  
+    <demo-tab heading="Methods">
+      <div id="polymer-layout-methods">
+        
+          <div id="method_layout" class="no-permalink method item">
+    <h4 class="name"><code>layout
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Arrange sibling nodes end-to-end in one dimension.</p>
+<p>Arrangement is horizontal unless the <code>vertical</code>
+attribute is applied on this node.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-list/polymer-list.html">
+        <header>
+          <h2 id="polymer-list">&lt;polymer-list&gt;
+            <!--<a href="https://github.com/Polymer/polymer-list/blob/master/polymer-list.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-list/blob/master/polymer-list.html" target="_blank">source</a>
+            <a href="../../components/polymer-list/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-list</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-list/polymer-list.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-localstorage/polymer-localstorage.html">
+        <header>
+          <h2 id="polymer-localstorage">&lt;polymer-localstorage&gt;
+            <!--<a href="https://github.com/Polymer/polymer-localstorage/blob/master/polymer-localstorage.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-localstorage/blob/master/polymer-localstorage.html" target="_blank">source</a>
+            <a href="../../components/polymer-localstorage/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-localstorage</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-localstorage/polymer-localstorage.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>Element access to localStorage.  The &quot;name&quot; property
+is the key to the data (&quot;value&quot; property) stored in localStorage.</p>
+<p>polymer-localstorage automatically saves the value to localStorage when
+value is changed.  Note that if value is an object auto-save will be
+triggered only when value is a different instance.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-localstorage name=&quot;my-app-storage&quot; value=&quot;{{value}}&quot;&gt;&lt;/polymer-localstorage&gt;</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-localstorage-attrs">
+        
+          <div id="attr_autoSaveDisabled" class="no-permalink attr item">
+
+    <h4 class="name"><code>autoSaveDisabled</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, auto save is disabled.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_name" class="no-permalink attr item">
+
+    <h4 class="name"><code>name</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The key to the data stored in localStorage.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_useRaw" class="no-permalink attr item">
+
+    <h4 class="name"><code>useRaw</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, the value is stored and retrieved without JSON processing.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_value" class="no-permalink attr item">
+
+    <h4 class="name"><code>value</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The data associated with the specified name.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+    <demo-tab heading="Methods">
+      <div id="polymer-localstorage-methods">
+        
+          <div id="method_save" class="no-permalink method item">
+    <h4 class="name"><code>save
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Saves the value to localStorage.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+    <demo-tab heading="Events">
+      <div id="polymer-localstorage-events">
+        
+          <div id="event_polymer-localstorage-load" class="no-permalink events item">
+    <h4 class="name"><code>polymer-localstorage-load</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired after it is loaded from localStorage.</p>
+
+    </div>
+
+    
+
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-media-query/polymer-media-query.html">
+        <header>
+          <h2 id="polymer-media-query">&lt;polymer-media-query&gt;
+            <!--<a href="https://github.com/Polymer/polymer-media-query/blob/master/polymer-media-query.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-media-query/blob/master/polymer-media-query.html" target="_blank">source</a>
+            <a href="../../components/polymer-media-query/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-media-query</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-media-query/polymer-media-query.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-media-query can be used to data bind to a CSS media query.
+The &quot;query&quot; property is a bare CSS media query.
+The &quot;queryMatches&quot; property will be a boolean representing if the page matches that media query.</p>
+<p>polymer-media-query uses media query listeners to dynamically update the &quot;queryMatches&quot; property.
+A &quot;polymer-mediachange&quot; event also fires when queryMatches changes.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code> &lt;polymer-media-query query=&quot;max-width: 640px&quot; queryMatches=&quot;{{phoneScreen}}&quot;&gt;&lt;/polymer-media-query&gt;</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-media-query-attrs">
+        
+          <div id="attr_query" class="no-permalink attr item">
+
+    <h4 class="name"><code>query</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The CSS media query to evaulate</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_queryMatches" class="no-permalink attr item">
+
+    <h4 class="name"><code>queryMatches</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The Boolean return value of the media query</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-meta/polymer-meta.html">
+        <header>
+          <h2 id="polymer-meta">&lt;polymer-meta&gt;
+            <!--<a href="https://github.com/Polymer/polymer-meta/blob/master/polymer-meta.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-meta/blob/master/polymer-meta.html" target="_blank">source</a>
+            <a href="../../components/polymer-meta/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-meta</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-meta/polymer-meta.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-meta is used to manage metadata.  When an instance of polymer-meta
+is created, it&#39;s automatically registered and add to the metaData storage given an id
+is set on the element. Use byId() to retrive a specific polymer-meta and
+the property &quot;list&quot; to retrieve all registered polymer-meta&#39;s.</p>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+  
+  
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-mock-data/polymer-mock-data.html">
+        <header>
+          <h2 id="polymer-mock-data">&lt;polymer-mock-data&gt;
+            <!--<a href="https://github.com/Polymer/polymer-mock-data/blob/master/polymer-mock-data.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-mock-data/blob/master/polymer-mock-data.html" target="_blank">source</a>
+            <a href="../../components/polymer-mock-data/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-mock-data</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-mock-data/polymer-mock-data.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-overlay/polymer-overlay.html">
+        <header>
+          <h2 id="polymer-overlay">&lt;polymer-overlay&gt;
+            <!--<a href="https://github.com/Polymer/polymer-overlay/blob/master/polymer-overlay.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-overlay/blob/master/polymer-overlay.html" target="_blank">source</a>
+            <a href="../../components/polymer-overlay/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-overlay</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-overlay/polymer-overlay.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-overlay displays overlayed on top of other content. It starts
+out hidden and is displayed by setting it&#39;s opened property to true.
+A polymer-overlay&#39;s opened state can be toggled by calling the toggle
+method.</p>
+<p>It&#39;s common to want a polymer-overlay to animate to its opened
+position. A number of helper css classes provide some basic open/close
+animations. For example, assigning the class polymer-overlay-fade to a
+polymer-overlay will make it fade into and out of view as it opens and
+closes. Note, if multiple polymer-overlay&#39;s are opened, they should
+stack on top of each other.</p>
+<p>Styling: The size and position of a polymer-overlay should be setup
+via css.
+polymer-overlay is natually sized around its content. When a
+polymer-overlay is opened it is shown and the &#39;opened&#39; class is added
+to it. This is typically where css transitions and animations are
+applied. When the polymer-overlay is closed, the &#39;opened&#39; class is
+removed and a &#39;closing&#39; class is added. Use &#39;closing&#39; to customize
+the closing animation. </p>
+<p>Classes for animating polymer-overlay:</p>
+<ul>
+<li>polymer-overlay-fade: fade in/out when opened/closed</li>
+<li>polymer-overlay-scale-slideup: open: fade in and shrink;
+close: slide up</li>
+<li>polymer-overlay-shake: open: fly in and shake; close: shake and
+fly out.</li>
+</ul>
+<p>It&#39;s common to use polymer-overlay to gather user input, for example
+a login dialog. To facilitate this, polymer-overlay supports automatic
+focusing of a specific element when it&#39;s opened. The element to be
+focused should be given an autofocus attribute.</p>
+<p>An element that should close the polymer-overlay will automatically
+do so if it is given the overlay-toggle attribute. Please note that
+polymer-overlay will close whenever the user taps outside it or
+presses the escape key. The behavior can be turned off via the
+autoCloseDisabled property.</p>
+<pre class="code prettyprint"><code>&lt;div&gt;
+  &lt;polymer-overlay&gt;&lt;/polymer-overlay&gt;
+  &lt;h2&gt;Dialog&lt;/h2&gt;
+  &lt;input placeholder=&quot;say something...&quot; autofocus&gt;
+  &lt;div&gt;I agree with this wholeheartedly.&lt;/div&gt;
+  &lt;button overlay-toggle&gt;OK&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-overlay-attrs">
+        
+          <div id="attr_autoCloseDisabled" class="no-permalink attr item">
+
+    <h4 class="name"><code>autoCloseDisabled</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>By default an overlay will close automatically if the user
+taps outside it or presses the escape key. Disable this
+behavior by setting the autoCloseDisabled property to true.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_opened" class="no-permalink attr item">
+
+    <h4 class="name"><code>opened</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Set opened to true to show an overlay and to false to hide it.
+A polymer-overlay may be made intially opened by setting its
+opened attribute.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_target" class="no-permalink attr item">
+
+    <h4 class="name"><code>target</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The target element.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_transitions" class="no-permalink attr item">
+
+    <h4 class="name"><code>transitions</code></h4>
+    <span class="type">Array&lt;string&gt;</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>This property specifies the animation to play when the overlay is
+opened/closed. It can be an array of two animations
+[opening, closing], a single animation, an array of two strings, or
+a string. The strings should the tag names of custom elements
+descending from a polymer-animation. In the case of a single
+animation the closing animation is the opening animation played
+backwards.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+    <demo-tab heading="Methods">
+      <div id="polymer-overlay-methods">
+        
+          <div id="method_resizeHandler" class="no-permalink method item">
+    <h4 class="name"><code>resizeHandler
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Extensions of polymer-overlay should implement the resizeHandler
+method to adjust the size and position of the overlay when the 
+browser window resizes.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="method_toggle" class="no-permalink method item">
+    <h4 class="name"><code>toggle
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Toggle the opened state of the overlay.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+    <demo-tab heading="Events">
+      <div id="polymer-overlay-events">
+        
+          <div id="event_polymer-overlay-open" class="no-permalink events item">
+    <h4 class="name"><code>polymer-overlay-open</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when the polymer-overlay opened property is set.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">inDetail</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">opened</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>the opened state</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-page/polymer-page.html">
+        <header>
+          <h2 id="polymer-page">&lt;polymer-page&gt;
+            <!--<a href="https://github.com/Polymer/polymer-page/blob/master/polymer-page.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-page/blob/master/polymer-page.html" target="_blank">source</a>
+            <a href="../../components/polymer-page/index.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-page</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-page/polymer-page.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-scrub/polymer-scrub.html">
+        <header>
+          <h2 id="polymer-scrub">&lt;polymer-scrub&gt;
+            <!--<a href="https://github.com/Polymer/polymer-scrub/blob/master/polymer-scrub.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-scrub/blob/master/polymer-scrub.html" target="_blank">source</a>
+            <a href="../../components/polymer-scrub/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-scrub</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-scrub/polymer-scrub.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-sectioned-list/polymer-sectioned-list.html">
+        <header>
+          <h2 id="polymer-sectioned-list">&lt;polymer-sectioned-list&gt;
+            <!--<a href="https://github.com/Polymer/polymer-sectioned-list/blob/master/polymer-sectioned-list.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-sectioned-list/blob/master/polymer-sectioned-list.html" target="_blank">source</a>
+            <a href="../../components/polymer-sectioned-list/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-sectioned-list</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-sectioned-list/polymer-sectioned-list.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-selection/polymer-selection.html">
+        <header>
+          <h2 id="polymer-selection">&lt;polymer-selection&gt;
+            <!--<a href="https://github.com/Polymer/polymer-selection/blob/master/polymer-selection.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-selection/blob/master/polymer-selection.html" target="_blank">source</a>
+            <a href="../../components/polymer-selection/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-selection</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-selection/polymer-selection.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>The polymer-selection element is used to manage selection state. It has no
+visual appearance and is typically used in conjuneciton with another element.
+For example, <a href="polymer-selector.html">polymer-selector</a>
+use a polymer-selection to manage selection.</p>
+<p>To mark an item as selected, call the select(item) method on 
+polymer-selection. Notice that the item itself is an argument to this method.
+The polymer-selection element manages selection state for any given set of
+items. When an item is selected, the <code>polymer-select</code> event is fired.
+The attribute &quot;multi&quot; indicates if multiple items can be selected at once.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-element name=&quot;selection-example&quot;&gt;
+   &lt;template&gt;
+     &lt;style&gt;
+       ::-webkit-distributed(&gt; .selected) {
+         font-weight: bold;
+         font-style: italic;
+       }
+     &lt;/style&gt;
+     &lt;ul on-tap=&quot;{{itemTapAction}}&quot;&gt;
+       &lt;content&gt;&lt;/content&gt;
+     &lt;/ul&gt;
+     &lt;polymer-selection id=&quot;selection&quot; multi on-polymer-select=&quot;{{selectAction}}&quot;&gt;&lt;/polymer-selection&gt;
+   &lt;/template&gt;
+   &lt;script&gt;
+     Polymer(&#39;selection-example&#39;, {
+       itemTapAction: function(e) {
+         this.$.selection.select(e.target);
+       },
+       selectAction: function(e, detail) {
+         detail.item.classList.toggle(&#39;selected&#39;, detail.isSelected);
+       }
+     });
+   &lt;/script&gt;
+&lt;/polymer-element&gt;
+
+&lt;selection-example&gt;
+  &lt;li&gt;Red&lt;/li&gt;
+  &lt;li&gt;Green&lt;/li&gt;
+  &lt;li&gt;Blue&lt;/li&gt;
+&lt;/selection-example&gt;</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-selection-attrs">
+        
+          <div id="attr_multi" class="no-permalink attr item">
+
+    <h4 class="name"><code>multi</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, multiple selections are allowed.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+    <demo-tab heading="Methods">
+      <div id="polymer-selection-methods">
+        
+          <div id="method_getSelection" class="no-permalink method item">
+    <h4 class="name"><code>getSelection
+        
+            <span class="paren">()</span>
+        
+    </code></h4>
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the selected item(s).</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>Returns the selected item(s). If the multi property is true,
+getSelection will return an array, otherwise it will return 
+the selected item or undefined if there is no selection.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+        
+          <div id="method_isSelected" class="no-permalink method item">
+    <h4 class="name"><code>isSelected
+        
+            <div class="args">
+                <span class="paren">(</span><ul class="args-list inline commas">
+                
+                    <li class="arg">
+                        
+                            <code>item</code>
+                        
+                    </li>
+                
+                </ul><span class="paren">)</span>
+            </div>
+        
+    </code></h4>
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Indicates if a given item is selected.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item</code>
+                        <span class="type">Any</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The item whose selection state should be checked.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>Returns true if <code>item</code> is selected.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+        
+          <div id="method_select" class="no-permalink method item">
+    <h4 class="name"><code>select
+        
+            <div class="args">
+                <span class="paren">(</span><ul class="args-list inline commas">
+                
+                    <li class="arg">
+                        
+                            <code>item:</code>
+                        
+                    </li>
+                
+                </ul><span class="paren">)</span>
+            </div>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Set the selection state for a given <code>item</code>. If the multi property
+is true, then the selected state of <code>item</code> will be toggled; otherwise
+the <code>item</code> will be selected.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item:</code>
+                        <span class="type">Any</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The item to select.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="method_toggle" class="no-permalink method item">
+    <h4 class="name"><code>toggle
+        
+            <div class="args">
+                <span class="paren">(</span><ul class="args-list inline commas">
+                
+                    <li class="arg">
+                        
+                            <code>item:</code>
+                        
+                    </li>
+                
+                </ul><span class="paren">)</span>
+            </div>
+        
+    </code></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Toggles the selection state for <code>item</code>.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item:</code>
+                        <span class="type">Any</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The item to toggle.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+    <demo-tab heading="Events">
+      <div id="polymer-selection-events">
+        
+          <div id="event_polymer-select" class="no-permalink events item">
+    <h4 class="name"><code>polymer-select</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when an item&#39;s selection state is changed. This event is fired both
+when an item is selected or deselected. The <code>isSelected</code> detail property
+contains the selection state.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">detail</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">isSelected</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>true for selection and false for deselection</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">item</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>the item element</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-selector/polymer-selector.html">
+        <header>
+          <h2 id="polymer-selector">&lt;polymer-selector&gt;
+            <!--<a href="https://github.com/Polymer/polymer-selector/blob/master/polymer-selector.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-selector/blob/master/polymer-selector.html" target="_blank">source</a>
+            <a href="../../components/polymer-selector/index.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-selector</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-selector/polymer-selector.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          
+
+
+<div>
+    <p>polymer-selector is used to manage a list of elements that can be selected.
+The attribute &quot;selected&quot; indicates which item element is being selected.
+The attribute &quot;multi&quot; indicates if multiple items can be selected at once.
+Tapping on the item element would fire &quot;polymer-activate&quot; event. Use
+&quot;polymer-select&quot; event to listen for selection changes.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-selector selected=&quot;0&quot;&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/polymer-selector&gt;</code></pre>
+<p>polymer-selector is not styled.  So one needs to use &quot;polymer-selected&quot; CSS
+class to style the selected element.</p>
+<pre class="code prettyprint"><code>&lt;style&gt;
+  .item.polymer-selected {
+    background: #eee;
+  }
+&lt;/style&gt;
+...
+&lt;polymer-selector&gt;
+  &lt;div class=&quot;item&quot;&gt;Item 1&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;Item 2&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;Item 3&lt;/div&gt;
+&lt;/polymer-selector&gt;</code></pre>
+
+</div>
+
+
+
+
+
+<demo-tabs selectedindex="0" class="no-permalink">
+  
+    <demo-tab heading="Attributes">
+      <div id="polymer-selector-attrs">
+        
+          <div id="attr_activateEvent" class="no-permalink attr item">
+
+    <h4 class="name"><code>activateEvent</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The event that would be fired from the item element to indicate
+it is being selected.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;tap&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_itemSelector" class="no-permalink attr item">
+
+    <h4 class="name"><code>itemSelector</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>This can be used to query nodes from the target node to be used for 
+selection items.  Note this only works if the &#39;target&#39; property is set.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-selector target=&quot;{{$.myForm}}&quot; itemsSelector=&quot;input[type=radio]&quot;&gt;&lt;/polymer-selector&gt;
+&lt;form id=&quot;myForm&quot;&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;color&quot; value=&quot;red&quot;&gt; Red&lt;/label&gt; &lt;br&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;color&quot; value=&quot;green&quot;&gt; Green&lt;/label&gt; &lt;br&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;color&quot; value=&quot;blue&quot;&gt; Blue&lt;/label&gt; &lt;br&gt;
+  &lt;p&gt;color = {{color}}&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_multi" class="no-permalink attr item">
+
+    <h4 class="name"><code>multi</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, multiple selections are allowed.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_selected" class="no-permalink attr item">
+
+    <h4 class="name"><code>selected</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets or sets the selected element.  Default to use the index
+of the item element.</p>
+<p>If you want a specific attribute value of the element to be
+used instead of index, set &quot;valueattr&quot; to that attribute name.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-selector valueattr=&quot;label&quot; selected=&quot;foo&quot;&gt;
+  &lt;div label=&quot;foo&quot;&gt;&lt;/div&gt;
+  &lt;div label=&quot;bar&quot;&gt;&lt;/div&gt;
+  &lt;div label=&quot;zot&quot;&gt;&lt;/div&gt;
+&lt;/polymer-selector&gt;</code></pre>
+<p>In multi-selection this should be an array of values.</p>
+<p>Example:</p>
+<pre class="code prettyprint"><code>&lt;polymer-selector id=&quot;selector&quot; valueattr=&quot;label&quot; multi&gt;
+  &lt;div label=&quot;foo&quot;&gt;&lt;/div&gt;
+  &lt;div label=&quot;bar&quot;&gt;&lt;/div&gt;
+  &lt;div label=&quot;zot&quot;&gt;&lt;/div&gt;
+&lt;/polymer-selector&gt;
+
+this.$.selector.selected = [&#39;foo&#39;, &#39;zot&#39;];</code></pre>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_selectedClass" class="no-permalink attr item">
+
+    <h4 class="name"><code>selectedClass</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the CSS class to be used to add to the selected element.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;polymer-selected&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_selectedIndex" class="no-permalink attr item">
+
+    <h4 class="name"><code>selectedIndex</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>In single selection, this returns the selected index.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> -1</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_selectedItem" class="no-permalink attr item">
+
+    <h4 class="name"><code>selectedItem</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the currently selected element. In multi-selection this returns
+an array of selected elements.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_selectedModel" class="no-permalink attr item">
+
+    <h4 class="name"><code>selectedModel</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>In single selection, this returns the model associated with the
+selected element.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_selectedProperty" class="no-permalink attr item">
+
+    <h4 class="name"><code>selectedProperty</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the property to be used to set on the selected element
+to indicate its active state.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;active&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_target" class="no-permalink attr item">
+
+    <h4 class="name"><code>target</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The target element that contains items.  If this is not set 
+polymer-selector is the container.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+        
+          <div id="attr_valueattr" class="no-permalink attr item">
+
+    <h4 class="name"><code>valueattr</code></h4>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the attribute to be used for &quot;selected&quot; attribute.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> &#x27;name&#x27;</p>
+    
+
+    
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+  
+  
+  
+    <demo-tab heading="Events">
+      <div id="polymer-selector-events">
+        
+          <div id="event_polymer-activate" class="no-permalink events item">
+    <h4 class="name"><code>polymer-activate</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when an item element is tapped.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">detail</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">item</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>the item element</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+        
+          <div id="event_polymer-select" class="no-permalink events item">
+    <h4 class="name"><code>polymer-select</code></h4>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+            
+        
+        
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when an item&#39;s selection state is changed. This event is fired both
+when an item is selected or deselected. The <code>isSelected</code> detail property
+contains the selection state.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">detail</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">isSelected</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>true for selection and false for deselection</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">item</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>the item element</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+        
+      </div>
+    </demo-tab>
+  
+</demo-tabs>
+
+
+
+        </span>
+      </div><div data-element-file="/components/polymer-shared-lib/polymer-shared-lib.html">
+        <header>
+          <h2 id="polymer-shared-lib">&lt;polymer-shared-lib&gt;
+            <!--<a href="https://github.com/Polymer/polymer-shared-lib/blob/master/polymer-shared-lib.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-shared-lib/blob/master/polymer-shared-lib.html" target="_blank">source</a>
+            <a href="../../components/polymer-shared-lib/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-shared-lib</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-shared-lib/polymer-shared-lib.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-signals/polymer-signals.html">
+        <header>
+          <h2 id="polymer-signals">&lt;polymer-signals&gt;
+            <!--<a href="https://github.com/Polymer/polymer-signals/blob/master/polymer-signals.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-signals/blob/master/polymer-signals.html" target="_blank">source</a>
+            <a href="../../components/polymer-signals/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-signals</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-signals/polymer-signals.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-stock/polymer-stock.html">
+        <header>
+          <h2 id="polymer-stock">&lt;polymer-stock&gt;
+            <!--<a href="https://github.com/Polymer/polymer-stock/blob/master/polymer-stock.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-stock/blob/master/polymer-stock.html" target="_blank">source</a>
+            <a href="../../components/polymer-stock/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-stock</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-stock/polymer-stock.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div><div data-element-file="/components/polymer-view-source-link/polymer-view-source-link.html">
+        <header>
+          <h2 id="polymer-view-source-link">&lt;polymer-view-source-link&gt;
+            <!--<a href="https://github.com/Polymer/polymer-view-source-link/blob/master/polymer-view-source-link.html" target="_blank"><img src="/images/picons/ic_polymer_source.svg"></a>-->
+            <a href="https://github.com/Polymer/polymer-view-source-link/blob/master/polymer-view-source-link.html" target="_blank">source</a>
+            <a href="../../components/polymer-view-source-link/smoke.html" target="_blank">demo</a>
+          </h2>
+        </header>
+        <span class="bower_install_instructions">
+          <label>1. Install in your app:</label>
+          <pre class="prettyprint">bower install Polymer/polymer-view-source-link</pre>
+          <label>2. Import:</label>
+          <pre class="prettyprint">&lt;link rel="import"
+      href="bower_components/polymer-view-source-link/polymer-view-source-link.html"&gt;</pre>
+        </span>
+        <span class="api_documentation">
+          <label>Usage:</label>
+          <div class="nodocs"></div>
+        </span>
+      </div>
+</section>
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="../start/getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

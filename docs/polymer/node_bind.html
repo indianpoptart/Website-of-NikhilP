@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Node.bind()">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Node.bind() - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="node.bind()" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="../start/everything.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="polymer.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="docs"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="core" navgroup="docs" shortname="Docs">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="../start/everything.html" class="paper-button " borderless sink>Start</a>
+  <a href="polymer.html" class="paper-button active" borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Node.bind()</h1>
+        
+          <summary>Library</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/polymer/node_bind.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Node.bind()</h1>
+        
+          <summary>Library</summary>
+        
+      </header>
+
+      <dl class="horizontal">
+  
+  
+</dl>
+
+<blockquote>
+  <p><a href="https://github.com/polymer/NodeBind"><code>Node.bind()</code></a> is Polymer’s data-binding library which allows DOM nodes to bind properties to data. Although internal in Polymer, it is also useful standalone.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="learn-the-tech">Learn the tech</h2>
+
+<h3 id="why-nodebind">Why Node.bind()?</h3>
+
+<p><code>Node.bind()</code> is a new method added to all DOM nodes which instructs them to bind the named
+property to the data provided. These allows applications to create a data model
+in JavaScript that DOM reacts to.</p>
+
+<h3 id="basic-usage">Basic usage</h3>
+
+<p>“Bind the value in <code>obj.path.to.value</code> to a TextNode’s <code>.textContent</code>”:</p>
+
+<pre><code>var obj = {
+  path: {
+    to: {
+      value: 'hi'
+    }
+  }
+};
+
+var textNode = document.createTextNode('mytext');
+textNode.bind('textContent', new PathObserver(obj, 'path.to.value'));
+</code></pre>
+
+<p>When the value in <code>path.to.value</code> changes, <code>Node.bind()</code> keeps <code>.textContent</code> up to date.</p>
+
+<h2 id="binding-types">Binding types</h2>
+
+<p>The meaning of the binding name is interpreted by the node on which <code>bind()</code> is called.
+Some elements have special properties which can be two-way data bound:</p>
+
+<ul>
+  <li><code>Text</code> node - only handles bindings on its <code>textContent</code> property. </li>
+  <li><code>HTMLInputElement</code> - handles bindings on its <code>value</code> and <code>checked</code> properties.</li>
+  <li><code>HTMLTextareaElement</code> - handles bindings on its <code>value</code> property.</li>
+  <li><code>HTMLSelectElement</code> - handles bindings on its <code>selectedIndex</code> property.</li>
+</ul>
+
+<p><strong>All other elements handle bindings to attributes</strong>.</p>
+
+<h3 id="text-nodes">Text nodes</h3>
+
+<pre><code>textNode.bind('textContent', new PathObserver(someObj, 'path.to.value'));
+</code></pre>
+
+<p>Instructs the <code>Text</code> node to make its <code>textContent</code> property dependent on the
+value <code>someObj.path.to.value</code>.</p>
+
+<table class="table">
+  <tr>
+    <th>Case</th><th>Result</th>
+  </tr>
+  <tr>
+    <td>Bound value is interpreted as</td>
+    <td><code>String(someObj.path.to.value)</code></td>
+  </tr>
+  <tr>
+    <td>The path is <code>null</code>, <code>undefined</code>, or unreachable</td>
+    <td><code>""</code> (the empty string)</td>
+  </tr>
+</table>
+
+<h3 id="inputelements">&lt;input&gt; element</h3>
+
+<p>The <code>&lt;input&gt;</code> element has two special properties, <code>value</code> and <code>checked</code> for two-way binding.</p>
+
+<h4 id="value">value</h4>
+
+<pre><code>myValueInput.bind('value', new PathObserver(someObj, 'path.to.value'));
+</code></pre>
+
+<p>Instructs the <code>input</code> to ensure its <code>value</code> property is equal to <code>String(someObj.path.to.value)</code>. Upon binding, if the path is reachable, <code>value</code> is set to the path value. If the path is unreachable but can be made reachable by setting a single property on the final object, the property is set to <code>value</code>.</p>
+
+<h4 id="checked">checked</h4>
+
+<pre><code>myCheckboxOrRadioInput.bind('checked', new PathObserver(someObj, 'path.to.value'));
+</code></pre>
+
+<p>Instructs the <code>input</code> to ensure its <code>checked</code> property is equal to <code>Boolean(someObje.path.to.value)</code>.</p>
+
+<table class="table">
+  <tr>
+    <th>Case</th><th>Result</th>
+  </tr>
+  <tr>
+    <td>Bound value is interpreted as</td>
+    <td><code>Boolean(someObje.path.to.value)</code></td>
+  </tr>
+  <tr>
+    <td>The path is <code>null</code>, <code>undefined</code>, or unreachable</td>
+    <td><code>false</code> for <code>&lt;input type="checked"&gt;</code> and <code>&lt;input type="radio"&gt;</code>.</td>
+  </tr>
+</table>
+
+<h3 id="textarea">&lt;textarea&gt; element</h3>
+
+<p>The <code>&lt;textarea&gt;</code> element has a special property, <code>value</code> for two-way binding.</p>
+
+<h4 id="value-1">value</h4>
+
+<pre><code>textarea.bind('value', new PathObserver(someObj, 'path.to.value'));
+</code></pre>
+
+<p><code>HTMLTextAreaElement.value</code> mimics the behavior of <code>input.value</code> (see above).</p>
+
+<h3 id="select">&lt;select&gt; element</h3>
+
+<p>The <code>&lt;select&gt;</code> element has two special properties, <code>selectedIndex</code> and <code>value</code> for two-way binding.</p>
+
+<h4 id="value-2">value</h4>
+
+<pre><code>select.bind('value', new PathObserver(someObj, 'path.to.value'));
+</code></pre>
+
+<p>Instructs the <code>HTMLSelectElement</code> to make its <code>value</code> property dependent on the
+value in <code>path.to.value</code>.</p>
+
+<h4 id="selectedindex">selectedIndex</h4>
+
+<pre><code>select.bind('selectedIndex', new PathObserver(someObj, 'path.to.value'));
+</code></pre>
+
+<p>Instructs the <code>HTMLSelectElement</code> to make its <code>selectedIndex</code> property dependent on the
+value in <code>path.to.value</code>. Note, “<code>selectedIndex</code>” is case sensitive.</p>
+
+<table class="table">
+  <tr>
+    <th>Case</th><th>Result</th>
+  </tr>
+  <tr>
+    <td>Bound value is interpreted as</td>
+    <td><code>Number(someObj.path.to.value)</code></td>
+  </tr>
+  <tr>
+    <td>The path is <code>null</code>, <code>undefined</code>, or unreachable</td>
+    <td><code>0</code></td>
+  </tr>
+</table>
+
+<h3 id="attributevalues">Element attribute values</h3>
+
+<pre><code>myElement.bind('title', new PathObserver(someObj, 'path.to.value'));
+</code></pre>
+
+<p>Instructs the element to make the value its <code>title</code> attribute dependent on the value <code>someObj.path.to.value</code>.</p>
+
+<table class="table">
+  <tr>
+    <th>Case</th><th>Result</th>
+  </tr>
+  <tr>
+    <td>Bound value is interpreted as</td>
+    <td><code>String(someObj.path.to.value)</code></td>
+  </tr>
+  <tr>
+    <td>The path is <code>null</code>, <code>undefined</code>, or unreachable</td>
+    <td><code>""</code> (the empty string)</td>
+  </tr>
+</table>
+
+<h3 id="attributepresence">Element attribute presence</h3>
+
+<pre><code>myElement.bind('hidden?', new PathObserver(someObj, 'path.to.value'));
+</code></pre>
+
+<p>Instructs the element add/remove its <code>hidden</code> attribute based on the truthiness of  <code>someObj.path.to.value</code>.</p>
+
+<table class="table">
+  <tr>
+    <th>Case</th><th>Result</th>
+  </tr>
+  <tr>
+    <td>Bound value is interpreted as</td>
+    <td><code>""</code> (the empty string) if <code>someObj.path.to.value</code> is reachable and truthy</td>
+  </tr>
+  <tr>
+    <td>Other cases</td>
+    <td>The attribute is removed from the element</td>
+  </tr>
+</table>
+
+<h2 id="custom-element-bindings">Custom element bindings</h2>
+
+<p><a href="../../platform/custom-elements.html">Custom Elements</a> may choose to interpret bindings
+as they wish. They do this by overriding the <code>bind()</code> method.</p>
+
+<pre><code>MyFancyHTMLWidget.prototype.bind = function(name, observable, oneTime) {
+  if (name == 'myBinding') {
+    // interpret the binding meaning
+    // if oneTime is false, this should return an object which
+    // has a close() method.
+    // this will allow TemplateBinding to clean up this binding
+    // when the instance containing it is removed.
+  }
+  else {
+     return HTMLElement.prototype.bind.call(
+      this, name, observable, oneTime
+    );
+  }
+};
+</code></pre>
+
+<p>If the element does not handle the binding, it should give its super class the
+opportunity to by invoking its <code>bind()</code> method.</p>
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="../start/getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

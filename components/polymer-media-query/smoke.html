@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.polymer-project.org/components/polymer-media-query/smoke.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:37:25 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <title>Polymer match media</title>
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="polymer-media-query.html" />
+</head>
+<body>
+
+  <polymer-element name="match-example">
+    <template>
+      <polymer-media-query query="{{query}}" queryMatches="{{qMatches}}"></polymer-media-query>
+      My query of "{{query}}" {{qMatches ? "matches" : "doesn't match"}}
+    </template>
+    <script>
+      Polymer('match-example', {
+        query: 'min-width: 600px'
+      });
+    </script>
+  </polymer-element>
+
+  <match-example id="me"></match-example>
+  <pre id="output">
+  Log of 'mediachange' events on document, from polymer-match-media:
+  </pre>
+
+  <script>
+    var output = document.querySelector('#output');
+    // on-mediachange would give true or false as second param to the handler
+    document.addEventListener('polymer-mediachange', function(e) {
+      output.textContent += '\nevent: ' + e.type + ' query: ' + e.detail.media + ' matches: ' + e.detail.matches;
+    });
+  </script>
+</body>
+
+<!-- Mirrored from www.polymer-project.org/components/polymer-media-query/smoke.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:37:25 GMT -->
+</html>

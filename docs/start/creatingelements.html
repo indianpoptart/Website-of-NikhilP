@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Creating elements">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Creating elements - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="creating-elements" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="everything.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="../polymer/polymer.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="start"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="start" navgroup="start" shortname="Start">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="everything.html" class="paper-button active" borderless sink>Start</a>
+  <a href="../polymer/polymer.html" class="paper-button " borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Creating elements</h1>
+        
+          <summary>Polymer from the inside</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/start/creatingelements.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Creating elements</h1>
+        
+          <summary>Polymer from the inside</summary>
+        
+      </header>
+
+      <details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#basics">Setup</a>    <ul>
+      <li><a href="#install">1. Install Polymer</a></li>
+      <li><a href="#createpolyel">2. Build a Polymer element</a></li>
+      <li><a href="#creatapp">3. Create an app</a></li>
+    </ul>
+  </li>
+  <li><a href="#features">Using Polymer’s features</a>    <ul>
+      <li><a href="#propertiesmethods">Add properties and methods</a></li>
+      <li><a href="#adding-lifecycle-methods">Adding lifecycle methods</a></li>
+      <li><a href="#declarative-data-binding">Declarative data binding</a></li>
+      <li><a href="#publishing">Publishing properties</a></li>
+      <li><a href="#automatic-node-finding">Automatic node finding</a></li>
+    </ul>
+  </li>
+  <li><a href="#nextsteps">Next steps</a></li>
+</ul>
+
+<p>Polymer provides a useful collection of elements to get you started, but if you’ve embraced the “<a href="everything.html">Everything is an element</a>” philosophy, you’ll quickly want to make your own elements—whether to share with others or just to make your own apps easier to manage.</p>
+
+<p>By building on top of the power of Web Components, Polymer makes creating your own elements extremely easy. Define the markup you want stamped out for each instance of the element and optionally define some properties and methods. Then import the element and the browser will treat it like any other native DOM element.</p>
+
+<p>One of the key features of elements is that they’re encapsulated—their details don’t leak out to the rest of your page. That means your element can masquerade as a native element on the outside, while inside it can leverage Polymer magic, such as:</p>
+
+<ul>
+  <li>Two-way data binding</li>
+  <li>Event binding</li>
+  <li>Dynamic templates</li>
+  <li>Automatic node finding</li>
+  <li>…and much more</li>
+</ul>
+
+<p>Polymer’s motto within this encapsulated world is “reduce boilerplate.” You’ll find yourself writing far less script to accomplish common tasks, and spending more time on the interesting challenges of your element.</p>
+
+<p>If you combine this with the ability to <a href="link/to/using/elements.html">use preexisting elements</a> you’ll quickly discover how easy it is to build rich applications out of simple building blocks.</p>
+
+<h2 id="basics">Setup</h2>
+
+<h3 id="install">1. Install Polymer</h3>
+
+<p>If you haven’t already done, so, install the latest version of Polymer as described in <a href="getting-the-code.html">Getting the Code</a>.</p>
+
+<h3 id="createpolyel">2. Build a Polymer element</h3>
+
+<p>Polymer provides extra goodies for creating declarative, souped-up custom elements. We call these “Polymer elements”. From the outside they look just like any other DOM element, but inside they’re filled with handy features like two-way data binding and other bits of <a href="../polymer/polymer.html">Polymer magic</a>. These features make it easy to build complex components with much less code.</p>
+
+<p>To create a new element:</p>
+
+<ol>
+  <li>Load <a href="../polymer/polymer.html">Polymer core</a> (<code>polymer.html</code>).</li>
+  <li>Declare your custom element using <code>&lt;polymer-element&gt;</code>.</li>
+</ol>
+
+<p>In the following example, we define a new element named <code>&lt;my-element&gt;</code>, save
+it to a file <code>elements/my-element.html</code>, and use an HTML Import to load the <code>polymer.html</code> dependency.</p>
+
+<p><strong>my-element.html</strong></p>
+
+<pre><code>&lt;link rel="import" href="../bower_components/polymer/polymer.html"&gt;
+
+&lt;polymer-element name="my-element" noscript&gt;
+  &lt;template&gt;
+    &lt;span&gt;Hello from &lt;b&gt;my-element&lt;/b&gt;. This is my Shadow DOM.&lt;/span&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<p>Two items to notice:</p>
+
+<ul>
+  <li>
+    <p>The <code>name</code> attribute is required and <strong>must</strong> contain a “-“. It specifies the name of the HTML tag you’ll instantiate in markup (in this case <code>&lt;my-element&gt;</code>).</p>
+  </li>
+  <li>
+    <p>The <code>noscript</code> attribute indicates that this is a simple element that doesn’t include any script. An element declared with <code>noscript</code> is registered automatically.</p>
+  </li>
+</ul>
+
+<h4 id="reuse">Reuse other elements</h4>
+
+<p>By composing simple elements together we can build richer, more complex components. To reuse other elements in your <code>&lt;polymer-element&gt;</code>, install the element in your app:</p>
+
+<pre><code>bower install Polymer/polymer-ajax
+</code></pre>
+
+<p>and include an import to load the new dependency in <code>my-element.html</code>:</p>
+
+<pre><code>&lt;link rel="import" href="../bower_components/polymer/polymer.html"&gt;
+&lt;link rel="import" href="../bower_components/polymer-ajax/polymer-ajax.html"&gt;
+
+&lt;polymer-element name="my-element" noscript&gt;
+  &lt;template&gt;
+    &lt;span&gt;I'm &lt;b&gt;my-element&lt;/b&gt;. This is my Shadow DOM.&lt;/span&gt;
+    &lt;polymer-ajax url="http://example.com/json" auto response="{{resp}}"&gt;&lt;/polymer-ajax&gt;
+    &lt;textarea value="{{resp}}"&gt;&lt;/textarea&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</code></pre>
+
+<h3 id="creatapp">3. Create an app</h3>
+
+<p>Lastly, create an <code>index.html</code> that imports your new element. Remember to include <code>platform.js</code>
+to load polyfills for the native APIs.</p>
+
+<p>Here’s the full example:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- 1. Load platform support before any code that touches the DOM. --&gt;
+    &lt;script src="bower_components/platform/platform.js"&gt;&lt;/script&gt;
+    &lt;!-- 2. Load the component using an HTML Import --&gt;
+    &lt;link rel="import" href="elements/my-element.html"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- 3. Declare the element by its tag. --&gt;
+    &lt;my-element&gt;&lt;/my-element&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p class="alert alert-info"><strong>Note:</strong> You must run your app from a web server for the <a href="../../platform/html-imports.html">HTML Imports</a>
+polyfill to work properly. This requirement goes away when the API is available natively.</p>
+
+<p>Your final directory structure should look something like this:</p>
+
+<pre><code>yourapp/
+  bower_components/
+    platform/
+    polymer/
+  elements/
+    my-element.html
+  index.html
+</code></pre>
+
+<p>Now that you’ve got the basic setup, it’s time to start using the features!</p>
+
+<h2 id="features">Using Polymer’s features</h2>
+
+<p>Polymer provides a number of sugaring APIs for authoring
+web components. Below are a few of the concepts. Consult the <a href="../polymer/polymer.html">API reference</a> for
+detailed information on each of these features.</p>
+
+<h3 id="propertiesmethods">Add properties and methods</h3>
+
+<p>When you’re creating a new element, you’ll often need to expose a <a href="../../start/cusomelements.html#publicapis">public API</a> so users can configure it. To define a public API, include a <code>&lt;script&gt;</code> tag that calls <code>Polymer('your-tagname')</code>.  The <code>Polymer(...)</code> constructor is a convenience wrapper for <a href="../../platform/custom-elements.html#documentregister"><code>document.registerElement</code></a>, but also endows the element with special features like data binding and event mapping. Its first argument is the name of the element you’re creating. The second argument (optional) is an object that defines your element’s prototype. </p>
+
+<link rel="import" href="../../samples/components/tk-element-proto.html" />
+
+<!-- <link rel="import" href="/elements/demo-tabs.html"> -->
+
+<demo-tabs selectedindex="0">
+  <demo-tab heading="proto-element.html">
+  <div>
+    <pre><code class="html">&lt;link rel=&quot;import&quot;
+      href=&quot;/components/polymer/polymer.html&quot;&gt;
+
+&lt;polymer-element name=&quot;proto-element&quot;&gt;
+  &lt;template&gt;
+    &lt;span&gt;I&#39;m &lt;b&gt;proto-element&lt;/b&gt;. Check out my prototype.&lt;/span&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer(&#39;proto-element&#39;, {
+      ready: function() {
+        //...
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <demo-tab heading="index.html">
+  <div>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;platform.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;proto-element.html&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;proto-element&gt;&lt;/proto-element&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <div class="result">
+    <proto-element></proto-element>
+  </div>
+</demo-tabs>
+
+<h3 id="adding-lifecycle-methods">Adding lifecycle methods</h3>
+
+<p><a href="../polymer/polymer.html#lifecyclemethods">Lifecycle callbacks</a> are special methods you can define on your element which fire when the element goes through important transitions.</p>
+
+<p>When a custom element has been registered it calls its <code>created()</code> callback (if one has been defined). When Polymer finishes its initialization, the <code>ready()</code> method is called.
+The <code>ready</code> callback is a great place to do constructor-like initialization work.</p>
+
+<link rel="import" href="../../samples/components/tk-element-created.html" />
+
+<!-- <link rel="import" href="/elements/demo-tabs.html"> -->
+
+<demo-tabs selectedindex="0">
+  <demo-tab heading="ready-element.html">
+  <div>
+    <pre><code class="html">&lt;link rel=&quot;import&quot;
+      href=&quot;/components/polymer/polymer.html&quot;&gt;
+
+&lt;polymer-element name=&quot;ready-element&quot;&gt;
+  &lt;template&gt;
+    This is element has a ready() method.
+    &lt;span id=&quot;el&quot;&gt;Not ready...&lt;/span&gt;
+  &lt;/template&gt;
+  &lt;script&gt;  
+    Polymer(&#39;ready-element&#39;, {
+      owner: &quot;Daniel&quot;,
+      ready: function() {
+        this.$.el.textContent = this.owner +
+                                &quot; is ready!&quot;;
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <demo-tab heading="index.html">
+  <div>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;platform.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;ready-element.html&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;ready-element&gt;&lt;/ready-element&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <div class="result">
+    <ready-element></ready-element>
+  </div>
+</demo-tabs>
+
+<p>Learn more about all of the <a href="../polymer/polymer.html#lifecyclemethods">lifecycle callbacks</a>.</p>
+
+<h3 id="declarative-data-binding">Declarative data binding</h3>
+
+<p>Data binding is a great way to quickly propagate changes in your element and reduce boilerplate code. You can bind properties in your component using the “double-mustache” syntax (<code>{{}}</code>). The <code>{{}}</code> is replaced by the value of the property referenced between the brackets.</p>
+
+<link rel="import" href="../../samples/components/tk-element-databinding.html" />
+
+<!-- <link rel="import" href="/elements/demo-tabs.html"> -->
+
+<demo-tabs selectedindex="0">
+  <demo-tab heading="name-tag.html">
+  <div>
+    <pre><code class="html">&lt;link rel=&quot;import&quot;
+      href=&quot;/components/polymer/polymer.html&quot;&gt;
+
+&lt;polymer-element name=&quot;name-tag&quot;&gt;
+  &lt;template&gt;
+    This is &lt;b&gt;{{owner}}&lt;/b&gt;&#39;s name-tag element.
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer(&#39;name-tag&#39;, {
+      owner: &#39;Daniel&#39;
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <demo-tab heading="index.html">
+  <div>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;platform.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;name-tag.html&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;name-tag&gt;&lt;/name-tag&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <div class="result">
+    <name-tag></name-tag>
+  </div>
+</demo-tabs>
+
+<p class="alert alert-info">Note: Polymer’s data-binding is powered under the covers by a sub-library called <a href="../polymer/template.html">TemplateBinding</a>, designed for other libraries to build on top of.</p>
+
+<h4 id="binding-to-markup">Binding to markup</h4>
+
+<p>You can use binding expressions in most HTML markup, except for tag names themselves. In the following example, we create a new property on our component named <code>color</code> whose value is bound to the value of the <code>color</code> style applied to the custom element. Bindings ensure that any time a property like <code>color</code> is changed, the new value will be propagated to all binding points.</p>
+
+<link rel="import" href="../../samples/components/tk-element-databinding-color.html" />
+
+<!-- <link rel="import" href="/elements/demo-tabs.html"> -->
+
+<demo-tabs selectedindex="0">
+  <demo-tab heading="fav-color.html">
+  <div>
+    <pre><code class="html">&lt;link rel=&quot;import&quot;
+      href=&quot;/components/polymer/polymer.html&quot;&gt;
+
+&lt;polymer-element name=&quot;fav-color&quot;&gt;
+  &lt;template&gt;
+    This is &lt;b&gt;{{owner}}&lt;/b&gt;&#39;s fav-color element. 
+    {{owner}} likes the color 
+    &lt;span style=&quot;color: {{color}}&quot;&gt;{{color}}&lt;/span&gt;.
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer(&#39;fav-color&#39;, {
+      owner: &quot;Daniel&quot;,
+      color: &quot;red&quot;
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <demo-tab heading="index.html">
+  <div>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;platform.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;fav-color.html&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;fav-color&gt;&lt;/fav-color&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <div class="result">
+    <fav-color></fav-color>
+  </div>
+</demo-tabs>
+
+<h4 id="bindingtobuiltin">Binding between components and built-in elements</h4>
+
+<p>You can use bindings with built-in elements just like you would with Polymer elements. This is a great way to leverage existing APIs to build complex components. The following example demonstrates binding component properties to attributes of native input elements.</p>
+
+<link rel="import" href="../../samples/components/tk-binding-to-elements.html" />
+
+<!-- <link rel="import" href="/elements/demo-tabs.html"> -->
+
+<demo-tabs selectedindex="0">
+  <demo-tab heading="age-slider.html">
+  <div>
+    <pre><code class="html">&lt;link rel=&quot;import&quot;
+      href=&quot;/components/polymer/polymer.html&quot;&gt;
+
+&lt;polymer-element name=&quot;age-slider&quot;&gt;
+  &lt;template&gt;
+    This is &lt;b&gt;{{owner}}&lt;/b&gt;&#39;s age-slider.
+    &lt;b&gt;{{name}}&lt;/b&gt; lets me borrow it.
+    He likes the color &lt;span style=&quot;color: {{color}}&quot;&gt;{{color}}&lt;/span&gt;.
+    I am &lt;b&gt;{{age}}&lt;/b&gt; years old.
+    &lt;p&gt;&lt;label for=&quot;ageInput&quot;&gt;Age:&lt;/label&gt;
+    &lt;input id=&quot;ageInput&quot; type=&quot;range&quot;
+           value=&quot;{{age}}&quot;&gt;
+    &lt;label for=&quot;nameInput&quot;&gt;Name:&lt;/label&gt;
+    &lt;input id=&quot;nameInput&quot; value=&quot;{{name}}&quot;
+           placeholder=&quot;Enter name...&quot;&gt;&lt;/p&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer(&#39;age-slider&#39;, {
+      age: 25,
+      name: &quot;Daniel&quot;,
+      color: &quot;red&quot;,
+      owner: &quot;Eric&quot;,
+      nameChanged: function() {
+        if (this.name) {
+          // Insure name is capitalized
+          this.name = this.name[0].toUpperCase() +
+                      this.name.slice(1);
+        }
+      }
+    });
+&lt;/script&gt;
+&lt;/polymer-element&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <demo-tab heading="index.html">
+  <div>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;platform.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;age-slider.html&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;age-slider&gt;&lt;/age-slider&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <div class="result">
+    <age-slider></age-slider>
+  </div>
+</demo-tabs>
+
+<p class="alert"><strong>Note:</strong> Giving <code>age</code> an initial value <code>25</code> gives Polymer
+a hint that this property is an integer.</p>
+
+<h3 id="publishing">Publishing properties</h3>
+
+<p>Published properties can be used to define an element’s “public API”. Polymer
+establishes two-way data binding for published properties and provides access
+to the property’s value using <code>{{}}</code>.</p>
+
+<p><em>Publish</em> a property by listing it in the <code>attributes</code> attribute in your <code>&lt;polymer-element&gt;</code>. Properties declared this way are initially <code>null</code>. To provide a more appropriate default value, include the same property name directly in your prototype.</p>
+
+<p>The following example defines two data-bound properties on the element, <code>owner</code> and <code>color</code>,
+and gives them default values:</p>
+
+<link rel="import" href="../../samples/components/tk-element-property-public.html" />
+
+<!-- <link rel="import" href="/elements/demo-tabs.html"> -->
+
+<demo-tabs selectedindex="0">
+  <demo-tab heading="color-picker.html">
+  <div>
+    <pre><code class="html">&lt;link rel=&quot;import&quot;
+      href=&quot;/components/polymer/polymer.html&quot;&gt;
+
+&lt;polymer-element name=&quot;color-picker&quot;
+         attributes=&quot;owner color&quot;&gt;
+  &lt;template&gt;
+    This is a &lt;strong&gt;{{owner}}&lt;/strong&gt;&#39;s color-picker. 
+    He likes the color &lt;b style=&quot;color: {{color}}&quot;&gt;{{color}}&lt;/b&gt;.
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer(&#39;color-picker&#39;, {
+      // These default values are overridden
+      // by the user&#39;s attribute values.
+      color: &quot;red&quot;,
+      owner: &quot;Daniel&quot;
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <demo-tab heading="index.html">
+  <div>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;platform.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;color-picker.html&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;color-picker owner=&quot;Scott&quot; color=&quot;blue&quot;&gt;&lt;/color-picker&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <div class="result">
+    <color-picker owner="Scott" color="blue"></color-picker>
+  </div>
+</demo-tabs>
+
+<p>In this example the user overrides the defaults for <code>owner</code> and <code>color</code>
+by configuring the element with initial attribute values (e.g. <code>&lt;color-picker owner="Scott" color="blue"&gt;</code>).</p>
+
+<p class="alert alert-success"><strong>Note</strong>: When binding  a property that takes a type other than String, it’s important to <a href="../polymer/polymer.html#attrhinting">hint a property’s type</a>. Polymer relies on this information to correctly serialize and de-serialize values.</p>
+
+<p><a href="../polymer/polymer.html#published-properties">Learn more about published properties</a>.</p>
+
+<h3 id="automatic-node-finding">Automatic node finding</h3>
+
+<p>The use of the <code>id</code> attribute has traditionally been discouraged as an anti-pattern because the document requires element IDs to be unique. Shadow DOM, on the other hand, is a self-contained document-like subtree; IDs in that subtree do not interact with IDs in other trees. This means the use of IDs in Shadow DOM is not only permissible, it’s actually encouraged. Each Polymer element generates a map of IDs to node references in the element’s template. This map is accessible as <code>$</code> on the element and can be used to quickly select the node you wish to work with. </p>
+
+<link rel="import" href="../../samples/components/tk-node-finding.html" />
+
+<!-- <link rel="import" href="/elements/demo-tabs.html"> -->
+
+<demo-tabs selectedindex="0">
+  <demo-tab heading="editable-color-picker.html">
+  <div>
+    <pre><code class="html">&lt;link rel=&quot;import&quot;
+      href=&quot;/components/polymer/polymer.html&quot;&gt;
+
+&lt;polymer-element name=&quot;editable-color-picker&quot; attributes=&quot;owner color&quot;&gt;
+  &lt;template&gt;
+    &lt;p&gt;
+    This is a &lt;strong&gt;{{owner}}&lt;/strong&gt;&#39;s editable-color-picker.
+    He likes the color &lt;b style=&quot;color: {{color}}&quot;&gt;{{color}}&lt;/b&gt;.
+    &lt;/p&gt;
+    &lt;button on-click=&quot;{{setFocus}}&quot;&gt;Set focus to text input&lt;/button&gt;
+    &lt;input id=&quot;nameInput&quot; value=&quot;{{owner}}&quot;
+           placeholder=&quot;Your name here...&quot;&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer(&#39;editable-color-picker&#39;, {
+      color: &quot;red&quot;,
+      owner: &quot;Daniel&quot;,
+      setFocus: function() {
+        this.$.nameInput.focus();
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <demo-tab heading="index.html">
+  <div>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;platform.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;editable-color-picker.html&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;editable-color-picker&gt;&lt;/editable-color-picker&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  </demo-tab>
+  <div class="result">
+    <editable-color-picker></editable-color-picker>
+  </div>
+</demo-tabs>
+
+<p><a href="../polymer/polymer.html#automatic-node-finding">Learn more about automatic node finding</a></p>
+
+<h2 id="nextsteps">Next steps</h2>
+
+<p>Now that you know how to create your own elements you’re ready to unleash the true power of Polymer. To dive even deeper, read up on <a href="../polymer/polymer.html">Polymer’s core API reference</a> or if you’d like to know more about the underlying technologies that make Polymer (and Web Components) possible, check out <a href="platform.html">the Platform guide</a>. Continue on to:</p>
+
+<p><a href="platform.html" class="paper-button"><polymer-ui-icon src="../../images/picons/ic_arrowForward_dark_.png"></polymer-ui-icon>The Platform</a></p>
+
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

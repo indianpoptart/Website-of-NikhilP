@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta itemprop="name" content="Polymer - Getting the code">
+<meta itemprop="description" content="Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile.">
+
+
+<meta itemprop="image" content="../../images/instacod.png">
+
+
+<title>
+  
+    Getting the code - 
+   Polymer
+</title>
+<link rel="publisher" href="../../../plus.google.com/107187849809354688692.html">
+<link rel="shortcut icon" href="../../images/logos/p-logo-16.png">
+<link href="../../css/site2d228.css?20140220" rel="stylesheet">
+
+
+
+
+  <script src="../../platformd228.js?20140220"></script>
+  <!-- TODO: remove when https://github.com/Polymer/polymer/issues/391 is fixed -->
+  <link rel="import" href="../../components/polymer/polymer.html">
+  <link rel="import" href="../../elements/common_elements.vulcanized.html">
+
+
+</head>
+<body id="getting-the-code" unresolved>
+
+<main id="content-container">
+
+  <aside id="sidebar" class="main-bg">
+    <polymer-flex-layout id="logo-container" isContainer align="center">
+      <a href="../../index.html" class="logo"><img src="../../images/logos/lockup.svg"></a>
+      <polymer-ui-icon id="dropdown-toggle" size="35" src="../../images/picons/ic_arrowDropDown_dark_.png">
+      </polymer-ui-icon>
+    </polymer-flex-layout>
+
+    <dropdown-panel>
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_guide_dark_.png"
+        label="Start"
+        href="everything.html"
+        active>
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_book_dark_.png"
+        label="Docs"
+        href="../polymer/polymer.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_feedback_dark_.png"
+        label="Resources"
+        href="../../resources/faq.html"
+        >
+      </polymer-ui-menu-item>
+
+      <polymer-ui-menu-item
+        src="../../images/picons/ic_people_dark.png"
+        label="Community"
+        href="../../discuss.html"
+        >
+      </polymer-ui-menu-item>
+    </dropdown-panel>
+
+    <docs-menu menu="start"></docs-menu>
+  </aside>
+  <scroll-area sidebar>
+    <site-banner type="start" navgroup="start" shortname="Start">
+      
+ 
+<app-bar theme="light" class="bar">
+  <a href="everything.html" class="paper-button active" borderless sink>Start</a>
+  <a href="../polymer/polymer.html" class="paper-button " borderless sink>Docs</a>
+  <a href="../../resources/faq.html" class="paper-button " borderless sink>Resources</a>
+  <a href="../../discuss.html" class="paper-button " borderless sink>Community</a>
+  <!-- <a href="#" class="paper-button" borderless sink>News</a> -->
+</app-bar>
+
+      <header>
+        <h1>Getting the code</h1>
+        
+          <summary>Basics</summary>
+        
+      </header>
+    </site-banner>
+
+    
+    
+
+    <article class="show-permalinks">
+      <span class="edit-on-github">
+  <a href="https://github.com/Polymer/docs/edit/master/docs/start/getting-the-code.md">Edit on Github</a>
+</span>
+<div><!-- intentionally blank --></div>
+
+      <header class="onlyonmobile">
+        <h1>Getting the code</h1>
+        
+          <summary>Basics</summary>
+        
+      </header>
+
+      <details id="toc">
+  <summary>Table of contents</summary>
+</details>
+
+<ul id="markdown-toc">
+  <li><a href="#install">Setup &amp; installation</a>    <ul>
+      <li><a href="#installing-polymer">Using Bower</a></li>
+      <li><a href="#git">Using git</a></li>
+    </ul>
+  </li>
+  <li><a href="#nextsteps">Next steps</a></li>
+</ul>
+
+<h2 id="install">Setup &amp; installation</h2>
+
+<h3 id="installing-polymer">Using Bower</h3>
+
+<p>The recommended way to install <strong>Polymer 0.2.0</strong> is through <a href="http://bower.io/">Bower</a>. We’ve chosen Bower because it removes the hassle of dependency management when developing or consuming elements.</p>
+
+<h4 id="getting-the-packages">Getting the packages</h4>
+
+<p>If you haven’t created a <code>bower.json</code> file for your application, run this command from the root of your project:</p>
+
+<pre><code>bower init
+</code></pre>
+
+<p>This generates a basic <code>bower.json</code> file. Some of the questions, like “What kind of modules do you expose,” can be ignored by pressing Enter.</p>
+
+<p>The next step is to install Polymer.</p>
+
+<pre><code>bower install --save polymer
+</code></pre>
+
+<p>Bower adds a <code>bower_components/</code> folder in the root of your project and fills it with Polymer and its dependencies.</p>
+
+<p class="alert alert-success"><strong>Tip:</strong> <code>--save</code> adds the item as dependencies in <em>your</em> app’s bower.json.</p>
+
+<p><code>
+{
+  "name": "my-polymer-project",
+  "version": "0.0.0",
+  "dependencies": {
+    "polymer": "~0.2.0"
+  }
+}
+</code></p>
+
+<h4 id="getting-polymer-elements">Getting Polymer elements</h4>
+
+<p>If you’d like to install Polymer’s collection of pre-built elements (polymer-elements and polymer-ui-elements) run this command from your terminal:</p>
+
+<pre><code>bower install --save Polymer/polymer-elements Polymer/polymer-ui-elements
+</code></pre>
+
+<h4 id="updatebower">Updating packages</h4>
+
+<p>When a new version of Polymer is available, run <code>bower update</code>
+in your app directory to update your copy:</p>
+
+<pre><code>bower update
+</code></pre>
+
+<p>This updates all packages in <code>bower_components/</code>.</p>
+
+<h3 id="git">Using git</h3>
+
+<p>Because there are a number of dependencies we suggest you install Polymer with Bower instead of git. If you’d like to hack on the project or submit a pull request check out our guide on <a href="../../resources/tooling-strategy.html#git">setting up Polymer with git</a>.</p>
+
+<h2 id="nextsteps">Next steps</h2>
+
+<p>Now that you’ve installed Polymer it’s time to learn the core concepts. In the next section we’ll explain Polymer’s’ philosophy and how to start doing things the “Polymer way.” Continue on to:</p>
+
+<p><a href="everything.html" class="paper-button"><polymer-ui-icon src="../../images/picons/ic_arrowForward_dark_.png"></polymer-ui-icon>Understanding Polymer</a></p>
+
+<p>If you’d rather skip ahead, check out our guides on <a href="usingelements.html">Using Elements</a> and <a href="creatingelements.html">Creating Elements</a>.</p>
+
+    </article>
+
+  </scroll-area>
+
+</main>
+
+<footer>
+  <div>
+    <!-- <polymer-flex-layout align="center"></polymer-flex-layout> -->
+    <polymer-ui-toolbar>
+      <a href="getting-the-code.html" class="paper-button" data-download-button><polymer-ui-icon src="../../images/picons/ic_archive_dark_.png"></polymer-ui-icon>Get Polymer</a>
+      <a href="http://plus.google.com/107187849809354688692/" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_google_plus.png"></polymer-ui-icon>+Polymer</a>
+      <a href="https://twitter.com/intent/follow?screen_name=polymer" data-twitter-follow title="Follow @polymer on Twitter" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_twitter_dark_.png"></polymer-ui-icon>@polymer</a>
+      <a href="https://github.com/polymer" class="paper-button" borderless><polymer-ui-icon src="../../images/picons/ic_social_github.png"></polymer-ui-icon>/Polymer</a>
+    </polymer-ui-toolbar>
+
+    <p id="copyright">&copy; 2014 Polymer Authors. Code licensed under the <a href="https://github.com/polymer/polymer/blob/master/LICENSE" target="_blank">BSD License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+
+
+  
+<script>var POLYMER_VERSION = '0.2.0';</script>
+<!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
+<script src="../../js/prettify/prettify.js"></script>
+<!-- <script src="/js/jquery-2.0.3.min.js"></script> -->
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bower_components/smoothscroll/smoothscroll.js"></script> -->
+<script src="../../js/app.js"></script>
+
+
+<page-scrim></page-scrim>
+</body>
+</html>

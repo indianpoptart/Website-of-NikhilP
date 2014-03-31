@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.polymer-project.org/components/polymer-ajax/smoke.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:37:11 GMT -->
+<head>
+  <title>polymer-ajax</title>
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="polymer-ajax.html">
+</head>
+<body>
+  <polymer-ajax auto url="http://gdata.youtube.com/feeds/api/videos/" 
+      params='{"alt":"json", "q":"chrome"}'
+      handleAs="json"></polymer-ajax>
+   
+  <template repeat="{{response.feed.entry}}">
+    <div>{{title.$t}}</div>
+  </template>
+  
+  <script>
+    document.addEventListener('polymer-ready', function() {
+      var ajax = document.querySelector("polymer-ajax");
+      ajax.addEventListener("polymer-response", 
+        function(e) {
+          document.querySelector('template').model = {
+            response: e.detail.response
+          };
+        }
+      );
+    });
+  </script>
+</body>
+
+<!-- Mirrored from www.polymer-project.org/components/polymer-ajax/smoke.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 23 Feb 2014 18:37:12 GMT -->
+</html>
